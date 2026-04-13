@@ -4,7 +4,7 @@ import SwiftUI
 struct MaximusPrecisionApp: App {
     var body: some Scene {
         WindowGroup {
-            QuoteFormView()
+            SplashView()
         }
     }
 }

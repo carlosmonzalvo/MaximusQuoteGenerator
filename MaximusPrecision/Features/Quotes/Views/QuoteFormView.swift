@@ -127,6 +127,7 @@ struct QuoteFormView: View {
                 } label: {
                     Label("Agregar refacción", systemImage: "wrench.and.screwdriver")
                 }
+                .buttonStyle(.plain)
 
                 Spacer()
 
@@ -135,6 +136,7 @@ struct QuoteFormView: View {
                 } label: {
                     Label("Agregar mano de obra", systemImage: "hammer")
                 }
+                .buttonStyle(.plain)
             }
         }
     }

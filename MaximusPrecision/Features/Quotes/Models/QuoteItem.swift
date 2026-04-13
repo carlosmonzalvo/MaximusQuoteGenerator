@@ -1,6 +1,6 @@
 import Foundation
 
-enum QuoteItemType: String, CaseIterable, Codable {
+enum QuoteItemType: String, CaseIterable, Codable, Hashable {
     case part = "Refacción"
     case labor = "Mano de obra"
 }
