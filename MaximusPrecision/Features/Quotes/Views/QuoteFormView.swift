@@ -277,12 +277,22 @@ struct ItemEditSheet: View {
 // MARK: - Main Form View
 
 struct QuoteFormView: View {
+    @Environment(\.modelContext) private var modelContext
     @StateObject private var vm = QuoteFormViewModel()
+    @State private var currentStep: Int = 1
+    @State private var validationError: String? = nil
+    @State private var brandSuggestions: [String] = []
+    @State private var modelSuggestions: [String] = []
     @State private var generatedPDFURL: URL?
     @State private var showPDFPreview = false
     @State private var editingItem: QuoteItem?
+    
     private let pdfGenerator = PDFGeneratorService()
     private let folio = String(UUID().uuidString.prefix(8)).uppercased()
+    
+    private var repo: VehicleRepositoryProtocol {
+        LocalVehicleRepository(context: modelContext)
+    }
 
     var body: some View {
         NavigationStack {
@@ -290,18 +300,18 @@ struct QuoteFormView: View {
                 MXTheme.bg.ignoresSafeArea()
 
                 VStack(spacing: 0) {
-                    headerSection
-                    ScrollView {
-                        VStack(spacing: 0) {
-                            itemsSection
-                            notesSection
-                            Color.clear.frame(height: 110)
-                        }
-                        .padding(.horizontal, 14)
+                    wizardHeader
+                    
+                    TabView(selection: $currentStep) {
+                        step1Cliente.tag(1)
+                        step2Vehiculo.tag(2)
+                        step3Conceptos.tag(3)
                     }
+                    .tabViewStyle(.page(indexDisplayMode: .never))
+                    .ignoresSafeArea(.keyboard)
                 }
 
-                bottomBar
+                bottomNavigation
             }
             .toolbar(.hidden, for: .navigationBar)
             .navigationDestination(isPresented: $showPDFPreview) {
@@ -323,43 +333,186 @@ struct QuoteFormView: View {
         .preferredColorScheme(.dark)
     }
 
-    // MARK: Header
+    // MARK: - Wizard Components
 
-    private var headerSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack(alignment: .firstTextBaseline) {
-                Text("Nueva Cotización")
-                    .font(.system(size: 22, weight: .bold))
-                    .foregroundStyle(MXTheme.text)
+    private var wizardHeader: some View {
+        VStack(spacing: 0) {
+            HStack {
+                if currentStep > 1 {
+                    Button(action: {
+                        withAnimation(.easeInOut(duration: 0.25)) {
+                            currentStep -= 1
+                            validationError = nil
+                        }
+                    }) {
+                        HStack(spacing: 4) {
+                            Image(systemName: "arrow.left")
+                            Text("Atrás")
+                        }
+                        .font(.system(size: 14, weight: .medium))
+                        .foregroundStyle(MXTheme.muted)
+                    }
+                } else {
+                    Text("Nueva Cotización")
+                        .font(.system(size: 16, weight: .bold))
+                        .foregroundStyle(MXTheme.text)
+                }
+                
                 Spacer()
+                
                 Text("#\(folio)")
                     .font(.system(size: 11, weight: .medium, design: .monospaced))
                     .foregroundStyle(MXTheme.muted)
             }
-
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 6) {
-                MXField(label: "Nombre", text: $vm.customerName)
-                MXField(label: "Teléfono", text: $vm.customerPhone, keyboard: .phonePad)
-                MXField(label: "Marca", text: $vm.vehicleBrand)
-                MXField(label: "Modelo", text: $vm.vehicleModel)
-                MXField(label: "Año", text: $vm.vehicleYear, keyboard: .numberPad)
-                MXField(label: "Placas", text: $vm.vehiclePlate, autocap: .characters)
-            }
-
-            ScrollView(.horizontal, showsIndicators: false) {
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
+            
+            VStack(alignment: .leading, spacing: 6) {
+                Text(stepTitle)
+                    .font(.system(size: 12, weight: .medium))
+                    .foregroundStyle(MXTheme.muted)
+                    .padding(.horizontal, 16)
+                
                 HStack(spacing: 6) {
-                    ForEach(defaultTemplates) { tpl in
-                        TemplateChipBtn(template: tpl) { vm.addTemplate(tpl) }
+                    ForEach(1...3, id: \.self) { step in
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(step <= currentStep ? MXTheme.accent : MXTheme.border)
+                            .frame(height: 3)
                     }
                 }
+                .padding(.horizontal, 16)
+                .animation(.easeInOut(duration: 0.25), value: currentStep)
             }
+            .padding(.bottom, 16)
+            
+            Rectangle()
+                .fill(MXTheme.border)
+                .frame(height: 1)
         }
-        .padding(.horizontal, 14)
-        .padding(.top, 16)
-        .padding(.bottom, 14)
         .background(MXTheme.header)
-        .overlay(alignment: .bottom) {
-            Rectangle().fill(MXTheme.border).frame(height: 1)
+    }
+
+    private var stepTitle: String {
+        switch currentStep {
+        case 1: return "Paso 1 de 3 — Cliente"
+        case 2: return "Paso 2 de 3 — Vehículo"
+        case 3: return "Paso 3 de 3 — Conceptos"
+        default: return ""
+        }
+    }
+
+    private var step1Cliente: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                Text("Información del Cliente")
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundStyle(MXTheme.text)
+                    .padding(.top, 10)
+                
+                VStack(spacing: 16) {
+                    MXField(label: "Nombre completo", text: $vm.customerName)
+                    MXField(label: "Teléfono", text: $vm.customerPhone, keyboard: .phonePad)
+                }
+                
+                if let error = validationError, currentStep == 1 {
+                    Text(error)
+                        .font(.system(size: 13))
+                        .foregroundStyle(MXTheme.accent)
+                        .padding(.top, 4)
+                }
+            }
+            .padding(16)
+        }
+    }
+
+    private var step2Vehiculo: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                Text("Detalles del Vehículo")
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundStyle(MXTheme.text)
+                    .padding(.top, 10)
+                
+                VStack(spacing: 16) {
+                    HStack(spacing: 16) {
+                        MXAutoField(label: "Marca", text: $vm.vehicleBrand, suggestions: brandSuggestions) { selection in
+                            vm.vehicleBrand = selection
+                            vm.vehicleModel = ""
+                            brandSuggestions = []
+                        }
+                        .onChange(of: vm.vehicleBrand) { _, newValue in
+                            Task {
+                                brandSuggestions = await repo.brands(matching: newValue)
+                            }
+                        }
+                        
+                        MXAutoField(label: "Modelo", text: $vm.vehicleModel, suggestions: modelSuggestions) { selection in
+                            vm.vehicleModel = selection
+                            modelSuggestions = []
+                            Task {
+                                await repo.recordUsage(brand: vm.vehicleBrand, model: selection)
+                            }
+                        }
+                        .onChange(of: vm.vehicleModel) { _, newValue in
+                            Task {
+                                modelSuggestions = await repo.models(for: vm.vehicleBrand, matching: newValue)
+                            }
+                        }
+                    }
+                    
+                    HStack(spacing: 16) {
+                        MXField(label: "Año", text: $vm.vehicleYear, keyboard: .numberPad)
+                        MXField(label: "Placas", text: $vm.vehiclePlate, autocap: .characters)
+                    }
+                }
+                
+                if let error = validationError, currentStep == 2 {
+                    Text(error)
+                        .font(.system(size: 13))
+                        .foregroundStyle(MXTheme.accent)
+                        .padding(.top, 4)
+                }
+            }
+            .padding(16)
+        }
+    }
+
+    private var step3Conceptos: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 0) {
+                Text("Conceptos y Trabajo")
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundStyle(MXTheme.text)
+                    .padding(.horizontal, 16)
+                    .padding(.top, 20)
+                    .padding(.bottom, 16)
+
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 8) {
+                        ForEach(defaultTemplates) { tpl in
+                            TemplateChipBtn(template: tpl) { vm.addTemplate(tpl) }
+                        }
+                    }
+                    .padding(.horizontal, 16)
+                }
+                .padding(.bottom, 10)
+
+                itemsSection
+                    .padding(.horizontal, 16)
+                
+                notesSection
+                    .padding(.horizontal, 16)
+                
+                if let error = validationError, currentStep == 3 {
+                    Text(error)
+                        .font(.system(size: 13))
+                        .foregroundStyle(MXTheme.accent)
+                        .padding(.horizontal, 16)
+                        .padding(.top, 10)
+                }
+                
+                Color.clear.frame(height: 120)
+            }
         }
     }
 
@@ -454,42 +607,97 @@ struct QuoteFormView: View {
         }
     }
 
-    // MARK: Bottom Bar
+    // MARK: - Navigation
 
-    private var bottomBar: some View {
-        HStack(spacing: 12) {
-            VStack(alignment: .leading, spacing: 2) {
-                Text("TOTAL")
-                    .font(.system(size: 10, weight: .medium))
-                    .foregroundStyle(MXTheme.muted)
-                    .kerning(1)
-                Text(vm.total, format: .currency(code: "MXN"))
-                    .font(.system(size: 24, weight: .bold, design: .monospaced))
-                    .foregroundStyle(MXTheme.accent)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.7)
+    private var bottomNavigation: some View {
+        VStack(spacing: 0) {
+            Rectangle()
+                .fill(MXTheme.border)
+                .frame(height: 1)
+            
+            HStack(spacing: 12) {
+                if currentStep < 3 {
+                    Spacer()
+                    Button(action: nextStep) {
+                        HStack(spacing: 8) {
+                            Text("Siguiente")
+                            Image(systemName: "arrow.right")
+                        }
+                        .font(.system(size: 15, weight: .bold))
+                        .foregroundStyle(Color(hex: "111111"))
+                        .padding(.horizontal, 24)
+                        .frame(height: 52)
+                        .background(MXTheme.accent)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                    }
+                } else {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("TOTAL")
+                            .font(.system(size: 10, weight: .medium))
+                            .foregroundStyle(MXTheme.muted)
+                            .kerning(1)
+                        Text(vm.total, format: .currency(code: "MXN"))
+                            .font(.system(size: 24, weight: .bold, design: .monospaced))
+                            .foregroundStyle(MXTheme.accent)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.7)
+                    }
+
+                    Spacer()
+
+                    Button(action: {
+                        if validateStep3() {
+                            generatePDF()
+                        }
+                    }) {
+                        Text("Generar PDF →")
+                            .font(.system(size: 15, weight: .bold))
+                            .foregroundStyle(Color(hex: "111111"))
+                            .padding(.horizontal, 20)
+                            .frame(height: 52)
+                            .background(MXTheme.accent)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                    }
+                    .buttonStyle(.plain)
+                }
             }
+            .padding(.horizontal, 16)
+            .padding(.top, 12)
+            .padding(.bottom, 34)
+            .background(MXTheme.header)
+        }
+    }
 
-            Spacer()
-
-            Button(action: generatePDF) {
-                Text("Generar PDF →")
-                    .font(.system(size: 15, weight: .bold))
-                    .foregroundStyle(Color(hex: "111111"))
-                    .padding(.horizontal, 20)
-                    .frame(height: 52)
-                    .background(MXTheme.accent)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+    private func nextStep() {
+        validationError = nil
+        
+        switch currentStep {
+        case 1:
+            if vm.customerName.trimmingCharacters(in: .whitespaces).isEmpty {
+                validationError = "El nombre del cliente es obligatorio"
+                return
             }
-            .buttonStyle(.plain)
+        case 2:
+            if vm.vehicleBrand.trimmingCharacters(in: .whitespaces).isEmpty ||
+               vm.vehicleModel.trimmingCharacters(in: .whitespaces).isEmpty {
+                validationError = "Marca y modelo son obligatorios"
+                return
+            }
+        default:
+            break
         }
-        .padding(.horizontal, 16)
-        .padding(.top, 12)
-        .padding(.bottom, 30)
-        .background(MXTheme.header)
-        .overlay(alignment: .top) {
-            Rectangle().fill(MXTheme.border).frame(height: 1.5)
+        
+        withAnimation(.easeInOut(duration: 0.25)) {
+            currentStep += 1
         }
+    }
+
+    private func validateStep3() -> Bool {
+        if vm.items.isEmpty {
+            validationError = "Agregue al menos un concepto"
+            return false
+        }
+        return true
     }
 
     private func generatePDF() {
