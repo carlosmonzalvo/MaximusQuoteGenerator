@@ -1,0 +1,82 @@
+[
+  {
+    "brand": "Nissan",
+    "models": ["Versa", "Sentra", "Kicks", "March", "NP300", "Frontier", "Altima", "X-Trail", "Murano", "V-Drive"]
+  },
+  {
+    "brand": "Volkswagen",
+    "models": ["Jetta", "Virtus", "Tiguan", "Polo", "Golf", "Taos", "T-Cross", "Nivus", "Saveiro", "Teramont"]
+  },
+  {
+    "brand": "Chevrolet",
+    "models": ["Aveo", "Onix", "Trax", "Captiva", "Tracker", "S10 Max", "Silverado", "Cheyenne", "Tornado Van", "Groove"]
+  },
+  {
+    "brand": "Toyota",
+    "models": ["Hilux", "RAV4", "Corolla", "Yaris", "Sienna", "Tacoma", "Avanza", "Camry", "Prius", "Highlander"]
+  },
+  {
+    "brand": "Kia",
+    "models": ["K3", "Sportage", "Seltos", "Forte", "Sorento", "Soul", "Niro", "Sonet", "Telluride", "Rio"]
+  },
+  {
+    "brand": "Mazda",
+    "models": ["Mazda 3", "CX-5", "CX-30", "CX-3", "Mazda 2", "CX-90", "CX-50", "MX-5"]
+  },
+  {
+    "brand": "Hyundai",
+    "models": ["Accent", "Creta", "Tucson", "Elantra", "Santa Fe", "Grand i10", "HB20", "Palisade", "Ioniq 5"]
+  },
+  {
+    "brand": "Ford",
+    "models": ["F-150", "Ranger", "Explorer", "Mustang", "EcoSport", "Edge", "Expedition", "Bronco", "Maverick", "Territory"]
+  },
+  {
+    "brand": "Honda",
+    "models": ["CR-V", "Civic", "HR-V", "City", "Accord", "Pilot", "Odyssey", "BR-V", "Insight"]
+  },
+  {
+    "brand": "Suzuki",
+    "models": ["Swift", "Vitara", "Jimny", "S-Cross", "Ertiga", "Ignis", "Baleno", "Ciaz"]
+  },
+  {
+    "brand": "Seat",
+    "models": ["Ibiza", "Leon", "Arona", "Ateca", "Tarraco"]
+  },
+  {
+    "brand": "Dodge",
+    "models": ["Attitude", "Journey", "Durango", "Challenger", "Charger"]
+  },
+  {
+    "brand": "Jeep",
+    "models": ["Wrangler", "Grand Cherokee", "Compass", "Renegade", "Gladiator", "Wagoneer"]
+  },
+  {
+    "brand": "RAM",
+    "models": ["700", "1500", "2500", "4000", "Promaster"]
+  },
+  {
+    "brand": "Renault",
+    "models": ["Kwid", "Duster", "Oroch", "Stepway", "Logan", "Koleos"]
+  },
+  {
+    "brand": "Peugeot",
+    "models": ["208", "2008", "3008", "5008", "Partner", "Rifter"]
+  },
+  {
+    "brand": "BYD",
+    "models": ["Dolphin", "Atto 3", "Han", "Tang", "Seal", "Song Plus"]
+  },
+  {
+    "brand": "Chirey",
+    "models": ["Tiggo 2 Pro", "Tiggo 4 Pro", "Tiggo 7 Pro", "Tiggo 8 Pro", "Omoda 5"]
+  },
+  {
+    "brand": "JAC",
+    "models": ["Sei 2", "Sei 3 Pro", "Sei 4 Pro", "Frison T6", "Frison T8", "E 10X"]
+  },
+  {
+    "brand": "BAIC",
+    "models": ["X35", "BJ40", "X55", "U5 Plus"]
+  }
+]

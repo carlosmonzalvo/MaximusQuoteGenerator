@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28A3A6BEFC953B643B554CFA /* vehicles.json in Resources */ = {isa = PBXBuildFile; fileRef = 474351218498A21F8D4320FD /* vehicles.json */; };
+		310157CAC7E9DBE70C8E90B3 /* VehicleSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6B5FBB7AB56FE850B37EFD /* VehicleSeeder.swift */; };
 		3AC45A1E2F80D1690007E674 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC45A1D2F80D15F0007E674 /* UIApplication+Extensions.swift */; };
 		3AFBBB5F2F8AF8FF00B3F4AD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBBB5E2F8AF8EB00B3F4AD /* SplashView.swift */; };
+		81514306AF75DA038F9B8197 /* MXAutoField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB4CAD50BA9F1AB27FC15E2 /* MXAutoField.swift */; };
 		A00000000000000000000001 /* MaximusPrecisionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000011 /* MaximusPrecisionApp.swift */; };
 		A00000000000000000000002 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000012 /* Customer.swift */; };
 		A00000000000000000000003 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000013 /* Vehicle.swift */; };
@@ -22,12 +25,20 @@
 		A0000000000000000000000B /* PDFPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000001B /* PDFPreviewView.swift */; };
 		A0000000000000000000000C /* QuoteFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000001C /* QuoteFormView.swift */; };
 		A0000000000000000000000D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000001D /* Assets.xcassets */; };
+		A96AF1875729CA5226B0BA54 /* VehicleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7AAEC7BC30882BF316A036 /* VehicleModel.swift */; };
+		C120163A13AF492CFAB73B7D /* VehicleBrand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F4325DBE0089769FE12FE9 /* VehicleBrand.swift */; };
+		D61F50234F3FC87914000F49 /* VehicleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63876F88863EF00E070F3ACA /* VehicleRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27F4325DBE0089769FE12FE9 /* VehicleBrand.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VehicleBrand.swift; sourceTree = "<group>"; };
 		3AC45A1D2F80D15F0007E674 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		3AFBBB5E2F8AF8EB00B3F4AD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3AFBBB602F8B06A000B3F4AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3E7AAEC7BC30882BF316A036 /* VehicleModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VehicleModel.swift; sourceTree = "<group>"; };
+		474351218498A21F8D4320FD /* vehicles.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; path = vehicles.json; sourceTree = "<group>"; };
+		63876F88863EF00E070F3ACA /* VehicleRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VehicleRepository.swift; sourceTree = "<group>"; };
+		6F6B5FBB7AB56FE850B37EFD /* VehicleSeeder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VehicleSeeder.swift; sourceTree = "<group>"; };
 		A0000000000000000000000E /* MaximusPrecision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaximusPrecision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A00000000000000000000011 /* MaximusPrecisionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaximusPrecisionApp.swift; sourceTree = "<group>"; };
 		A00000000000000000000012 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
@@ -42,6 +53,7 @@
 		A0000000000000000000001B /* PDFPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewView.swift; sourceTree = "<group>"; };
 		A0000000000000000000001C /* QuoteFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteFormView.swift; sourceTree = "<group>"; };
 		A0000000000000000000001D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DEB4CAD50BA9F1AB27FC15E2 /* MXAutoField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MXAutoField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +126,8 @@
 				A00000000000000000000018 /* QuoteCalculatorService.swift */,
 				A00000000000000000000019 /* PDFGeneratorService.swift */,
 				A0000000000000000000001A /* ShareSheet.swift */,
+				63876F88863EF00E070F3ACA /* VehicleRepository.swift */,
+				6F6B5FBB7AB56FE850B37EFD /* VehicleSeeder.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -122,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				A0000000000000000000001D /* Assets.xcassets */,
+				474351218498A21F8D4320FD /* vehicles.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -144,6 +159,8 @@
 				A00000000000000000000014 /* QuoteItem.swift */,
 				A00000000000000000000015 /* Quote.swift */,
 				A00000000000000000000016 /* QuoteTemplate.swift */,
+				27F4325DBE0089769FE12FE9 /* VehicleBrand.swift */,
+				3E7AAEC7BC30882BF316A036 /* VehicleModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -162,6 +179,7 @@
 				3AFBBB5E2F8AF8EB00B3F4AD /* SplashView.swift */,
 				A0000000000000000000001B /* PDFPreviewView.swift */,
 				A0000000000000000000001C /* QuoteFormView.swift */,
+				DEB4CAD50BA9F1AB27FC15E2 /* MXAutoField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0000000000000000000000D /* Assets.xcassets in Resources */,
+				28A3A6BEFC953B643B554CFA /* vehicles.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +268,11 @@
 				A0000000000000000000000B /* PDFPreviewView.swift in Sources */,
 				A0000000000000000000000C /* QuoteFormView.swift in Sources */,
 				3AFBBB5F2F8AF8FF00B3F4AD /* SplashView.swift in Sources */,
+				C120163A13AF492CFAB73B7D /* VehicleBrand.swift in Sources */,
+				A96AF1875729CA5226B0BA54 /* VehicleModel.swift in Sources */,
+				81514306AF75DA038F9B8197 /* MXAutoField.swift in Sources */,
+				D61F50234F3FC87914000F49 /* VehicleRepository.swift in Sources */,
+				310157CAC7E9DBE70C8E90B3 /* VehicleSeeder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
