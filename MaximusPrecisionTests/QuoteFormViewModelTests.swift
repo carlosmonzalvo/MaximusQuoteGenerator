@@ -72,6 +72,23 @@ final class QuoteFormViewModelTests: XCTestCase {
         XCTAssertEqual(vm.vehicleModel, "Versa")
     }
 
+    func test_manualYearEntrySanitizesAndFlagsOutOfRange() throws {
+        let vm = try makeVM()
+        // Digits only, capped at 4 chars.
+        vm.setManualYear("año 2008!")
+        XCTAssertEqual(vm.vehicleYear, "2008")
+        // 2008 is more than 10 years before the current year → out of range.
+        XCTAssertTrue(vm.isYearOutOfRange)
+
+        // A recent year (inside the 10-year window) is not out of range.
+        vm.vehicleYear = String(vm.currentYear - 1)
+        XCTAssertFalse(vm.isYearOutOfRange)
+
+        // The range floor itself is still in range.
+        vm.vehicleYear = String(vm.rangeStartYear)
+        XCTAssertFalse(vm.isYearOutOfRange)
+    }
+
     func test_minYearClampsToModelYearStart() throws {
         let vm = try makeVM()
         XCTAssertEqual(vm.minYear(forModelYearStart: nil), 2015)

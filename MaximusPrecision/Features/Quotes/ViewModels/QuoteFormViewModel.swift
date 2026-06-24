@@ -112,14 +112,38 @@ final class QuoteFormViewModel: ObservableObject {
     /// Catalog floor — models earlier than this are out of scope.
     let catalogStartYear = 2015
 
+    /// How many years back the quick picker offers before a car is considered
+    /// "out of range" (older than 10 years), at which point the year is typed
+    /// manually.
+    let yearRangeSpan = 10
+
+    /// When on, the year is entered by hand (for vehicles older than the
+    /// picker range). Acts as the "más de 10 años" flag.
+    @Published var manualYearEntry = false
+
     var currentYear: Int {
         Calendar.current.component(.year, from: Date())
     }
+
+    /// Oldest year still inside the quick-pick window (current year − 10).
+    var rangeStartYear: Int { currentYear - yearRangeSpan }
 
     /// Lower bound for the year picker: the model's first year when known,
     /// otherwise the catalog floor.
     func minYear(forModelYearStart yearStart: Int?) -> Int {
         max(catalogStartYear, yearStart ?? catalogStartYear)
+    }
+
+    /// True when the entered year falls outside the quick-pick window, i.e. the
+    /// vehicle is more than 10 years old.
+    var isYearOutOfRange: Bool {
+        guard let year = Int(vehicleYear) else { return false }
+        return year < rangeStartYear
+    }
+
+    /// Sets a hand-typed year (digits only, max 4), flagging out-of-range entry.
+    func setManualYear(_ text: String) {
+        vehicleYear = String(text.filter(\.isNumber).prefix(4))
     }
 
     func addPart() {

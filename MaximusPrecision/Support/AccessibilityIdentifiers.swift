@@ -58,6 +58,9 @@ enum A11y {
 
     enum YearPicker {
         static let close = "yearPicker.close"
+        static let manualToggle = "yearPicker.manualToggle"
+        static let manualField = "yearPicker.manualField"
+        static let manualConfirm = "yearPicker.manualConfirm"
         static func year(_ index: Int) -> String { "yearPicker.year.\(index)" }
     }
 
