@@ -1,4 +1,5 @@
 import Foundation
+import SwiftData
 
 @MainActor
 final class QuoteFormViewModel: ObservableObject {
@@ -20,11 +21,17 @@ final class QuoteFormViewModel: ObservableObject {
     @Published var showError = false
     @Published var errorMessage = ""
 
+    // Vehicle catalog state (owned by the VM, not the view).
+    @Published var makeNames: [String] = []
+    @Published var modelOptions: [ModelOption] = []
+    @Published var selectedModel: ModelOption?
+
     /// Generated once and reused for both the on-screen header and the PDF so
     /// the folio shown to the user always matches the document.
     let folio = String(UUID().uuidString.prefix(8)).uppercased()
 
     private let calculator = QuoteCalculatorService()
+    private var catalog: VehicleCatalog?
 
     var subtotal: Double {
         calculator.subtotal(items: items)
@@ -44,6 +51,36 @@ final class QuoteFormViewModel: ObservableObject {
 
     func toggleIVA() { includesIVA.toggle() }
     func toggleCardFee() { includesCardFee.toggle() }
+
+    // MARK: Vehicle catalog
+
+    /// Wires up the catalog (seeding on first run) and loads the make list.
+    /// Call once with the SwiftData context from the environment.
+    func loadCatalog(context: ModelContext) {
+        guard catalog == nil else { return }
+        let catalog = VehicleCatalog(context: context)
+        catalog.seedIfNeeded()
+        self.catalog = catalog
+        makeNames = catalog.makes()
+    }
+
+    func selectMake(_ name: String) {
+        vehicleBrand = name
+        vehicleModel = ""
+        selectedModel = nil
+        modelOptions = catalog?.models(forMake: name) ?? []
+    }
+
+    func selectModel(_ option: ModelOption) {
+        selectedModel = option
+        vehicleModel = option.name
+    }
+
+    /// Applies the optional trim/version to the selected model.
+    func applyVersion(_ trim: String?) {
+        guard let model = selectedModel else { return }
+        vehicleModel = trim.map { "\(model.name) \($0)" } ?? model.name
+    }
 
     // MARK: Year range
 
