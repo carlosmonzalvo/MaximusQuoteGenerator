@@ -8,6 +8,9 @@ Capturas reales del simulador (iPhone 16) generadas por
 ### Pills de marca / modelo
 ![Pills marca/modelo](06-Pills-marca-modelo.png)
 
+### "Ver más" — lista completa de marcas (12)
+![Ver más marcas](13-Ver-mas-marcas.png)
+
 ### Versión opcional (sheet)
 ![Versión opcional](07-Version-sheet.png)
 
