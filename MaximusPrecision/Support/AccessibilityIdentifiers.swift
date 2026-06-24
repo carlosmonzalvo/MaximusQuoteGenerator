@@ -39,6 +39,7 @@ enum A11y {
         static let cardFeeAmount = "quoteForm.cardFeeAmount"
 
         static let versionPill = "quoteForm.versionPill"
+        static let yearField = "quoteForm.yearField"
 
         static func templateChip(_ index: Int) -> String { "quoteForm.template.\(index)" }
         static func lineItem(_ index: Int) -> String { "quoteForm.item.\(index)" }
@@ -51,6 +52,11 @@ enum A11y {
         static let none = "versionPicker.none"
         static let close = "versionPicker.close"
         static func trim(_ index: Int) -> String { "versionPicker.trim.\(index)" }
+    }
+
+    enum YearPicker {
+        static let close = "yearPicker.close"
+        static func year(_ index: Int) -> String { "yearPicker.year.\(index)" }
     }
 
     enum ItemEdit {

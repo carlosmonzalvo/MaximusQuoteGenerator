@@ -33,6 +33,7 @@ final class QuoteFormRobot: Robot {
     private var vehicleBrandField: XCUIElement { element(A11y.QuoteForm.vehicleBrand) }
     private var vehicleModelField: XCUIElement { element(A11y.QuoteForm.vehicleModel) }
     private var versionPill: XCUIElement { element(A11y.QuoteForm.versionPill) }
+    private var yearField: XCUIElement { element(A11y.QuoteForm.yearField) }
 
     func templateChip(_ index: Int) -> XCUIElement { element(A11y.QuoteForm.templateChip(index)) }
     func lineItem(_ index: Int) -> XCUIElement { element(A11y.QuoteForm.lineItem(index)) }
@@ -83,11 +84,12 @@ final class QuoteFormRobot: Robot {
         return self
     }
 
+    /// Note: `year` is now chosen via the year picker (see `openYearPicker`),
+    /// so it is intentionally not typed here.
     @discardableResult
     func fillVehicle(brand: String, model: String, year: String = "", plate: String = "") -> Self {
         type(brand, into: vehicleBrand)
         type(model, into: vehicleModel)
-        if !year.isEmpty { type(year, into: vehicleYear) }
         if !plate.isEmpty { type(plate, into: vehiclePlate) }
         return self
     }
@@ -165,6 +167,24 @@ final class QuoteFormRobot: Robot {
         dismissKeyboardIfNeeded()
         scrollToHittable(cardFeeToggleButton)
         return tap(cardFeeToggleButton)
+    }
+
+    @discardableResult
+    func openYearPicker() -> YearPickerRobot {
+        dismissKeyboardIfNeeded()
+        scrollToTop()
+        tap(yearField)
+        return YearPickerRobot(app)
+    }
+
+    @discardableResult
+    func assertYear(_ expected: String) -> Self {
+        waitFor(yearField)
+        XCTAssertTrue(
+            (yearField.label).contains(expected),
+            "Expected year field to show \(expected), got \(yearField.label)"
+        )
+        return self
     }
 
     func currentTotalText() -> String {

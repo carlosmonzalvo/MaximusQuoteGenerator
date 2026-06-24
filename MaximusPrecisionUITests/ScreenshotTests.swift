@@ -84,6 +84,16 @@ final class ScreenshotTests: XCTestCase {
         snapshot("03-Comision-tarjeta")
     }
 
+    /// The year picker sheet.
+    func test_captureYearPicker() {
+        let form = QuoteFormRobot(app)
+            .assertVisible()
+            .tapMakeChip(0)            // Nissan
+            .tapModelChip(0)           // Versa (sets the year lower bound)
+        form.openYearPicker().assertVisible()
+        snapshot("08-Year-picker")
+    }
+
     /// The optional version sheet, captured on its own.
     func test_captureVersionSheet() {
         let form = QuoteFormRobot(app)
