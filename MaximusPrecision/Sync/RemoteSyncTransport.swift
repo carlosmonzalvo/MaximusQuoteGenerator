@@ -16,12 +16,14 @@ final class RemoteSyncTransport: SyncTransport {
     let name = "Servidor (Railway)"
 
     private let baseURL: URL
-    private let token: String?
+    private let apiKey: String
+    private let apiSecret: String
     private let session: URLSession
 
-    init(baseURL: URL, token: String? = nil, session: URLSession = .shared) {
+    init(baseURL: URL, apiKey: String, apiSecret: String, session: URLSession = .shared) {
         self.baseURL = baseURL
-        self.token = token
+        self.apiKey = apiKey
+        self.apiSecret = apiSecret
         self.session = session
     }
 
@@ -45,9 +47,8 @@ final class RemoteSyncTransport: SyncTransport {
         var request = URLRequest(url: baseURL.appendingPathComponent("sync"))
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        if let token, !token.isEmpty {
-            request.setValue(token, forHTTPHeaderField: "X-Sync-Token")
-        }
+        request.setValue(apiKey, forHTTPHeaderField: "X-API-Key")
+        request.setValue(apiSecret, forHTTPHeaderField: "X-API-Secret")
         request.httpBody = try Self.encoder.encode(payload)
 
         let (data, response) = try await session.data(for: request)

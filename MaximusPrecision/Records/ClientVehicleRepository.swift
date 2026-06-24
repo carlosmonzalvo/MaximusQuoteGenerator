@@ -47,7 +47,7 @@ final class ClientVehicleRepository {
         }) {
             if existing.email.isEmpty, !email.isEmpty {
                 existing.email = email
-                existing.updatedAt = .now
+                existing.updatedAt = .now; existing.needsPush = true
             }
             return existing
         }
@@ -76,7 +76,7 @@ final class ClientVehicleRepository {
             if !brand.isEmpty { existing.brand = brand }
             if !model.isEmpty { existing.model = model }
             if !year.isEmpty { existing.year = year }
-            existing.updatedAt = .now
+            existing.updatedAt = .now; existing.needsPush = true
             return existing
         }
 
@@ -92,7 +92,7 @@ final class ClientVehicleRepository {
     func link(client: ClientRecord, to vehicle: VehicleRecord) {
         guard !vehicle.clients.contains(where: { $0.persistentModelID == client.persistentModelID }) else { return }
         vehicle.clients.append(client)
-        vehicle.updatedAt = .now
+        vehicle.updatedAt = .now; vehicle.needsPush = true
     }
 
     // MARK: Insert / Delete

@@ -109,6 +109,11 @@ enum A11y {
         static let cancel = "recordEdit.cancel"
     }
 
+    enum Sync {
+        static let enableToggle = "sync.enableToggle"
+        static let syncNow = "sync.syncNow"
+    }
+
     enum VehicleDetail {
         static let root = "vehicleDetail.root"
         static let payers = "vehicleDetail.payers"
@@ -123,6 +128,12 @@ enum LaunchArgument {
     static let uiTesting = "-uiTesting"
     /// Skip the animated splash and go straight to the form.
     static let skipSplash = "-skipSplash"
+    /// Seed sync as enabled with a demo history (for deterministic screenshots).
+    static let seedSyncDemo = "-seedSyncDemo"
+
+    static var shouldSeedSyncDemo: Bool {
+        ProcessInfo.processInfo.arguments.contains(seedSyncDemo)
+    }
 
     static var isUITesting: Bool {
         ProcessInfo.processInfo.arguments.contains(uiTesting)

@@ -12,9 +12,11 @@
 
 import express from "express";
 import { createClient } from "redis";
+import { timingSafeEqual } from "crypto";
 
 const PORT = process.env.PORT || 3000;
-const SYNC_TOKEN = process.env.SYNC_TOKEN || "";
+const API_KEY = process.env.API_KEY || "";
+const API_SECRET = process.env.API_SECRET || "";
 const REDIS_URL = process.env.REDIS_URL || process.env.REDIS_PRIVATE_URL;
 
 const KINDS = ["clients", "vehicles", "services"];
@@ -25,10 +27,22 @@ redis.on("error", (err) => console.error("[redis] error:", err.message));
 const app = express();
 app.use(express.json({ limit: "8mb" }));
 
-// Optional shared-token auth.
+// Constant-time string compare (avoids leaking via timing).
+function safeEqual(a, b) {
+  const ba = Buffer.from(String(a));
+  const bb = Buffer.from(String(b));
+  if (ba.length !== bb.length) return false;
+  return timingSafeEqual(ba, bb);
+}
+
+// API key + secret auth. If both env vars are unset the server stays open
+// (local dev); in production they are always set.
 app.use((req, res, next) => {
   if (req.path === "/health") return next();
-  if (SYNC_TOKEN && req.get("X-Sync-Token") !== SYNC_TOKEN) {
+  if (!API_KEY && !API_SECRET) return next();
+  const okKey = safeEqual(req.get("X-API-Key") || "", API_KEY);
+  const okSecret = safeEqual(req.get("X-API-Secret") || "", API_SECRET);
+  if (!okKey || !okSecret) {
     return res.status(401).json({ error: "unauthorized" });
   }
   next();
@@ -38,7 +52,10 @@ app.get("/health", (_req, res) => {
   res.json({ ok: true, redis: redis.isOpen, ts: Date.now() });
 });
 
+const SEQ_KEY = "maximus:seq";
+
 // Merge one record list into a Redis hash (field = syncID), last-write-wins.
+// Every accepted write gets a monotonic `_seq` so clients can pull deltas.
 async function mergeKind(kind, incoming) {
   if (!Array.isArray(incoming) || incoming.length === 0) return 0;
   const key = `maximus:${kind}`;
@@ -51,28 +68,35 @@ async function mergeKind(kind, incoming) {
       // updatedAt is a number (ms since 1970); keep the newer one.
       if (Number(existing.updatedAt) >= Number(rec.updatedAt)) continue;
     }
+    rec._seq = await redis.incr(SEQ_KEY);
     await redis.hSet(key, rec.syncID, JSON.stringify(rec));
     applied++;
   }
   return applied;
 }
 
-async function readKind(kind) {
+// Records changed past the client's cursor (delta pull). sinceSeq <= 0 → all.
+async function readKind(kind, sinceSeq) {
   const all = await redis.hGetAll(`maximus:${kind}`);
-  return Object.values(all).map((v) => JSON.parse(v));
+  return Object.values(all)
+    .map((v) => JSON.parse(v))
+    .filter((r) => !sinceSeq || Number(r._seq || 0) > sinceSeq);
 }
 
 app.post("/sync", async (req, res) => {
   try {
     const payload = req.body || {};
+    const sinceSeq = Number(payload.sinceSeq || 0);
+
     let applied = 0;
     for (const kind of KINDS) {
       applied += await mergeKind(kind, payload[kind]);
     }
 
-    const out = { deviceID: "server", sentAt: Date.now(), applied };
+    const maxSeq = Number((await redis.get(SEQ_KEY)) || 0);
+    const out = { deviceID: "server", sentAt: Date.now(), applied, sinceSeq, maxSeq };
     for (const kind of KINDS) {
-      out[kind] = await readKind(kind);
+      out[kind] = await readKind(kind, sinceSeq);
     }
     res.json(out);
   } catch (err) {

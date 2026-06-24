@@ -19,13 +19,31 @@ final class SyncEngine {
         self.context = context
     }
 
+    /// Outcome of a sync pass, surfaced to the history UI.
+    struct Result {
+        var pushed: Int
+        var pulled: Int
+        var cursor: Int
+    }
+
     // MARK: Snapshot (local → DTOs)
 
+    /// Full snapshot of everything (used by peer transports and tests).
     func snapshot() -> SyncPayload {
         var payload = SyncPayload()
         payload.clients = fetchAll(ClientRecord.self).map(dto(for:))
         payload.vehicles = fetchAll(VehicleRecord.self).map(dto(for:))
         payload.services = fetchAll(ServiceRecord.self).map(dto(for:))
+        return payload
+    }
+
+    /// Outbox: only records with local edits not yet pushed (delta push).
+    func pendingSnapshot(cursor: Int) -> SyncPayload {
+        var payload = SyncPayload()
+        payload.sinceSeq = cursor
+        payload.clients = fetchAll(ClientRecord.self).filter(\.needsPush).map(dto(for:))
+        payload.vehicles = fetchAll(VehicleRecord.self).filter(\.needsPush).map(dto(for:))
+        payload.services = fetchAll(ServiceRecord.self).filter(\.needsPush).map(dto(for:))
         return payload
     }
 
@@ -51,17 +69,38 @@ final class SyncEngine {
         return changed
     }
 
-    /// Full round trip over a transport.
-    func sync(using transport: SyncTransport) async throws {
+    /// Delta round trip over a transport: push only pending local edits, pull
+    /// only records past the cursor, then merge (LWW) and advance the cursor.
+    @discardableResult
+    func sync(using transport: SyncTransport, cursor: Int = 0) async throws -> Result {
         guard transport.isAvailable else { throw SyncError.transportUnavailable }
-        let local = snapshot()
+
+        let outbox = pendingSnapshot(cursor: cursor)
+        let pushedIDs = Set(outbox.clients.map(\.syncID)
+            + outbox.vehicles.map(\.syncID)
+            + outbox.services.map(\.syncID))
+
         let remote: SyncPayload
         do {
-            remote = try await transport.exchange(local)
+            remote = try await transport.exchange(outbox)
         } catch {
             throw SyncError.transport(error)
         }
-        merge(remote)
+
+        let pulled = merge(remote)
+        clearPushFlags(for: pushedIDs)
+        try? context.save()
+
+        let nextCursor = remote.maxSeq > 0 ? remote.maxSeq : cursor
+        return Result(pushed: pushedIDs.count, pulled: pulled, cursor: nextCursor)
+    }
+
+    /// Clears the outbox flag on records the server has now acknowledged.
+    private func clearPushFlags(for ids: Set<String>) {
+        guard !ids.isEmpty else { return }
+        for c in fetchAll(ClientRecord.self) where ids.contains(c.syncID) { c.needsPush = false }
+        for v in fetchAll(VehicleRecord.self) where ids.contains(v.syncID) { v.needsPush = false }
+        for s in fetchAll(ServiceRecord.self) where ids.contains(s.syncID) { s.needsPush = false }
     }
 
     // MARK: Per-entity merge
@@ -81,6 +120,7 @@ final class SyncEngine {
         client.notes = dto.notes
         client.updatedAt = dto.updatedAt
         client.deletedAt = dto.deletedAt
+        client.needsPush = false
         return 1
     }
 
@@ -102,6 +142,7 @@ final class SyncEngine {
         vehicle.notes = dto.notes
         vehicle.updatedAt = dto.updatedAt
         vehicle.deletedAt = dto.deletedAt
+        vehicle.needsPush = false
         // Re-link clients by syncID (union, non-exclusive).
         let linked = dto.clientSyncIDs.compactMap { find(ClientRecord.self, syncID: $0) }
         for client in linked where !vehicle.clients.contains(where: { $0.syncID == client.syncID }) {
@@ -131,6 +172,7 @@ final class SyncEngine {
         service.total = dto.total
         service.updatedAt = dto.updatedAt
         service.deletedAt = dto.deletedAt
+        service.needsPush = false
         service.vehicle = dto.vehicleSyncID.flatMap { find(VehicleRecord.self, syncID: $0) }
         service.payer = dto.payerSyncID.flatMap { find(ClientRecord.self, syncID: $0) }
         return 1

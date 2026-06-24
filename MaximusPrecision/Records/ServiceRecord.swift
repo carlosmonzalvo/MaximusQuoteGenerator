@@ -20,6 +20,7 @@ final class ServiceRecord: Syncable {
     var syncID: String = UUID().uuidString
     var updatedAt: Date = Date.now
     var deletedAt: Date? = nil
+    var needsPush: Bool = true
     /// Stored as the raw value of `DocumentType` for forward compatibility.
     var documentTypeRaw: String
     var notes: String

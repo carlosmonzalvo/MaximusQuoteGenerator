@@ -28,6 +28,7 @@ final class VehicleRecord: Syncable {
     var syncID: String = UUID().uuidString
     var updatedAt: Date = Date.now
     var deletedAt: Date? = nil
+    var needsPush: Bool = true
 
     /// Clients associated with this vehicle (many-to-many, non-exclusive).
     var clients: [ClientRecord]

@@ -23,6 +23,7 @@ final class ClientRecord: Syncable {
     var syncID: String = UUID().uuidString
     var updatedAt: Date = Date.now
     var deletedAt: Date? = nil
+    var needsPush: Bool = true
 
     /// Vehicles this client is associated with (many-to-many, non-exclusive).
     /// Inverse is declared on `VehicleRecord.clients`.
