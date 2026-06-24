@@ -41,8 +41,9 @@ final class VehicleCatalogTests: XCTestCase {
         XCTAssertEqual(catalog.makes(maxTier: 0).count, 0)
         XCTAssertEqual(catalog.makes(maxTier: 1).count, 3)        // tier 1
         XCTAssertEqual(catalog.makes(maxTier: 2).count, 6)        // tier 1 + 2
+        XCTAssertEqual(catalog.makes(maxTier: 3).count, 8)        // tier 1 + 2 + 3
         // Ranks are global and ordered.
-        XCTAssertEqual(catalog.makes(), ["Nissan", "Chevrolet", "Volkswagen", "KIA", "Toyota", "Mazda"])
+        XCTAssertEqual(catalog.makes(), ["Nissan", "Chevrolet", "Volkswagen", "KIA", "Toyota", "Mazda", "SEAT", "Cupra"])
     }
 
     func test_modelsOrderedByCommonality() throws {
