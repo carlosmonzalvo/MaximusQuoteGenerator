@@ -50,6 +50,11 @@ enum VehicleCatalogSeed {
             ModelSeed(name: "370Z", yearStart: 2015, trims: ["Touring", "Nismo"]),
             ModelSeed(name: "Z", yearStart: 2023, trims: ["Performance", "Nismo"]),
             ModelSeed(name: "Armada", yearStart: 2017, trims: ["Exclusive", "Platinum"]),
+            ModelSeed(name: "Kicks e-Power", yearStart: 2023, trims: ["Advance", "Exclusive", "Platinum"]),
+            ModelSeed(name: "Ariya", yearStart: 2023, trims: ["Engage", "Evolve", "Platinum+"]),
+            ModelSeed(name: "Sentra SR", yearStart: 2020, trims: ["SR", "SR Turbo"]),
+            ModelSeed(name: "Versa Note", yearStart: 2015, trims: ["Sense", "Advance"]),
+            ModelSeed(name: "Titan", yearStart: 2016, trims: ["SV", "PRO-4X", "Platinum Reserve"]),
         ]),
 
         MakeSeed(name: "Chevrolet", rank: 2, tier: 1, models: [
@@ -79,6 +84,11 @@ enum VehicleCatalogSeed {
             ModelSeed(name: "Corvette", yearStart: 2015, trims: ["Stingray", "Z06"]),
             ModelSeed(name: "Bolt EV", yearStart: 2017, trims: ["LT", "Premier"]),
             ModelSeed(name: "Bolt EUV", yearStart: 2022, trims: ["LT", "Premier"]),
+            ModelSeed(name: "Colorado", yearStart: 2015, trims: ["WT", "LT", "Z71", "ZR2"]),
+            ModelSeed(name: "Montana", yearStart: 2024, trims: ["LS", "LT", "Premier"]),
+            ModelSeed(name: "Blazer EV", yearStart: 2024, trims: ["LT", "RS", "SS"]),
+            ModelSeed(name: "Equinox EV", yearStart: 2025, trims: ["LT", "RS"]),
+            ModelSeed(name: "Express", yearStart: 2015, trims: ["Cargo", "Pasajeros"]),
         ]),
 
         MakeSeed(name: "Volkswagen", rank: 3, tier: 1, models: [
@@ -103,6 +113,11 @@ enum VehicleCatalogSeed {
             ModelSeed(name: "Nivus", yearStart: 2021, trims: ["Comfortline", "Highline"]),
             ModelSeed(name: "Amarok", yearStart: 2015, trims: ["Trendline", "Comfortline", "Highline"]),
             ModelSeed(name: "ID.4", yearStart: 2023, trims: ["Pro", "Pro S"]),
+            ModelSeed(name: "Bora", yearStart: 2023, trims: ["Trendline", "Comfortline", "Highline"]),
+            ModelSeed(name: "Tiguan Allspace", yearStart: 2018, trims: ["Comfortline", "Highline", "R-Line"]),
+            ModelSeed(name: "Touareg", yearStart: 2015, trims: ["Comfortline", "Highline"]),
+            ModelSeed(name: "Arteon", yearStart: 2019, trims: ["Elegance", "R-Line"]),
+            ModelSeed(name: "Caddy", yearStart: 2016, trims: ["Trendline", "Comfortline"]),
         ]),
 
         // Tier 2 — the next 3 makes.
@@ -125,6 +140,10 @@ enum VehicleCatalogSeed {
             ModelSeed(name: "Niro", yearStart: 2017, trims: ["EX", "SX"]),
             ModelSeed(name: "Stinger", yearStart: 2018, trims: ["GT-Line", "GT"]),
             ModelSeed(name: "EV6", yearStart: 2023, trims: ["GT-Line", "GT"]),
+            ModelSeed(name: "EV5", yearStart: 2025, trims: ["Air", "Earth", "GT-Line"]),
+            ModelSeed(name: "Cerato", yearStart: 2015, trims: ["LX", "EX", "SX"]),
+            ModelSeed(name: "Telluride", yearStart: 2020, trims: ["EX", "SX", "SX Prestige"]),
+            ModelSeed(name: "Carens", yearStart: 2023, trims: ["LX", "EX"]),
         ]),
 
         MakeSeed(name: "Toyota", rank: 5, tier: 2, models: [
@@ -150,6 +169,10 @@ enum VehicleCatalogSeed {
             ModelSeed(name: "GR86", yearStart: 2022, trims: ["Base", "Premium"]),
             ModelSeed(name: "GR Corolla", yearStart: 2023, trims: ["Core", "Circuit"]),
             ModelSeed(name: "GR Supra", yearStart: 2020, trims: ["3.0", "3.0 Premium"]),
+            ModelSeed(name: "bZ4X", yearStart: 2023, trims: ["XLE", "Limited"]),
+            ModelSeed(name: "Crown", yearStart: 2023, trims: ["XLE", "Limited", "Platinum"]),
+            ModelSeed(name: "Tacoma 2024", yearStart: 2024, trims: ["SR", "TRD Sport", "TRD Off-Road", "Limited", "Trailhunter"]),
+            ModelSeed(name: "Land Cruiser Prado", yearStart: 2024, trims: ["TX", "VX", "First Edition"]),
         ]),
 
         MakeSeed(name: "Mazda", rank: 6, tier: 2, models: [
@@ -166,6 +189,9 @@ enum VehicleCatalogSeed {
             ModelSeed(name: "CX-70", yearStart: 2025, trims: ["Preferred", "Premium", "Signature"]),
             ModelSeed(name: "CX-90", yearStart: 2024, trims: ["Preferred", "Premium", "Signature"]),
             ModelSeed(name: "MX-5", yearStart: 2016, trims: ["i Sport", "Grand Touring", "RF"]),
+            ModelSeed(name: "CX-60", yearStart: 2024, trims: ["Preferred", "Premium", "Signature"]),
+            ModelSeed(name: "MX-30", yearStart: 2022, trims: ["EV", "e-Skyactiv"]),
+            ModelSeed(name: "BT-50", yearStart: 2015, trims: ["i", "Grand Touring"]),
         ]),
 
         // Tier 3 — the next 2 makes.
@@ -187,6 +213,30 @@ enum VehicleCatalogSeed {
             ModelSeed(name: "Born", yearStart: 2023, trims: ["V", "VZ"]),
             ModelSeed(name: "Terramar", yearStart: 2025, trims: ["V", "VZ"]),
             ModelSeed(name: "Tavascan", yearStart: 2025, trims: ["Endurance", "VZ"]),
+        ]),
+
+        // Tier 4 — Ford.
+        MakeSeed(name: "Ford", rank: 9, tier: 4, models: [
+            ModelSeed(name: "Figo", yearStart: 2015, trims: ["Impulse", "Energy", "Titanium"]),
+            ModelSeed(name: "Fiesta", yearStart: 2015, trims: ["S", "SE", "Titanium", "ST"]),
+            ModelSeed(name: "Focus", yearStart: 2015, trims: ["S", "SE", "Titanium", "ST", "RS"]),
+            ModelSeed(name: "Fusion", yearStart: 2015, trims: ["S", "SE", "Titanium", "Sport"]),
+            ModelSeed(name: "Mustang", yearStart: 2015, trims: ["EcoBoost", "GT", "Mach 1", "Shelby GT350", "Shelby GT500"]),
+            ModelSeed(name: "Mustang Mach-E", yearStart: 2021, trims: ["Select", "Premium", "GT"]),
+            ModelSeed(name: "EcoSport", yearStart: 2015, trims: ["Impulse", "Trend", "Titanium"]),
+            ModelSeed(name: "Escape", yearStart: 2015, trims: ["S", "SE", "Titanium", "ST-Line"]),
+            ModelSeed(name: "Bronco Sport", yearStart: 2021, trims: ["Big Bend", "Outer Banks", "Badlands"]),
+            ModelSeed(name: "Bronco", yearStart: 2021, trims: ["Big Bend", "Black Diamond", "Outer Banks", "Wildtrak", "Raptor"]),
+            ModelSeed(name: "Edge", yearStart: 2015, trims: ["SE", "SEL", "Titanium", "ST"]),
+            ModelSeed(name: "Territory", yearStart: 2024, trims: ["Titanium", "Trend"]),
+            ModelSeed(name: "Explorer", yearStart: 2015, trims: ["XLT", "Limited", "ST", "Platinum"]),
+            ModelSeed(name: "Expedition", yearStart: 2015, trims: ["XLT", "Limited", "Platinum", "King Ranch"]),
+            ModelSeed(name: "Ranger", yearStart: 2015, trims: ["XL", "XLS", "XLT", "Lariat", "Raptor"]),
+            ModelSeed(name: "Maverick", yearStart: 2022, trims: ["XL", "XLT", "Lariat", "Tremor"]),
+            ModelSeed(name: "F-150", yearStart: 2015, trims: ["XL", "XLT", "Lariat", "King Ranch", "Platinum", "Raptor"]),
+            ModelSeed(name: "Lobo", yearStart: 2015, trims: ["XLT", "Lariat", "Platinum", "Raptor", "Limited"]),
+            ModelSeed(name: "F-150 Lightning", yearStart: 2023, trims: ["Pro", "XLT", "Lariat", "Platinum"]),
+            ModelSeed(name: "Transit", yearStart: 2015, trims: ["Chasis", "Van", "Pasajeros"]),
         ]),
     ]
 }

@@ -23,7 +23,7 @@ final class QuoteFormViewModelTests: XCTestCase {
     func test_loadCatalogPopulatesMakes() throws {
         let vm = try makeVM()
         XCTAssertEqual(vm.makeNames.first, "Nissan")
-        XCTAssertEqual(vm.makeNames.count, 8)
+        XCTAssertEqual(vm.makeNames.count, 9)
     }
 
     func test_selectMakeLoadsModelsAndResetsModel() throws {
