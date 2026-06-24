@@ -278,11 +278,9 @@ struct ItemEditSheet: View {
             .background(MXTheme.bg.ignoresSafeArea())
             .navigationTitle("Editar concepto")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(MXTheme.header, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
-            .toolbarColorScheme(.dark, for: .navigationBar)
+            .navBarDarkChrome(MXTheme.header)
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button("Listo") {
                         onSave(item)
                         dismiss()
@@ -291,7 +289,7 @@ struct ItemEditSheet: View {
                     .fontWeight(.semibold)
                     .accessibilityIdentifier(A11y.ItemEdit.done)
                 }
-                ToolbarItem(placement: .topBarLeading) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button("Cancelar") { dismiss() }
                         .foregroundStyle(MXTheme.muted)
                         .accessibilityIdentifier(A11y.ItemEdit.cancel)
@@ -337,7 +335,7 @@ struct QuoteFormView: View {
 
                 bottomBar
             }
-            .toolbar(.hidden, for: .navigationBar)
+            .hiddenNavBar()
             .navigationDestination(isPresented: $showPDFPreview) {
                 if let url = generatedPDFURL { PDFPreviewView(url: url) }
             }

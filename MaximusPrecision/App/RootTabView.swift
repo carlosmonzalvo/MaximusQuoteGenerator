@@ -20,7 +20,7 @@ struct RootTabView: View {
 
     @ViewBuilder
     private var content: some View {
-        if #available(iOS 26.0, *) {
+        if #available(iOS 26.0, macOS 26.0, *) {
             TabView {
                 Tab("Cotizar", systemImage: "doc.text") {
                     QuoteFormView()

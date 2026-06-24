@@ -40,11 +40,9 @@ struct VersionPickerSheet: View {
             .background(MXTheme.bg.ignoresSafeArea())
             .navigationTitle("Versión · \(modelName)")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(MXTheme.header, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
-            .toolbarColorScheme(.dark, for: .navigationBar)
+            .navBarDarkChrome(MXTheme.header)
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button("Cerrar") { dismiss() }
                         .foregroundStyle(MXTheme.muted)
                         .accessibilityIdentifier(A11y.VersionPicker.close)

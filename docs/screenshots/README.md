@@ -1,5 +1,16 @@
 # Capturas de features
 
+## macOS nativo (no Catalyst)
+
+La misma base de código corre nativa en macOS 15+ con Liquid Glass en macOS 26.
+Los pills de marca y el chip "Ver más" funcionan igual que en iOS.
+
+![macOS nativo — pills + Ver más](14-macOS-nativo.png)
+
+### "Ver más" expandido (12 marcas) en macOS
+![macOS Ver más](15-macOS-vermas.png)
+
+
 Capturas reales del simulador (iPhone 16) generadas por
 `MaximusPrecisionUITests/ScreenshotTests.swift`.
 

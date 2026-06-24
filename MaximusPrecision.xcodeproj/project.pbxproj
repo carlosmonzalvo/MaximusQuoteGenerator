@@ -13,6 +13,7 @@
 		13DB26BDC187BC0F5B3D0AE3 /* RecordsRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3CF36EA16A9D6E76F5294F /* RecordsRobot.swift */; };
 		1746580E4A4EA1A67D83A278 /* PDFPreviewRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3D4917AC92ECF79D0604 /* PDFPreviewRobot.swift */; };
 		1FAF662A9612075E12AF3955 /* LRUCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B79269365DCA3685123FEA /* LRUCacheTests.swift */; };
+		24E2798523EFE6F882AC57BD /* PlatformCompat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17E21C4C6F0EF94F4F0A07C /* PlatformCompat.swift */; };
 		27846F382BE7DE06F628FC89 /* RecordsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC535D3375D809AEB6C8ADE /* RecordsViewModel.swift */; };
 		3483CDC45EF2656764D3984B /* VehicleCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83E183493D89831CCCCF75E /* VehicleCatalog.swift */; };
 		3AC45A1E2F80D1690007E674 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC45A1D2F80D15F0007E674 /* UIApplication+Extensions.swift */; };
@@ -129,6 +130,7 @@
 		D3D2C47D996D3073B4AC5DA8 /* QuoteFormViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuoteFormViewModelTests.swift; path = MaximusPrecisionTests/QuoteFormViewModelTests.swift; sourceTree = "<group>"; };
 		D4DE9351C7291402427B7715 /* QuoteFlowUITests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuoteFlowUITests.swift; path = MaximusPrecisionUITests/QuoteFlowUITests.swift; sourceTree = "<group>"; };
 		D7509768800B8F060887B325 /* RecordsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RecordsView.swift; path = Records/Views/RecordsView.swift; sourceTree = "<group>"; };
+		E17E21C4C6F0EF94F4F0A07C /* PlatformCompat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PlatformCompat.swift; path = MaximusPrecision/Support/PlatformCompat.swift; sourceTree = "<group>"; };
 		E2EDD273B9C6F21B11530438 /* MaximusPrecisionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaximusPrecisionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E83E183493D89831CCCCF75E /* VehicleCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VehicleCatalog.swift; path = Catalog/VehicleCatalog.swift; sourceTree = "<group>"; };
 		F34CD16BAF3BE6B25EFAC278 /* LiquidGlass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LiquidGlass.swift; path = MaximusPrecision/Support/LiquidGlass.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 			children = (
 				C977AF70B214A61CFDF922C6 /* AccessibilityIdentifiers.swift */,
 				F34CD16BAF3BE6B25EFAC278 /* LiquidGlass.swift */,
+				E17E21C4C6F0EF94F4F0A07C /* PlatformCompat.swift */,
 			);
 			name = Support;
 			sourceTree = SOURCE_ROOT;
@@ -545,6 +548,7 @@
 				8B672F101B00257E1F679214 /* VehicleDetailView.swift in Sources */,
 				F10368DEC912C0EBDD820452 /* LiquidGlass.swift in Sources */,
 				C74AF2E098D82C77C680E86D /* RecordsSearchView.swift in Sources */,
+				24E2798523EFE6F882AC57BD /* PlatformCompat.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,6 +644,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YFJ48SR2KW;
@@ -648,6 +653,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MaximusPrecision/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Maximus Precision";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -656,14 +662,17 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.maximusprecision.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -672,6 +681,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YFJ48SR2KW;
@@ -679,6 +689,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MaximusPrecision/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Maximus Precision";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -687,14 +698,17 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.maximusprecision.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

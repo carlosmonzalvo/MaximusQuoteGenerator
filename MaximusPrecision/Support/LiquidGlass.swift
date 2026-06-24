@@ -13,7 +13,7 @@ extension View {
     /// Glassy capsule/pill. Tinted + interactive when selected.
     @ViewBuilder
     func glassPill(selected: Bool, tint: Color) -> some View {
-        if #available(iOS 26.0, *) {
+        if #available(iOS 26.0, macOS 26.0, *) {
             self.glassEffect(
                 selected ? .regular.tint(tint).interactive() : .regular.interactive(),
                 in: .rect(cornerRadius: 10)
@@ -32,7 +32,7 @@ extension View {
     /// Glassy rounded card surface.
     @ViewBuilder
     func glassCard(cornerRadius: CGFloat = 12, fallbackFill: Color = MXTheme.surface) -> some View {
-        if #available(iOS 26.0, *) {
+        if #available(iOS 26.0, macOS 26.0, *) {
             self.glassEffect(.regular, in: .rect(cornerRadius: cornerRadius))
         } else {
             self
@@ -49,7 +49,7 @@ extension View {
     /// expedientes search lives in the Liquid Glass tab bar instead.
     @ViewBuilder
     func legacyInlineSearch(text: Binding<String>, prompt: String) -> some View {
-        if #available(iOS 26.0, *) {
+        if #available(iOS 26.0, macOS 26.0, *) {
             self
         } else {
             self.searchable(text: text, prompt: Text(prompt))
@@ -59,7 +59,7 @@ extension View {
     /// Prominent glass action button surface (tinted, interactive).
     @ViewBuilder
     func glassAction(tint: Color, cornerRadius: CGFloat = 14) -> some View {
-        if #available(iOS 26.0, *) {
+        if #available(iOS 26.0, macOS 26.0, *) {
             self.glassEffect(.regular.tint(tint).interactive(), in: .rect(cornerRadius: cornerRadius))
         } else {
             self
