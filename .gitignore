@@ -10,3 +10,6 @@ xcuserdata/
 
 # Claude
 .claude/
+
+# Secrets (xcconfig) — never commit the real secret
+Config/Secrets.xcconfig

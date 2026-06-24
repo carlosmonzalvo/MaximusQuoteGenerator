@@ -95,6 +95,7 @@
 		132CE4BA987484B8F8545235 /* VehicleDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VehicleDetailView.swift; path = Records/Views/VehicleDetailView.swift; sourceTree = "<group>"; };
 		1588911F4992363865216EDB /* SyncEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SyncEngine.swift; path = Sync/SyncEngine.swift; sourceTree = "<group>"; };
 		18DC8C043A4BB5F9FF9D412D /* SyncEngineTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SyncEngineTests.swift; path = MaximusPrecisionTests/SyncEngineTests.swift; sourceTree = "<group>"; };
+		1E15894074710EC575729CA1 /* Config.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Config.xcconfig; path = Config/Config.xcconfig; sourceTree = "<group>"; };
 		21FFA0D6DD27C4FE8B83474F /* XCUIApplication+Maximus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "XCUIApplication+Maximus.swift"; path = "MaximusPrecisionUITests/Support/XCUIApplication+Maximus.swift"; sourceTree = "<group>"; };
 		27F2E97AB706E8B39C7ABB91 /* SyncSettingsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SyncSettingsView.swift; path = Records/Views/SyncSettingsView.swift; sourceTree = "<group>"; };
 		3AC45A1D2F80D15F0007E674 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
@@ -112,6 +113,7 @@
 		7F440E76EDA4EFF176CA8CF5 /* ClientVehicleRepositoryTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClientVehicleRepositoryTests.swift; path = MaximusPrecisionTests/ClientVehicleRepositoryTests.swift; sourceTree = "<group>"; };
 		840E23F9F94FB106FC88B349 /* VehicleCatalogSeed.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VehicleCatalogSeed.swift; path = Catalog/VehicleCatalogSeed.swift; sourceTree = "<group>"; };
 		85F10896D2E513F734A67352 /* ClientRecord.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClientRecord.swift; path = Records/ClientRecord.swift; sourceTree = "<group>"; };
+		886DD3D82572C5C7C81D4B91 /* Secrets.example.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Secrets.example.xcconfig; path = Config/Secrets.example.xcconfig; sourceTree = "<group>"; };
 		8BC535D3375D809AEB6C8ADE /* RecordsViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RecordsViewModel.swift; path = Records/ViewModels/RecordsViewModel.swift; sourceTree = "<group>"; };
 		905E3ECC491359587466F6DC /* SyncModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SyncModels.swift; path = Sync/SyncModels.swift; sourceTree = "<group>"; };
 		950A9E22A84D752C23D551EE /* PDFPreviewRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PDFPreviewRobot.swift; path = MaximusPrecisionUITests/Robots/PDFPreviewRobot.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				13DF45379615F6F2725B9679 /* Frameworks */,
 				957C063244E1236AF76230C0 /* MaximusPrecisionUITests */,
 				C2408FC4DD4F964A19643763 /* MaximusPrecisionTests */,
+				B2A42CB05E8CC0FD0BC49EFA /* Config */,
 			);
 			sourceTree = "<group>";
 		};
@@ -392,6 +395,15 @@
 			);
 			name = Sync;
 			sourceTree = "<group>";
+		};
+		B2A42CB05E8CC0FD0BC49EFA /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				1E15894074710EC575729CA1 /* Config.xcconfig */,
+				886DD3D82572C5C7C81D4B91 /* Secrets.example.xcconfig */,
+			);
+			name = Config;
+			sourceTree = SOURCE_ROOT;
 		};
 		B37B54631653310667A2FC5D /* Records */ = {
 			isa = PBXGroup;
@@ -681,6 +693,7 @@
 		};
 		A00000000000000000000030 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E15894074710EC575729CA1 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -718,6 +731,7 @@
 		};
 		A00000000000000000000031 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E15894074710EC575729CA1 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
