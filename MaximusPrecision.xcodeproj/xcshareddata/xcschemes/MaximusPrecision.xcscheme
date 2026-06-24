@@ -52,6 +52,16 @@
                ReferencedContainer = "container:MaximusPrecision.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "97CDD8A9B70FD3DD7FA5B8FB"
+               BuildableName = "MaximusPrecisionTests.xctest"
+               BlueprintName = "MaximusPrecisionTests"
+               ReferencedContainer = "container:MaximusPrecision.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

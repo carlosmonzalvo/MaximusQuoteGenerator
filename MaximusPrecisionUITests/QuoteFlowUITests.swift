@@ -116,6 +116,39 @@ final class QuoteFlowUITests: XCTestCase {
         form.switchToQuote().assertTitle("Cotización")
     }
 
+    // MARK: Vehicle catalog (pills + optional version)
+
+    /// Tapping a make pill fills Marca and reveals the model pills; tapping a
+    /// model pill fills Modelo.
+    func test_makeAndModelPills_fillVehicle() {
+        let form = QuoteFormRobot(app).assertVisible()
+            .tapMakeChip(0)            // Nissan (rank 1)
+            .assertBrand("Nissan")
+            .assertModelChipsVisible()
+            .tapModelChip(0)           // Versa (most common)
+            .assertModel("Versa")
+    }
+
+    /// The version picker is optional: choosing a trim appends it to the model.
+    func test_versionPicker_appendsTrim() {
+        QuoteFormRobot(app).assertVisible()
+            .tapMakeChip(0)
+            .tapModelChip(0)
+            .openVersionPicker()
+            .pickTrim(0)               // "Sense"
+            .assertModel("Versa Sense")
+    }
+
+    /// "Sin versión específica" leaves just the model name.
+    func test_versionPicker_optionalNone() {
+        QuoteFormRobot(app).assertVisible()
+            .tapMakeChip(0)
+            .tapModelChip(0)
+            .openVersionPicker()
+            .pickNone()
+            .assertModel("Versa")
+    }
+
     /// Deleting the only line item returns the form to its empty state.
     func test_deleteLineItem_returnsToEmptyState() {
         let form = QuoteFormRobot(app)

@@ -128,10 +128,33 @@ arrancar determinista y sin el splash de 2s.
 > El target se generó con `scripts/add_uitests_target.rb` (gem `xcodeproj`). Es
 > idempotente: re-córrelo si agregas archivos de test nuevos.
 
+## Tests unitarios
+
+El target `MaximusPrecisionTests` (hosteado en la app, `@testable import`) cubre
+la lógica pura: el `LRUCache` y el `VehicleCatalog` (seeding, orden, cache).
+Se generó con `scripts/add_unittests_target.rb`. Corren junto con los de UI en
+el mismo `xcodebuild test`.
+
+## Catálogo de vehículos (SwiftData + LRU cache)
+
+- `Catalog/CatalogModels.swift` — entidades SwiftData `CatalogMake` / `CatalogModel`
+  (con `trims`/versiones opcionales).
+- `Catalog/VehicleCatalogSeed.swift` — catálogo curado de marcas/modelos comunes
+  en México (2015+), organizado por **tiers** para crecer incrementalmente
+  (tier 1 = top 3 marcas; agregar las siguientes 3 = sumar tier 2).
+- `Catalog/VehicleCatalog.swift` — seeding idempotente + lookups con `LRUCache`.
+- `Catalog/AppModelContainer.swift` — contenedor compartido del proceso (in-memory
+  bajo tests).
+
+En el formulario: la marca y el modelo se eligen con **pills**; la **versión/trim
+es opcional** y se elige en un sheet rápido.
+
 ## Qué hace la app
 
-- Formulario de cliente y vehículo
+- Formulario de cliente y vehículo (con catálogo de marcas/modelos)
 - Lista dinámica de refacciones y mano de obra
 - Plantillas rápidas para conceptos frecuentes
+- IVA 16% y comisión por tarjeta 4.5% opcionales
+- Cotización / Nota de remisión
 - Generación y vista previa de PDF
 - Compartir PDF por WhatsApp o cualquier app del share sheet

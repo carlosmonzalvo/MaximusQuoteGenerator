@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 @main
 struct MaximusPrecisionApp: App {
@@ -6,5 +7,6 @@ struct MaximusPrecisionApp: App {
         WindowGroup {
             SplashView()
         }
+        .modelContainer(AppModelContainer.shared)
     }
 }

@@ -38,9 +38,19 @@ enum A11y {
         static let ivaAmount = "quoteForm.ivaAmount"
         static let cardFeeAmount = "quoteForm.cardFeeAmount"
 
+        static let versionPill = "quoteForm.versionPill"
+
         static func templateChip(_ index: Int) -> String { "quoteForm.template.\(index)" }
         static func lineItem(_ index: Int) -> String { "quoteForm.item.\(index)" }
         static func deleteItem(_ index: Int) -> String { "quoteForm.item.\(index).delete" }
+        static func makeChip(_ index: Int) -> String { "quoteForm.make.\(index)" }
+        static func modelChip(_ index: Int) -> String { "quoteForm.model.\(index)" }
+    }
+
+    enum VersionPicker {
+        static let none = "versionPicker.none"
+        static let close = "versionPicker.close"
+        static func trim(_ index: Int) -> String { "versionPicker.trim.\(index)" }
     }
 
     enum ItemEdit {
@@ -70,6 +80,12 @@ enum LaunchArgument {
 
     static var isUITesting: Bool {
         ProcessInfo.processInfo.arguments.contains(uiTesting)
+    }
+
+    /// True when running under XCTest (unit or UI), used to keep the store
+    /// ephemeral so test runs never touch the on-disk database.
+    static var isRunningTests: Bool {
+        isUITesting || ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
     }
 
     static var shouldSkipSplash: Bool {

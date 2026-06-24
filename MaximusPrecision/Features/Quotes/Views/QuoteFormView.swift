@@ -277,14 +277,22 @@ struct QuoteFormView: View {
     @State private var editingItem: QuoteItem?
     private let pdfGenerator = PDFGeneratorService()
 
+    // Vehicle catalog (SwiftData + LRU cache).
+    @Environment(\.modelContext) private var modelContext
+    @State private var catalog: VehicleCatalog?
+    @State private var makeNames: [String] = []
+    @State private var modelOptions: [ModelOption] = []
+    @State private var selectedModel: ModelOption?
+    @State private var showVersionPicker = false
+
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottom) {
                 MXTheme.bg.ignoresSafeArea()
 
-                VStack(spacing: 0) {
-                    headerSection
-                    ScrollView {
+                ScrollView {
+                    VStack(spacing: 0) {
+                        headerSection
                         VStack(spacing: 0) {
                             itemsSection
                             totalsSection
@@ -313,8 +321,36 @@ struct QuoteFormView: View {
                     }
                 }
             }
+            .sheet(isPresented: $showVersionPicker) {
+                if let model = selectedModel {
+                    VersionPickerSheet(modelName: model.name, trims: model.trims) { trim in
+                        vm.vehicleModel = trim.map { "\(model.name) \($0)" } ?? model.name
+                    }
+                }
+            }
         }
         .preferredColorScheme(.dark)
+        .task {
+            guard catalog == nil else { return }
+            let cat = VehicleCatalog(context: modelContext)
+            cat.seedIfNeeded()
+            catalog = cat
+            makeNames = cat.makes()
+        }
+    }
+
+    // MARK: Vehicle catalog actions
+
+    private func selectMake(_ name: String) {
+        vm.vehicleBrand = name
+        vm.vehicleModel = ""
+        selectedModel = nil
+        modelOptions = catalog?.models(forMake: name) ?? []
+    }
+
+    private func selectModel(_ option: ModelOption) {
+        selectedModel = option
+        vm.vehicleModel = option.name
     }
 
     // MARK: Header
@@ -343,6 +379,8 @@ struct QuoteFormView: View {
                 MXField(label: "Año", text: $vm.vehicleYear, keyboard: .numberPad, identifier: A11y.QuoteForm.vehicleYear)
                 MXField(label: "Placas", text: $vm.vehiclePlate, autocap: .characters, identifier: A11y.QuoteForm.vehiclePlate)
             }
+
+            vehicleCatalogSection
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 6) {
@@ -393,6 +431,107 @@ struct QuoteFormView: View {
             RoundedRectangle(cornerRadius: 9)
                 .stroke(MXTheme.borderLight, lineWidth: 1)
         )
+    }
+
+    // MARK: Vehicle catalog (pills + optional version)
+
+    @ViewBuilder
+    private var vehicleCatalogSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            if !makeNames.isEmpty {
+                catalogChipRow(label: "MARCAS") {
+                    ForEach(Array(makeNames.enumerated()), id: \.element) { index, name in
+                        catalogPill(
+                            title: name,
+                            selected: vm.vehicleBrand == name,
+                            identifier: A11y.QuoteForm.makeChip(index)
+                        ) { selectMake(name) }
+                    }
+                }
+            }
+
+            if !modelOptions.isEmpty {
+                catalogChipRow(label: "MODELOS") {
+                    ForEach(Array(modelOptions.enumerated()), id: \.element.id) { index, option in
+                        catalogPill(
+                            title: option.name,
+                            selected: selectedModel?.name == option.name,
+                            identifier: A11y.QuoteForm.modelChip(index)
+                        ) { selectModel(option) }
+                    }
+                }
+            }
+
+            if let model = selectedModel, model.hasTrims {
+                Button {
+                    showVersionPicker = true
+                } label: {
+                    HStack(spacing: 6) {
+                        Image(systemName: "slider.horizontal.3")
+                            .font(.system(size: 12))
+                        Text(versionPillLabel(for: model))
+                            .font(.system(size: 13, weight: .medium))
+                    }
+                    .foregroundStyle(MXTheme.accent)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(MXTheme.accent.opacity(0.12))
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(MXTheme.accent.opacity(0.4), lineWidth: 1)
+                    )
+                }
+                .buttonStyle(.plain)
+                .accessibilityIdentifier(A11y.QuoteForm.versionPill)
+            }
+        }
+    }
+
+    private func versionPillLabel(for model: ModelOption) -> String {
+        let prefix = model.name + " "
+        if vm.vehicleModel.hasPrefix(prefix) {
+            return "Versión: \(vm.vehicleModel.dropFirst(prefix.count))"
+        }
+        return "Versión (opcional)"
+    }
+
+    private func catalogChipRow<Content: View>(
+        label: String,
+        @ViewBuilder content: () -> Content
+    ) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(label)
+                .font(.system(size: 10, weight: .medium))
+                .foregroundStyle(MXTheme.muted)
+                .kerning(0.8)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 6) { content() }
+            }
+        }
+    }
+
+    private func catalogPill(
+        title: String,
+        selected: Bool,
+        identifier: String,
+        action: @escaping () -> Void
+    ) -> some View {
+        Button(action: action) {
+            Text(title)
+                .font(.system(size: 13, weight: .medium))
+                .foregroundStyle(selected ? Color(hex: "111111") : MXTheme.text)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 8)
+                .background(selected ? MXTheme.accent : MXTheme.surfaceAlt)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(selected ? Color.clear : MXTheme.borderLight, lineWidth: 1.5)
+                )
+        }
+        .buttonStyle(.plain)
+        .accessibilityIdentifier(identifier)
     }
 
     // MARK: Items
