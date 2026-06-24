@@ -21,25 +21,28 @@ final class VehicleCatalogTests: XCTestCase {
         return VehicleCatalog(context: context)
     }
 
-    func test_seedInsertsTopThreeMakesInRankOrder() throws {
+    func test_seedTopThreeMakesAreTier1InRankOrder() throws {
         let catalog = try makeCatalog()
         catalog.seedIfNeeded()
-        XCTAssertEqual(catalog.makes(), ["Nissan", "Chevrolet", "Volkswagen"])
+        XCTAssertEqual(catalog.makes(maxTier: 1), ["Nissan", "Chevrolet", "Volkswagen"])
     }
 
     func test_seedIsIdempotent() throws {
         let catalog = try makeCatalog()
         catalog.seedIfNeeded()
+        let count = catalog.makes().count
         catalog.seedIfNeeded()
-        XCTAssertEqual(catalog.makes().count, 3)
+        XCTAssertEqual(catalog.makes().count, count)
     }
 
     func test_tierFilterLimitsMakes() throws {
         let catalog = try makeCatalog()
         catalog.seedIfNeeded()
-        // Everything seeded so far is tier 1.
-        XCTAssertEqual(catalog.makes(maxTier: 1).count, 3)
         XCTAssertEqual(catalog.makes(maxTier: 0).count, 0)
+        XCTAssertEqual(catalog.makes(maxTier: 1).count, 3)        // tier 1
+        XCTAssertEqual(catalog.makes(maxTier: 2).count, 6)        // tier 1 + 2
+        // Ranks are global and ordered.
+        XCTAssertEqual(catalog.makes(), ["Nissan", "Chevrolet", "Volkswagen", "KIA", "Toyota", "Mazda"])
     }
 
     func test_modelsOrderedByCommonality() throws {

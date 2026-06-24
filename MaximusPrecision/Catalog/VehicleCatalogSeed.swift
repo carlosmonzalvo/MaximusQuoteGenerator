@@ -73,5 +73,46 @@ enum VehicleCatalogSeed {
             ModelSeed(name: "Nivus", yearStart: 2021, trims: ["Comfortline", "Highline"]),
             ModelSeed(name: "Amarok", yearStart: 2015, trims: ["Trendline", "Comfortline", "Highline"]),
         ]),
+
+        // Tier 2 — the next 3 makes.
+        MakeSeed(name: "KIA", rank: 4, tier: 2, models: [
+            ModelSeed(name: "Rio", yearStart: 2016, trims: ["LX", "EX", "SX"]),
+            ModelSeed(name: "Forte", yearStart: 2017, trims: ["LX", "EX", "GT"]),
+            ModelSeed(name: "Sportage", yearStart: 2015, trims: ["LX", "EX", "SX", "GT-Line"]),
+            ModelSeed(name: "Seltos", yearStart: 2021, trims: ["LX", "EX", "SX"]),
+            ModelSeed(name: "Sorento", yearStart: 2016, trims: ["LX", "EX", "SX"]),
+            ModelSeed(name: "Soul", yearStart: 2015, trims: ["LX", "EX"]),
+            ModelSeed(name: "Picanto", yearStart: 2018, trims: ["LX", "EX"]),
+            ModelSeed(name: "K3", yearStart: 2024, trims: ["LX", "EX", "GT-Line"]),
+            ModelSeed(name: "Stinger", yearStart: 2018, trims: ["GT-Line", "GT"]),
+            ModelSeed(name: "Niro", yearStart: 2017, trims: ["EX", "SX"]),
+        ]),
+
+        MakeSeed(name: "Toyota", rank: 5, tier: 2, models: [
+            ModelSeed(name: "Yaris", yearStart: 2015, trims: ["Core", "S", "Premium"]),
+            ModelSeed(name: "Corolla", yearStart: 2015, trims: ["Base", "LE", "SE", "XSE", "Hybrid"]),
+            ModelSeed(name: "Corolla Cross", yearStart: 2022, trims: ["Base", "XLE", "Hybrid"]),
+            ModelSeed(name: "RAV4", yearStart: 2015, trims: ["LE", "XLE", "Limited", "Adventure"]),
+            ModelSeed(name: "Hilux", yearStart: 2015, trims: ["Base", "SR", "SRV", "GR-Sport"]),
+            ModelSeed(name: "Tacoma", yearStart: 2016, trims: ["SR", "TRD Sport", "TRD Off-Road", "Limited"]),
+            ModelSeed(name: "Avanza", yearStart: 2015, trims: ["LE", "XLE"]),
+            ModelSeed(name: "Highlander", yearStart: 2015, trims: ["LE", "XLE", "Limited"]),
+            ModelSeed(name: "Camry", yearStart: 2015, trims: ["LE", "XLE", "XSE"]),
+            ModelSeed(name: "Prius", yearStart: 2016, trims: ["Base", "Premium"]),
+            ModelSeed(name: "Sienna", yearStart: 2015, trims: ["LE", "XLE", "Limited"]),
+            ModelSeed(name: "Tundra", yearStart: 2015, trims: ["SR5", "Limited", "Platinum"]),
+        ]),
+
+        MakeSeed(name: "Mazda", rank: 6, tier: 2, models: [
+            ModelSeed(name: "Mazda 2", yearStart: 2015, trims: ["i", "Sport", "Touring", "Grand Touring"]),
+            ModelSeed(name: "Mazda 3", yearStart: 2015, trims: ["i", "Sport", "Grand Touring", "Signature"]),
+            ModelSeed(name: "CX-3", yearStart: 2016, trims: ["i Sport", "i Grand Touring"]),
+            ModelSeed(name: "CX-30", yearStart: 2020, trims: ["i Sport", "i Grand Touring", "Signature"]),
+            ModelSeed(name: "CX-5", yearStart: 2015, trims: ["i Sport", "i Grand Touring", "Signature"]),
+            ModelSeed(name: "CX-9", yearStart: 2016, trims: ["Sport", "Grand Touring", "Signature"]),
+            ModelSeed(name: "CX-50", yearStart: 2023, trims: ["Sport", "Grand Touring", "Signature"]),
+            ModelSeed(name: "MX-5", yearStart: 2016, trims: ["i Sport", "Grand Touring"]),
+            ModelSeed(name: "Mazda 6", yearStart: 2015, trims: ["i Sport", "i Grand Touring", "Signature"]),
+        ]),
     ]
 }

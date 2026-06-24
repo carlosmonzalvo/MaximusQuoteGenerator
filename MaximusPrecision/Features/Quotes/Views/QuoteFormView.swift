@@ -311,12 +311,9 @@ struct QuoteFormView: View {
     @State private var editingItem: QuoteItem?
     private let pdfGenerator = PDFGeneratorService()
 
-    // Vehicle catalog (SwiftData + LRU cache).
+    // Vehicle catalog state lives in the view model; the view only needs the
+    // SwiftData context to hand it over.
     @Environment(\.modelContext) private var modelContext
-    @State private var catalog: VehicleCatalog?
-    @State private var makeNames: [String] = []
-    @State private var modelOptions: [ModelOption] = []
-    @State private var selectedModel: ModelOption?
     @State private var showVersionPicker = false
     @State private var showYearPicker = false
 
@@ -357,15 +354,15 @@ struct QuoteFormView: View {
                 }
             }
             .sheet(isPresented: $showVersionPicker) {
-                if let model = selectedModel {
+                if let model = vm.selectedModel {
                     VersionPickerSheet(modelName: model.name, trims: model.trims) { trim in
-                        vm.vehicleModel = trim.map { "\(model.name) \($0)" } ?? model.name
+                        vm.applyVersion(trim)
                     }
                 }
             }
             .sheet(isPresented: $showYearPicker) {
                 YearPickerSheet(
-                    minYear: vm.minYear(forModelYearStart: selectedModel?.yearStart),
+                    minYear: vm.minYear(forModelYearStart: vm.selectedModel?.yearStart),
                     maxYear: vm.currentYear,
                     selected: Int(vm.vehicleYear)
                 ) { year in
@@ -375,26 +372,8 @@ struct QuoteFormView: View {
         }
         .preferredColorScheme(.dark)
         .task {
-            guard catalog == nil else { return }
-            let cat = VehicleCatalog(context: modelContext)
-            cat.seedIfNeeded()
-            catalog = cat
-            makeNames = cat.makes()
+            vm.loadCatalog(context: modelContext)
         }
-    }
-
-    // MARK: Vehicle catalog actions
-
-    private func selectMake(_ name: String) {
-        vm.vehicleBrand = name
-        vm.vehicleModel = ""
-        selectedModel = nil
-        modelOptions = catalog?.models(forMake: name) ?? []
-    }
-
-    private func selectModel(_ option: ModelOption) {
-        selectedModel = option
-        vm.vehicleModel = option.name
     }
 
     // MARK: Header
@@ -485,31 +464,31 @@ struct QuoteFormView: View {
     @ViewBuilder
     private var vehicleCatalogSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            if !makeNames.isEmpty {
+            if !vm.makeNames.isEmpty {
                 catalogChipRow(label: "MARCAS") {
-                    ForEach(Array(makeNames.enumerated()), id: \.element) { index, name in
+                    ForEach(Array(vm.makeNames.enumerated()), id: \.element) { index, name in
                         catalogPill(
                             title: name,
                             selected: vm.vehicleBrand == name,
                             identifier: A11y.QuoteForm.makeChip(index)
-                        ) { selectMake(name) }
+                        ) { vm.selectMake(name) }
                     }
                 }
             }
 
-            if !modelOptions.isEmpty {
+            if !vm.modelOptions.isEmpty {
                 catalogChipRow(label: "MODELOS") {
-                    ForEach(Array(modelOptions.enumerated()), id: \.element.id) { index, option in
+                    ForEach(Array(vm.modelOptions.enumerated()), id: \.element.id) { index, option in
                         catalogPill(
                             title: option.name,
-                            selected: selectedModel?.name == option.name,
+                            selected: vm.selectedModel?.name == option.name,
                             identifier: A11y.QuoteForm.modelChip(index)
-                        ) { selectModel(option) }
+                        ) { vm.selectModel(option) }
                     }
                 }
             }
 
-            if let model = selectedModel, model.hasTrims {
+            if let model = vm.selectedModel, model.hasTrims {
                 Button {
                     showVersionPicker = true
                 } label: {

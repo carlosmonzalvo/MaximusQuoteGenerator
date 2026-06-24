@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		05D4C0E93E56A1AFE4EA05AC /* LRUCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967E40AF02C72D46D6A30694 /* LRUCacheTests.swift */; };
 		0C89576CF86FADFA90FD149B /* PDFPreviewRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF230C3719EC21651C63B44 /* PDFPreviewRobot.swift */; };
+		1FAF662A9612075E12AF3955 /* LRUCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B79269365DCA3685123FEA /* LRUCacheTests.swift */; };
 		3483CDC45EF2656764D3984B /* VehicleCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83E183493D89831CCCCF75E /* VehicleCatalog.swift */; };
 		3AC45A1E2F80D1690007E674 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC45A1D2F80D15F0007E674 /* UIApplication+Extensions.swift */; };
 		3AFBBB5F2F8AF8FF00B3F4AD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBBB5E2F8AF8EB00B3F4AD /* SplashView.swift */; };
@@ -22,7 +22,9 @@
 		80C84370A9E7942E20922247 /* VersionPickerRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E770A088AE68E46B9340745D /* VersionPickerRobot.swift */; };
 		812B099E700A0D6F7D8B00B3 /* DocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436D09D6D781B33908670C /* DocumentType.swift */; };
 		8559538D1A8BB86AF204B0BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 962E92589EE5DD533D4321D5 /* Foundation.framework */; };
+		951E7763849BCDC3FCB7DD0D /* VehicleCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC603F5E4F91A9DAD86822DE /* VehicleCatalogTests.swift */; };
 		9777FD6566AAC7938B28D318 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 962E92589EE5DD533D4321D5 /* Foundation.framework */; };
+		99FD8D11867349CBC1ADE6CF /* QuoteFormViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D2C47D996D3073B4AC5DA8 /* QuoteFormViewModelTests.swift */; };
 		9B6DCF14271448526804147E /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977AF70B214A61CFDF922C6 /* AccessibilityIdentifiers.swift */; };
 		A00000000000000000000001 /* MaximusPrecisionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000011 /* MaximusPrecisionApp.swift */; };
 		A00000000000000000000002 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000012 /* Customer.swift */; };
@@ -37,7 +39,6 @@
 		A0000000000000000000000B /* PDFPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000001B /* PDFPreviewView.swift */; };
 		A0000000000000000000000C /* QuoteFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000001C /* QuoteFormView.swift */; };
 		A0000000000000000000000D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000001D /* Assets.xcassets */; };
-		BA04E8B90A604468EC0DE654 /* VehicleCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727DF5FDC9AA40E92900C595 /* VehicleCatalogTests.swift */; };
 		C1CA256A0ED2C3B6907EEC0B /* YearPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2A77E299D86A13E66971E /* YearPickerSheet.swift */; };
 		C520CF3CACF0F4FFB5C0D80A /* CatalogModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3641F9368E9A09B74BCAA /* CatalogModels.swift */; };
 		CA01CD7A1499CFE7ED3FDC65 /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9D8F17C83D76C63D00B49A /* Robot.swift */; };
@@ -72,15 +73,14 @@
 		3AFBBB5E2F8AF8EB00B3F4AD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3AFBBB602F8B06A000B3F4AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3B5233A6B009BED5ADC603D7 /* AppModelContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppModelContainer.swift; path = Catalog/AppModelContainer.swift; sourceTree = "<group>"; };
+		42B79269365DCA3685123FEA /* LRUCacheTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LRUCacheTests.swift; path = MaximusPrecisionTests/LRUCacheTests.swift; sourceTree = "<group>"; };
 		543711E57D06BF416FF20367 /* MaximusPrecisionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaximusPrecisionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F9D8F17C83D76C63D00B49A /* Robot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Robot.swift; path = MaximusPrecisionUITests/Support/Robot.swift; sourceTree = "<group>"; };
 		63CD87CFD2740FBB43EE5856 /* QuoteFlowUITests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuoteFlowUITests.swift; path = MaximusPrecisionUITests/QuoteFlowUITests.swift; sourceTree = "<group>"; };
 		665BD7F91CE923821C0552A2 /* YearPickerRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YearPickerRobot.swift; path = MaximusPrecisionUITests/Robots/YearPickerRobot.swift; sourceTree = "<group>"; };
-		727DF5FDC9AA40E92900C595 /* VehicleCatalogTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VehicleCatalogTests.swift; path = MaximusPrecisionTests/VehicleCatalogTests.swift; sourceTree = "<group>"; };
 		7C1B5430C0958BB2EEEA6A7A /* LRUCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LRUCache.swift; path = Catalog/LRUCache.swift; sourceTree = "<group>"; };
 		840E23F9F94FB106FC88B349 /* VehicleCatalogSeed.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VehicleCatalogSeed.swift; path = Catalog/VehicleCatalogSeed.swift; sourceTree = "<group>"; };
 		962E92589EE5DD533D4321D5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		967E40AF02C72D46D6A30694 /* LRUCacheTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LRUCacheTests.swift; path = MaximusPrecisionTests/LRUCacheTests.swift; sourceTree = "<group>"; };
 		A0000000000000000000000E /* MaximusPrecision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaximusPrecision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A00000000000000000000011 /* MaximusPrecisionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaximusPrecisionApp.swift; sourceTree = "<group>"; };
 		A00000000000000000000012 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
@@ -98,9 +98,11 @@
 		A8E2A77E299D86A13E66971E /* YearPickerSheet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = YearPickerSheet.swift; sourceTree = "<group>"; };
 		AA436D09D6D781B33908670C /* DocumentType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
 		B5353190E3729B7B3A28BAF7 /* VersionPickerSheet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VersionPickerSheet.swift; sourceTree = "<group>"; };
+		BC603F5E4F91A9DAD86822DE /* VehicleCatalogTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VehicleCatalogTests.swift; path = MaximusPrecisionTests/VehicleCatalogTests.swift; sourceTree = "<group>"; };
 		BCF230C3719EC21651C63B44 /* PDFPreviewRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PDFPreviewRobot.swift; path = MaximusPrecisionUITests/Robots/PDFPreviewRobot.swift; sourceTree = "<group>"; };
 		C7E3641F9368E9A09B74BCAA /* CatalogModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CatalogModels.swift; path = Catalog/CatalogModels.swift; sourceTree = "<group>"; };
 		C977AF70B214A61CFDF922C6 /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AccessibilityIdentifiers.swift; path = MaximusPrecision/Support/AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
+		D3D2C47D996D3073B4AC5DA8 /* QuoteFormViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuoteFormViewModelTests.swift; path = MaximusPrecisionTests/QuoteFormViewModelTests.swift; sourceTree = "<group>"; };
 		E2EDD273B9C6F21B11530438 /* MaximusPrecisionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaximusPrecisionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E770A088AE68E46B9340745D /* VersionPickerRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VersionPickerRobot.swift; path = MaximusPrecisionUITests/Robots/VersionPickerRobot.swift; sourceTree = "<group>"; };
 		E83E183493D89831CCCCF75E /* VehicleCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VehicleCatalog.swift; path = Catalog/VehicleCatalog.swift; sourceTree = "<group>"; };
@@ -310,8 +312,9 @@
 		C2408FC4DD4F964A19643763 /* MaximusPrecisionTests */ = {
 			isa = PBXGroup;
 			children = (
-				967E40AF02C72D46D6A30694 /* LRUCacheTests.swift */,
-				727DF5FDC9AA40E92900C595 /* VehicleCatalogTests.swift */,
+				42B79269365DCA3685123FEA /* LRUCacheTests.swift */,
+				D3D2C47D996D3073B4AC5DA8 /* QuoteFormViewModelTests.swift */,
+				BC603F5E4F91A9DAD86822DE /* VehicleCatalogTests.swift */,
 			);
 			name = MaximusPrecisionTests;
 			sourceTree = "<group>";
@@ -467,8 +470,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05D4C0E93E56A1AFE4EA05AC /* LRUCacheTests.swift in Sources */,
-				BA04E8B90A604468EC0DE654 /* VehicleCatalogTests.swift in Sources */,
+				1FAF662A9612075E12AF3955 /* LRUCacheTests.swift in Sources */,
+				99FD8D11867349CBC1ADE6CF /* QuoteFormViewModelTests.swift in Sources */,
+				951E7763849BCDC3FCB7DD0D /* VehicleCatalogTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
