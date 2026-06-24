@@ -30,3 +30,18 @@ Capturas reales del simulador (iPhone 16) generadas por
 
 ### PDF generado
 ![PDF generado](05-PDF-generado.png)
+
+## Expedientes: clientes y autos (SwiftData)
+
+El **auto es el paciente** (entidad central con su historial); el **cliente es
+quien paga** (no exclusivo, puede transferirse el auto). Las cotizaciones se
+guardan como servicios en el expediente del auto.
+
+### Clientes
+![Clientes](09-Clientes.png)
+
+### Autos (pacientes)
+![Autos](10-Autos.png)
+
+### Expediente del auto (pagadores + historial)
+![Expediente del auto](11-Expediente-auto.png)

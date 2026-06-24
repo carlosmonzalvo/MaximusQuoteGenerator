@@ -18,7 +18,7 @@ struct SplashView: View {
     var body: some View {
         Group {
             if isActive {
-                QuoteFormView()
+                RootTabView()
             } else {
                 ZStack {
                     Color.black

@@ -94,6 +94,24 @@ final class ScreenshotTests: XCTestCase {
         snapshot("08-Year-picker")
     }
 
+    /// Expedientes: register a client + a vehicle and open the patient's record.
+    func test_captureExpedientes() {
+        let records = RecordsRobot(app).open()
+
+        // Add a payer (client).
+        records.selectClients()
+            .addClient(name: "Juan Pérez", phone: "5512345678")
+        snapshot("09-Clientes")
+
+        // Add a patient (vehicle) and open its expediente.
+        records.selectVehicles()
+            .addVehicle(plate: "ABC-1234", brand: "Nissan", model: "Versa")
+        snapshot("10-Autos")
+
+        records.tapVehicleRow(0)
+        snapshot("11-Expediente-auto")
+    }
+
     /// The optional version sheet, captured on its own.
     func test_captureVersionSheet() {
         let form = QuoteFormRobot(app)

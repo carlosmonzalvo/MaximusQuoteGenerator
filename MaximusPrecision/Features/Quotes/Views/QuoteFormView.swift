@@ -776,6 +776,10 @@ struct QuoteFormView: View {
         guard let quote = vm.buildQuote() else { return }
         do {
             generatedPDFURL = try pdfGenerator.generatePDF(for: quote)
+            // File the document under the vehicle's expediente (patient ↔ payer).
+            let repo = ClientVehicleRepository(context: modelContext)
+            repo.recordService(from: quote)
+            repo.save()
             showPDFPreview = true
         } catch {
             vm.errorMessage = "No se pudo generar el PDF. \(error.localizedDescription)"

@@ -18,6 +18,7 @@ enum AppModelContainer {
         do {
             return try ModelContainer(
                 for: CatalogMake.self, CatalogModel.self,
+                ClientRecord.self, VehicleRecord.self, ServiceRecord.self,
                 configurations: config
             )
         } catch {

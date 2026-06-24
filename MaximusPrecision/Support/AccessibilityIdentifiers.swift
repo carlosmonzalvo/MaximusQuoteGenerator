@@ -74,6 +74,40 @@ enum A11y {
     enum PDFPreview {
         static let root = "pdfPreview.root"
     }
+
+    enum RootTab {
+        static let quote = "rootTab.quote"
+        static let records = "rootTab.records"
+    }
+
+    enum Records {
+        static let root = "records.root"
+        static let scopePicker = "records.scopePicker"
+        static let search = "records.search"
+        static let add = "records.add"
+        static let emptyState = "records.emptyState"
+        static func vehicleRow(_ index: Int) -> String { "records.vehicle.\(index)" }
+        static func clientRow(_ index: Int) -> String { "records.client.\(index)" }
+    }
+
+    enum RecordEdit {
+        static let root = "recordEdit.root"
+        static let name = "recordEdit.name"
+        static let phone = "recordEdit.phone"
+        static let email = "recordEdit.email"
+        static let plate = "recordEdit.plate"
+        static let brand = "recordEdit.brand"
+        static let model = "recordEdit.model"
+        static let year = "recordEdit.year"
+        static let save = "recordEdit.save"
+        static let cancel = "recordEdit.cancel"
+    }
+
+    enum VehicleDetail {
+        static let root = "vehicleDetail.root"
+        static let payers = "vehicleDetail.payers"
+        static let history = "vehicleDetail.history"
+    }
 }
 
 /// Launch arguments the app understands. Passed by UI tests to get a
