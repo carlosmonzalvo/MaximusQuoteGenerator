@@ -501,12 +501,7 @@ struct QuoteFormView: View {
                     .foregroundStyle(MXTheme.accent)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 8)
-                    .background(MXTheme.accent.opacity(0.12))
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(MXTheme.accent.opacity(0.4), lineWidth: 1)
-                    )
+                    .glassCard(cornerRadius: 10, fallbackFill: MXTheme.accent.opacity(0.12))
                 }
                 .buttonStyle(.plain)
                 .accessibilityIdentifier(A11y.QuoteForm.versionPill)
@@ -549,12 +544,7 @@ struct QuoteFormView: View {
                 .foregroundStyle(selected ? Color(hex: "111111") : MXTheme.text)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 8)
-                .background(selected ? MXTheme.accent : MXTheme.surfaceAlt)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(selected ? Color.clear : MXTheme.borderLight, lineWidth: 1.5)
-                )
+                .glassPill(selected: selected, tint: MXTheme.accent)
         }
         .buttonStyle(.plain)
         .accessibilityIdentifier(identifier)
@@ -757,8 +747,7 @@ struct QuoteFormView: View {
                     .foregroundStyle(Color(hex: "111111"))
                     .padding(.horizontal, 20)
                     .frame(height: 52)
-                    .background(MXTheme.accent)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .glassAction(tint: MXTheme.accent)
             }
             .buttonStyle(.plain)
             .accessibilityIdentifier(A11y.QuoteForm.generatePDF)

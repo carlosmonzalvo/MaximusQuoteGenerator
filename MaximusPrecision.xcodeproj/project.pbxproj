@@ -54,6 +54,7 @@
 		DB2BF6851CCA3BAE0FC8A2F6 /* YearPickerRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B4112B88C2AE39CADF204 /* YearPickerRobot.swift */; };
 		E7125EDACBA89B3BFC21F140 /* AppModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5233A6B009BED5ADC603D7 /* AppModelContainer.swift */; };
 		EE1925C77A7BE4EC2563C50A /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977AF70B214A61CFDF922C6 /* AccessibilityIdentifiers.swift */; };
+		F10368DEC912C0EBDD820452 /* LiquidGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34CD16BAF3BE6B25EFAC278 /* LiquidGlass.swift */; };
 		F4DE3125010C6406E994413A /* ClientVehicleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A811C5B5877E875282074A87 /* ClientVehicleRepository.swift */; };
 		F5EF7370072F23F5C7CE4ADE /* RecordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7509768800B8F060887B325 /* RecordsView.swift */; };
 		FA15B9FFB0E4D9B685ACD407 /* VehicleCatalogSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840E23F9F94FB106FC88B349 /* VehicleCatalogSeed.swift */; };
@@ -128,6 +129,7 @@
 		D7509768800B8F060887B325 /* RecordsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RecordsView.swift; path = Records/Views/RecordsView.swift; sourceTree = "<group>"; };
 		E2EDD273B9C6F21B11530438 /* MaximusPrecisionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaximusPrecisionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E83E183493D89831CCCCF75E /* VehicleCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VehicleCatalog.swift; path = Catalog/VehicleCatalog.swift; sourceTree = "<group>"; };
+		F34CD16BAF3BE6B25EFAC278 /* LiquidGlass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LiquidGlass.swift; path = MaximusPrecision/Support/LiquidGlass.swift; sourceTree = "<group>"; };
 		F604987217C9A51545C2AF36 /* ScreenshotTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScreenshotTests.swift; path = MaximusPrecisionUITests/ScreenshotTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -369,6 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				C977AF70B214A61CFDF922C6 /* AccessibilityIdentifiers.swift */,
+				F34CD16BAF3BE6B25EFAC278 /* LiquidGlass.swift */,
 			);
 			name = Support;
 			sourceTree = SOURCE_ROOT;
@@ -537,6 +540,7 @@
 				F5EF7370072F23F5C7CE4ADE /* RecordsView.swift in Sources */,
 				037EDAE912D90E9FA81DBE99 /* RecordEditSheet.swift in Sources */,
 				8B672F101B00257E1F679214 /* VehicleDetailView.swift in Sources */,
+				F10368DEC912C0EBDD820452 /* LiquidGlass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
