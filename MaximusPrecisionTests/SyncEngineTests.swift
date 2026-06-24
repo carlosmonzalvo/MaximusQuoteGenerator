@@ -116,7 +116,64 @@ final class SyncEngineTests: XCTestCase {
         XCTAssertEqual(vehicle.clients.map(\.name), ["Pagador"])
     }
 
+    func test_pendingSnapshotOnlyIncludesDirtyRecords() throws {
+        let context = try freshContext()
+        let dirty = ClientRecord(name: "Dirty"); dirty.syncID = "D"; dirty.needsPush = true
+        let clean = ClientRecord(name: "Clean"); clean.syncID = "K"; clean.needsPush = false
+        context.insert(dirty); context.insert(clean)
+        try context.save()
+
+        let pending = SyncEngine(context: context).pendingSnapshot(cursor: 7)
+        XCTAssertEqual(pending.sinceSeq, 7)
+        XCTAssertEqual(pending.clients.map(\.syncID), ["D"])
+    }
+
+    func test_mergeClearsNeedsPushOnAppliedRecords() throws {
+        let context = try freshContext()
+        let engine = SyncEngine(context: context)
+        var remote = SyncPayload()
+        remote.clients = [ClientDTO(syncID: "C1", updatedAt: Date(), deletedAt: nil,
+                                    name: "Remoto", phone: "", email: "", notes: "")]
+        engine.merge(remote)
+        XCTAssertEqual(find(context, "C1")?.needsPush, false)
+    }
+
+    func test_syncPushesPendingClearsFlagAndAdvancesCursor() async throws {
+        let context = try freshContext()
+        let repo = ClientVehicleRepository(context: context)
+        _ = repo.upsertClient(name: "Local") // needsPush == true
+        repo.save()
+
+        let transport = StubTransport(response: {
+            var p = SyncPayload(deviceID: "server")
+            p.maxSeq = 42
+            return p
+        }())
+        let result = try await SyncEngine(context: context).sync(using: transport, cursor: 0)
+
+        XCTAssertEqual(result.pushed, 1)
+        XCTAssertEqual(result.cursor, 42)
+        XCTAssertEqual(transport.received?.sinceSeq, 0)
+        XCTAssertEqual(transport.received?.clients.count, 1)
+        // Flag cleared after a successful push.
+        let clients = try context.fetch(FetchDescriptor<ClientRecord>())
+        XCTAssertEqual(clients.first?.needsPush, false)
+    }
+
     private func find(_ context: ModelContext, _ syncID: String) -> ClientRecord? {
         (try? context.fetch(FetchDescriptor<ClientRecord>()))?.first { $0.syncID == syncID }
+    }
+}
+
+/// In-memory transport that records what it was sent and returns a fixed reply.
+private final class StubTransport: SyncTransport {
+    let name = "Stub"
+    var isAvailable = true
+    private(set) var received: SyncPayload?
+    private let response: SyncPayload
+    init(response: SyncPayload) { self.response = response }
+    func exchange(_ payload: SyncPayload) async throws -> SyncPayload {
+        received = payload
+        return response
     }
 }

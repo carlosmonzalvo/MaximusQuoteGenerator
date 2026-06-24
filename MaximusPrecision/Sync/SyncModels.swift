@@ -17,6 +17,8 @@ protocol Syncable: AnyObject {
     var syncID: String { get set }
     var updatedAt: Date { get set }
     var deletedAt: Date? { get set }
+    /// Outbox flag: true when there are local edits not yet pushed to a peer.
+    var needsPush: Bool { get set }
 }
 
 extension Syncable {
@@ -32,6 +34,18 @@ enum DeviceID {
         UserDefaults.standard.set(new, forKey: key)
         return new
     }()
+}
+
+// MARK: - Sync history
+
+/// One entry in the on-device sync history shown to the user.
+struct SyncLogEntry: Codable, Identifiable {
+    var id = UUID()
+    var date: Date
+    var success: Bool
+    var pushed: Int
+    var pulled: Int
+    var message: String
 }
 
 // MARK: - DTOs (Codable wire representation)
@@ -80,9 +94,13 @@ struct ServiceDTO: Codable, Hashable {
 }
 
 /// One sync exchange: a bundle of record snapshots plus the sender's identity.
+/// `sinceSeq` is the client's pull cursor (request); `maxSeq` is the server's
+/// latest sequence (response) which becomes the client's next cursor.
 struct SyncPayload: Codable {
     var deviceID: String = DeviceID.current
     var sentAt: Date = .now
+    var sinceSeq: Int = 0
+    var maxSeq: Int = 0
     var clients: [ClientDTO] = []
     var vehicles: [VehicleDTO] = []
     var services: [ServiceDTO] = []

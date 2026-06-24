@@ -122,6 +122,14 @@ final class ScreenshotTests: XCTestCase {
         snapshot("11-Expediente-auto")
     }
 
+    /// Sync settings + history (seeded for a deterministic capture).
+    func test_captureSyncHistory() {
+        app.terminate()
+        app = XCUIApplication.launchForTesting(extraArguments: [LaunchArgument.seedSyncDemo])
+        RecordsRobot(app).open().openSync()
+        snapshot("17-Sync-historial")
+    }
+
     /// iOS 26 Liquid Glass search living in the tab bar (search-role tab).
     func test_captureGlassTabSearch() {
         let records = RecordsRobot(app).open()
