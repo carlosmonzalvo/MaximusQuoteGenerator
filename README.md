@@ -100,6 +100,34 @@ Habla con Rodolfo, él tiene el team ID configurado. No toques `DEVELOPMENT_TEAM
 
 ---
 
+## Tests de UI (robot pattern)
+
+El target `MaximusPrecisionUITests` maneja los tests de interfaz con el **patrón
+Robot**: cada pantalla tiene un `*Robot` que expone acciones de intención
+(`fillCustomer`, `tapAddPart`, `tapGenerate`) y oculta los `XCUIElement` de los
+test bodies. Los identifiers viven en `AccessibilityIdentifiers.swift`,
+compilado en la app **y** en el bundle de tests para que nunca se desincronicen.
+
+Correr los tests:
+
+```bash
+xcodebuild test -scheme MaximusPrecision \
+  -destination 'platform=iOS Simulator,name=iPhone 16'
+```
+
+Estructura:
+
+- `Support/Robot.swift` — base con `tap`, `type`, `assertExists`, `element(id:)`
+- `Support/XCUIApplication+Maximus.swift` — `launchForTesting()` (salta el splash)
+- `Robots/` — `QuoteFormRobot`, `ItemEditRobot`, `PDFPreviewRobot`
+- `QuoteFlowUITests.swift` — flujos end-to-end
+
+La app entiende el launch argument `-uiTesting` (ver `LaunchArgument`) para
+arrancar determinista y sin el splash de 2s.
+
+> El target se generó con `scripts/add_uitests_target.rb` (gem `xcodeproj`). Es
+> idempotente: re-córrelo si agregas archivos de test nuevos.
+
 ## Qué hace la app
 
 - Formulario de cliente y vehículo

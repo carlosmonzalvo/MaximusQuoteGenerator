@@ -16,6 +16,10 @@ final class QuoteFormViewModel: ObservableObject {
     @Published var showError = false
     @Published var errorMessage = ""
 
+    /// Generated once and reused for both the on-screen header and the PDF so
+    /// the folio shown to the user always matches the document.
+    let folio = String(UUID().uuidString.prefix(8)).uppercased()
+
     private let calculator = QuoteCalculatorService()
 
     var subtotal: Double {
@@ -71,7 +75,7 @@ final class QuoteFormViewModel: ObservableObject {
         }
 
         return Quote(
-            folio: String(UUID().uuidString.prefix(8)).uppercased(),
+            folio: folio,
             date: Date(),
             customer: Customer(name: customerName, phone: customerPhone),
             vehicle: Vehicle(

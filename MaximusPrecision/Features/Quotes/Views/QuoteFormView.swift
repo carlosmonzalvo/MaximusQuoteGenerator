@@ -7,6 +7,7 @@ private struct MXField: View {
     @Binding var text: String
     var keyboard: UIKeyboardType = .default
     var autocap: TextInputAutocapitalization = .sentences
+    var identifier: String? = nil
 
     var body: some View {
         VStack(alignment: .leading, spacing: 3) {
@@ -22,18 +23,15 @@ private struct MXField: View {
                 .tint(MXTheme.accent)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 11)
-                .background(MXTheme.surfaceAlt)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(MXTheme.borderLight, lineWidth: 1.5)
-                )
+                .mxFieldBackground()
+                .accessibilityIdentifier(identifier ?? "")
         }
     }
 }
 
 private struct TemplateChipBtn: View {
     let template: QuoteTemplate
+    var identifier: String? = nil
     let onTap: () -> Void
 
     var body: some View {
@@ -48,14 +46,10 @@ private struct TemplateChipBtn: View {
             }
             .padding(.horizontal, 12)
             .padding(.vertical, 9)
-            .background(MXTheme.surfaceAlt)
-            .clipShape(RoundedRectangle(cornerRadius: 8))
-            .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(MXTheme.borderLight, lineWidth: 1.5)
-            )
+            .mxFieldBackground()
         }
         .buttonStyle(.plain)
+        .accessibilityIdentifier(identifier ?? "")
     }
 
     private var shortTitle: String {
@@ -82,37 +76,46 @@ private struct MXSectionDivider: View {
 
 private struct LineItemCard: View {
     let item: QuoteItem
+    var identifier: String? = nil
+    var deleteIdentifier: String? = nil
     let onTap: () -> Void
     let onDelete: () -> Void
 
     var body: some View {
         HStack(spacing: 10) {
-            RoundedRectangle(cornerRadius: 2)
-                .fill(item.type == .part ? MXTheme.partBlue : MXTheme.laborGreen)
-                .frame(width: 4)
+            Button(action: onTap) {
+                HStack(spacing: 10) {
+                    RoundedRectangle(cornerRadius: 2)
+                        .fill(item.type == .part ? MXTheme.partBlue : MXTheme.laborGreen)
+                        .frame(width: 4)
 
-            VStack(alignment: .leading, spacing: 3) {
-                Text(item.title.isEmpty ? "Sin título" : item.title)
-                    .font(.system(size: 15, weight: .medium))
-                    .foregroundStyle(item.title.isEmpty ? MXTheme.muted : MXTheme.text)
-                if !item.detail.isEmpty {
-                    Text(item.detail)
-                        .font(.system(size: 12))
-                        .foregroundStyle(MXTheme.muted)
-                        .lineLimit(1)
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text(item.title.isEmpty ? "Sin título" : item.title)
+                            .font(.system(size: 15, weight: .medium))
+                            .foregroundStyle(item.title.isEmpty ? MXTheme.muted : MXTheme.text)
+                        if !item.detail.isEmpty {
+                            Text(item.detail)
+                                .font(.system(size: 12))
+                                .foregroundStyle(MXTheme.muted)
+                                .lineLimit(1)
+                        }
+                        if item.quantity != 1 || item.unitPrice == 0 {
+                            Text("Cant: \(item.quantity.formatted(.number)) · \(item.type.rawValue)")
+                                .font(.system(size: 11))
+                                .foregroundStyle(MXTheme.dim)
+                        }
+                    }
+
+                    Spacer()
+
+                    Text(item.total, format: .currency(code: "MXN"))
+                        .font(.system(size: 14, weight: .semibold, design: .monospaced))
+                        .foregroundStyle(MXTheme.accent)
                 }
-                if item.quantity != 1 || item.unitPrice == 0 {
-                    Text("Cant: \(item.quantity.formatted(.number)) · \(item.type.rawValue)")
-                        .font(.system(size: 11))
-                        .foregroundStyle(MXTheme.dim)
-                }
+                .contentShape(Rectangle())
             }
-
-            Spacer()
-
-            Text(item.total, format: .currency(code: "MXN"))
-                .font(.system(size: 14, weight: .semibold, design: .monospaced))
-                .foregroundStyle(MXTheme.accent)
+            .buttonStyle(.plain)
+            .accessibilityIdentifier(identifier ?? "")
 
             Button(action: onDelete) {
                 Image(systemName: "xmark")
@@ -123,6 +126,7 @@ private struct LineItemCard: View {
                     .clipShape(Circle())
             }
             .buttonStyle(.plain)
+            .accessibilityIdentifier(deleteIdentifier ?? "")
         }
         .padding(.vertical, 10)
         .padding(.horizontal, 10)
@@ -132,8 +136,6 @@ private struct LineItemCard: View {
             RoundedRectangle(cornerRadius: 8)
                 .stroke(MXTheme.border, lineWidth: 1)
         )
-        .contentShape(Rectangle())
-        .onTapGesture(perform: onTap)
     }
 }
 
@@ -164,9 +166,10 @@ struct ItemEditSheet: View {
                             }
                         }
                         .pickerStyle(.segmented)
+                        .accessibilityIdentifier(A11y.ItemEdit.typePicker)
                     }
 
-                    MXField(label: "Concepto", text: $item.title)
+                    MXField(label: "Concepto", text: $item.title, identifier: A11y.ItemEdit.title)
 
                     VStack(alignment: .leading, spacing: 3) {
                         Text("DESCRIPCIÓN")
@@ -179,12 +182,8 @@ struct ItemEditSheet: View {
                             .lineLimit(2...5)
                             .tint(MXTheme.accent)
                             .padding(12)
-                            .background(MXTheme.surfaceAlt)
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(MXTheme.borderLight, lineWidth: 1.5)
-                            )
+                            .mxFieldBackground()
+                            .accessibilityIdentifier(A11y.ItemEdit.detail)
                     }
 
                     HStack(spacing: 12) {
@@ -200,12 +199,8 @@ struct ItemEditSheet: View {
                                 .tint(MXTheme.accent)
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 11)
-                                .background(MXTheme.surfaceAlt)
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(MXTheme.borderLight, lineWidth: 1.5)
-                                )
+                                .mxFieldBackground()
+                                .accessibilityIdentifier(A11y.ItemEdit.quantity)
                         }
 
                         VStack(alignment: .leading, spacing: 3) {
@@ -220,12 +215,8 @@ struct ItemEditSheet: View {
                                 .tint(MXTheme.accent)
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 11)
-                                .background(MXTheme.surfaceAlt)
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(MXTheme.borderLight, lineWidth: 1.5)
-                                )
+                                .mxFieldBackground()
+                                .accessibilityIdentifier(A11y.ItemEdit.unitPrice)
                         }
                     }
 
@@ -237,6 +228,7 @@ struct ItemEditSheet: View {
                         Text(item.total, format: .currency(code: "MXN"))
                             .font(.system(size: 20, weight: .bold, design: .monospaced))
                             .foregroundStyle(MXTheme.accent)
+                            .accessibilityIdentifier(A11y.ItemEdit.total)
                     }
                     .padding(.horizontal, 14)
                     .padding(.vertical, 16)
@@ -263,10 +255,12 @@ struct ItemEditSheet: View {
                     }
                     .foregroundStyle(MXTheme.accent)
                     .fontWeight(.semibold)
+                    .accessibilityIdentifier(A11y.ItemEdit.done)
                 }
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Cancelar") { dismiss() }
                         .foregroundStyle(MXTheme.muted)
+                        .accessibilityIdentifier(A11y.ItemEdit.cancel)
                 }
             }
         }
@@ -282,7 +276,6 @@ struct QuoteFormView: View {
     @State private var showPDFPreview = false
     @State private var editingItem: QuoteItem?
     private let pdfGenerator = PDFGeneratorService()
-    private let folio = String(UUID().uuidString.prefix(8)).uppercased()
 
     var body: some View {
         NavigationStack {
@@ -332,24 +325,26 @@ struct QuoteFormView: View {
                     .font(.system(size: 22, weight: .bold))
                     .foregroundStyle(MXTheme.text)
                 Spacer()
-                Text("#\(folio)")
+                Text("#\(vm.folio)")
                     .font(.system(size: 11, weight: .medium, design: .monospaced))
                     .foregroundStyle(MXTheme.muted)
             }
 
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 6) {
-                MXField(label: "Nombre", text: $vm.customerName)
-                MXField(label: "Teléfono", text: $vm.customerPhone, keyboard: .phonePad)
-                MXField(label: "Marca", text: $vm.vehicleBrand)
-                MXField(label: "Modelo", text: $vm.vehicleModel)
-                MXField(label: "Año", text: $vm.vehicleYear, keyboard: .numberPad)
-                MXField(label: "Placas", text: $vm.vehiclePlate, autocap: .characters)
+                MXField(label: "Nombre", text: $vm.customerName, identifier: A11y.QuoteForm.customerName)
+                MXField(label: "Teléfono", text: $vm.customerPhone, keyboard: .phonePad, identifier: A11y.QuoteForm.customerPhone)
+                MXField(label: "Marca", text: $vm.vehicleBrand, identifier: A11y.QuoteForm.vehicleBrand)
+                MXField(label: "Modelo", text: $vm.vehicleModel, identifier: A11y.QuoteForm.vehicleModel)
+                MXField(label: "Año", text: $vm.vehicleYear, keyboard: .numberPad, identifier: A11y.QuoteForm.vehicleYear)
+                MXField(label: "Placas", text: $vm.vehiclePlate, autocap: .characters, identifier: A11y.QuoteForm.vehiclePlate)
             }
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 6) {
-                    ForEach(defaultTemplates) { tpl in
-                        TemplateChipBtn(template: tpl) { vm.addTemplate(tpl) }
+                    ForEach(Array(defaultTemplates.enumerated()), id: \.element.id) { index, tpl in
+                        TemplateChipBtn(template: tpl, identifier: A11y.QuoteForm.templateChip(index)) {
+                            vm.addTemplate(tpl)
+                        }
                     }
                 }
             }
@@ -361,6 +356,9 @@ struct QuoteFormView: View {
         .overlay(alignment: .bottom) {
             Rectangle().fill(MXTheme.border).frame(height: 1)
         }
+        // Tap anywhere on the header chrome to dismiss the keyboard.
+        .contentShape(Rectangle())
+        .onTapGesture { hideKeyboard() }
     }
 
     // MARK: Items
@@ -380,11 +378,15 @@ struct QuoteFormView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 36)
+                .accessibilityElement(children: .combine)
+                .accessibilityIdentifier(A11y.QuoteForm.emptyState)
             } else {
                 VStack(spacing: 6) {
-                    ForEach(vm.items) { item in
+                    ForEach(Array(vm.items.enumerated()), id: \.element.id) { index, item in
                         LineItemCard(
                             item: item,
+                            identifier: A11y.QuoteForm.lineItem(index),
+                            deleteIdentifier: A11y.QuoteForm.deleteItem(index),
                             onTap: { editingItem = item },
                             onDelete: { vm.items.removeAll { $0.id == item.id } }
                         )
@@ -396,6 +398,7 @@ struct QuoteFormView: View {
                 addButton(
                     label: "+ Refacción",
                     color: MXTheme.partBlue,
+                    identifier: A11y.QuoteForm.addPart,
                     action: {
                         vm.addPart()
                         editingItem = vm.items.last
@@ -404,6 +407,7 @@ struct QuoteFormView: View {
                 addButton(
                     label: "+ M. de obra",
                     color: MXTheme.laborGreen,
+                    identifier: A11y.QuoteForm.addLabor,
                     action: {
                         vm.addLabor()
                         editingItem = vm.items.last
@@ -414,7 +418,7 @@ struct QuoteFormView: View {
         }
     }
 
-    private func addButton(label: String, color: Color, action: @escaping () -> Void) -> some View {
+    private func addButton(label: String, color: Color, identifier: String, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             HStack(spacing: 6) {
                 Circle().fill(color).frame(width: 7, height: 7)
@@ -432,6 +436,7 @@ struct QuoteFormView: View {
             )
         }
         .buttonStyle(.plain)
+        .accessibilityIdentifier(identifier)
     }
 
     // MARK: Notes
@@ -445,12 +450,8 @@ struct QuoteFormView: View {
                 .lineLimit(3...6)
                 .tint(MXTheme.accent)
                 .padding(12)
-                .background(MXTheme.surfaceAlt)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(MXTheme.borderLight, lineWidth: 1)
-                )
+                .mxFieldBackground(borderWidth: 1)
+                .accessibilityIdentifier(A11y.QuoteForm.notes)
         }
     }
 
@@ -468,6 +469,7 @@ struct QuoteFormView: View {
                     .foregroundStyle(MXTheme.accent)
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
+                    .accessibilityIdentifier(A11y.QuoteForm.total)
             }
 
             Spacer()
@@ -482,6 +484,7 @@ struct QuoteFormView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             }
             .buttonStyle(.plain)
+            .accessibilityIdentifier(A11y.QuoteForm.generatePDF)
         }
         .padding(.horizontal, 16)
         .padding(.top, 12)

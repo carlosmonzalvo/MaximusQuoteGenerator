@@ -12,6 +12,9 @@ struct SplashView: View {
     @State private var scale: CGFloat = 0.92
     @State private var opacity = 0.6
 
+    /// How long the splash stays up before transitioning. Tests skip it entirely.
+    private let splashDuration: TimeInterval = 2.0
+
     var body: some View {
         Group {
             if isActive {
@@ -32,20 +35,31 @@ struct SplashView: View {
                                  .stroke(Color.white.opacity(0.15), lineWidth: 2)
                             )
                             .shadow(color: .black.opacity(0.5), radius: 12, x: 0, y: 8)
+                            .scaleEffect(scale)
+                            .opacity(opacity)
                     }
                 }
-                .onAppear {
-                    withAnimation(.easeInOut(duration: 1.0)) {
-                        scale = 1.0
-                        opacity = 1.0
-                    }
+                .accessibilityIdentifier(A11y.Splash.root)
+                .onAppear(perform: startSplash)
+            }
+        }
+    }
 
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                        withAnimation(.easeInOut(duration: 0.35)) {
-                            isActive = true
-                        }
-                    }
-                }
+    private func startSplash() {
+        // Under UI tests, skip straight to the form for fast, deterministic runs.
+        guard !LaunchArgument.shouldSkipSplash else {
+            isActive = true
+            return
+        }
+
+        withAnimation(.easeInOut(duration: 1.0)) {
+            scale = 1.0
+            opacity = 1.0
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + splashDuration) {
+            withAnimation(.easeInOut(duration: 0.35)) {
+                isActive = true
             }
         }
     }
