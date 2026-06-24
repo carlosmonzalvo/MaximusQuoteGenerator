@@ -167,5 +167,26 @@ enum VehicleCatalogSeed {
             ModelSeed(name: "CX-90", yearStart: 2024, trims: ["Preferred", "Premium", "Signature"]),
             ModelSeed(name: "MX-5", yearStart: 2016, trims: ["i Sport", "Grand Touring", "RF"]),
         ]),
+
+        // Tier 3 — the next 2 makes.
+        MakeSeed(name: "SEAT", rank: 7, tier: 3, models: [
+            ModelSeed(name: "Ibiza", yearStart: 2015, trims: ["Reference", "Style", "Xcellence", "FR"]),
+            ModelSeed(name: "León", yearStart: 2015, trims: ["Reference", "Style", "Xcellence", "FR", "Cupra"]),
+            ModelSeed(name: "Toledo", yearStart: 2015, trims: ["Reference", "Style", "Xcellence"]),
+            ModelSeed(name: "Arona", yearStart: 2018, trims: ["Reference", "Style", "Xcellence", "FR"]),
+            ModelSeed(name: "Ateca", yearStart: 2017, trims: ["Reference", "Style", "Xcellence", "FR"]),
+            ModelSeed(name: "Tarraco", yearStart: 2019, trims: ["Style", "Xcellence", "FR"]),
+            ModelSeed(name: "Alhambra", yearStart: 2015, trims: ["Style", "Xcellence"]),
+            ModelSeed(name: "Córdoba", yearStart: 2015, trims: ["Reference", "Style"]),
+        ]),
+
+        MakeSeed(name: "Cupra", rank: 8, tier: 3, models: [
+            ModelSeed(name: "León", yearStart: 2021, trims: ["V", "VZ"]),
+            ModelSeed(name: "Formentor", yearStart: 2021, trims: ["V", "VZ", "VZ Performance"]),
+            ModelSeed(name: "Ateca", yearStart: 2021, trims: ["VZ"]),
+            ModelSeed(name: "Born", yearStart: 2023, trims: ["V", "VZ"]),
+            ModelSeed(name: "Terramar", yearStart: 2025, trims: ["V", "VZ"]),
+            ModelSeed(name: "Tavascan", yearStart: 2025, trims: ["Endurance", "VZ"]),
+        ]),
     ]
 }
