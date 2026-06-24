@@ -1,0 +1,12 @@
+// Config.xcconfig — committed, non-secret sync configuration.
+//
+// The API secret is kept out of git in Secrets.xcconfig (gitignored). The
+// `#include?` is optional, so the project still builds for a dev who hasn't
+// created Secrets.xcconfig yet — sync simply won't authenticate until they do.
+// Copy Secrets.example.xcconfig → Secrets.xcconfig and paste the real secret.
+
+#include? "Secrets.xcconfig"
+
+// The `$()` splits the "//" so xcconfig doesn't treat it as a comment.
+MAXIMUS_API_URL = https:/$()/maximus-api-production-e2bd.up.railway.app
+MAXIMUS_API_KEY = mxk_18957c2385926230c5de4f808351c942

@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>MaximusAPIURL</key>
+	<string>$(MAXIMUS_API_URL)</string>
+	<key>MaximusAPIKey</key>
+	<string>$(MAXIMUS_API_KEY)</string>
+	<key>MaximusAPISecret</key>
+	<string>$(MAXIMUS_API_SECRET)</string>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UILaunchScreen</key>

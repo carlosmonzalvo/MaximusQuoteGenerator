@@ -40,11 +40,16 @@ final class SyncCenter: ObservableObject {
 
     private let defaults: UserDefaults
 
-    /// The deployed backend + credentials, prefilled so it works out of the box
-    /// once enabled. Single-tenant shared secret for this private shop tool.
-    static let defaultURL = "https://maximus-api-production-e2bd.up.railway.app"
-    static let defaultKey = "mxk_18957c2385926230c5de4f808351c942"
-    static let defaultSecret = "mxs_ATkLthbBdoj_nYbj_yCyYLZGo8v6Iqo0Z5noIXVq5Jo"
+    /// Backend + credentials come from the build configuration (Config.xcconfig
+    /// → Info.plist), so the secret stays out of source and no dev has to wire
+    /// it by hand beyond creating Secrets.xcconfig once.
+    static var defaultURL: String { bundleValue("MaximusAPIURL") }
+    static var defaultKey: String { bundleValue("MaximusAPIKey") }
+    static var defaultSecret: String { bundleValue("MaximusAPISecret") }
+
+    private static func bundleValue(_ key: String) -> String {
+        (Bundle.main.object(forInfoDictionaryKey: key) as? String) ?? ""
+    }
 
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
