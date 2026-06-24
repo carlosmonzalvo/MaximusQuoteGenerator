@@ -19,6 +19,20 @@ extension View {
     }
 }
 
+extension View {
+    /// Shared input chrome (fill + rounded clip + stroked border) used by every
+    /// text field in the form so the styling lives in one place.
+    func mxFieldBackground(cornerRadius: CGFloat = 8, borderWidth: CGFloat = 1.5) -> some View {
+        self
+            .background(MXTheme.surfaceAlt)
+            .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+            .overlay(
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .stroke(MXTheme.borderLight, lineWidth: borderWidth)
+            )
+    }
+}
+
 extension Color {
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)

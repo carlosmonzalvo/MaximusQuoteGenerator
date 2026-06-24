@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13A1CF02CCD8B356007CFF53 /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B770C53ABE79803941E540EE /* Robot.swift */; };
+		179DC8A0A7CF54F6C39A617F /* QuoteFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC74BA906E89FFD0B3A36ED /* QuoteFlowUITests.swift */; };
+		3392BBEA27C8E009CCE0C1AE /* PDFPreviewRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D99BCDD5984A9451F134E5 /* PDFPreviewRobot.swift */; };
 		3AC45A1E2F80D1690007E674 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC45A1D2F80D15F0007E674 /* UIApplication+Extensions.swift */; };
 		3AFBBB5F2F8AF8FF00B3F4AD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBBB5E2F8AF8EB00B3F4AD /* SplashView.swift */; };
+		50F2DF4F9AFC025277AA918D /* ItemEditRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014683654708E91F1B2E5D04 /* ItemEditRobot.swift */; };
+		56F9F178C5BDFB4FDA82A86C /* QuoteFormRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DF859E92A2D09B6BE39BF4 /* QuoteFormRobot.swift */; };
+		8559538D1A8BB86AF204B0BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 962E92589EE5DD533D4321D5 /* Foundation.framework */; };
+		9B6DCF14271448526804147E /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977AF70B214A61CFDF922C6 /* AccessibilityIdentifiers.swift */; };
 		A00000000000000000000001 /* MaximusPrecisionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000011 /* MaximusPrecisionApp.swift */; };
 		A00000000000000000000002 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000012 /* Customer.swift */; };
 		A00000000000000000000003 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000013 /* Vehicle.swift */; };
@@ -22,12 +29,30 @@
 		A0000000000000000000000B /* PDFPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000001B /* PDFPreviewView.swift */; };
 		A0000000000000000000000C /* QuoteFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000001C /* QuoteFormView.swift */; };
 		A0000000000000000000000D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000001D /* Assets.xcassets */; };
+		ED0C32213F25EEADE796AFEB /* XCUIApplication+Maximus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A4B77E37C178A060D52C61 /* XCUIApplication+Maximus.swift */; };
+		EE1925C77A7BE4EC2563C50A /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977AF70B214A61CFDF922C6 /* AccessibilityIdentifiers.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		64389A9520B01354FEEA1D9E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0000000000000000000002E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0000000000000000000002A;
+			remoteInfo = MaximusPrecision;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		014683654708E91F1B2E5D04 /* ItemEditRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ItemEditRobot.swift; path = MaximusPrecisionUITests/Robots/ItemEditRobot.swift; sourceTree = "<group>"; };
+		18D99BCDD5984A9451F134E5 /* PDFPreviewRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PDFPreviewRobot.swift; path = MaximusPrecisionUITests/Robots/PDFPreviewRobot.swift; sourceTree = "<group>"; };
+		20A4B77E37C178A060D52C61 /* XCUIApplication+Maximus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "XCUIApplication+Maximus.swift"; path = "MaximusPrecisionUITests/Support/XCUIApplication+Maximus.swift"; sourceTree = "<group>"; };
 		3AC45A1D2F80D15F0007E674 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		3AFBBB5E2F8AF8EB00B3F4AD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3AFBBB602F8B06A000B3F4AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4CC74BA906E89FFD0B3A36ED /* QuoteFlowUITests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuoteFlowUITests.swift; path = MaximusPrecisionUITests/QuoteFlowUITests.swift; sourceTree = "<group>"; };
+		543711E57D06BF416FF20367 /* MaximusPrecisionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaximusPrecisionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		962E92589EE5DD533D4321D5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		A0000000000000000000000E /* MaximusPrecision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaximusPrecision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A00000000000000000000011 /* MaximusPrecisionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaximusPrecisionApp.swift; sourceTree = "<group>"; };
 		A00000000000000000000012 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
@@ -42,9 +67,20 @@
 		A0000000000000000000001B /* PDFPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewView.swift; sourceTree = "<group>"; };
 		A0000000000000000000001C /* QuoteFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteFormView.swift; sourceTree = "<group>"; };
 		A0000000000000000000001D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B770C53ABE79803941E540EE /* Robot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Robot.swift; path = MaximusPrecisionUITests/Support/Robot.swift; sourceTree = "<group>"; };
+		C977AF70B214A61CFDF922C6 /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AccessibilityIdentifiers.swift; path = MaximusPrecision/Support/AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
+		D6DF859E92A2D09B6BE39BF4 /* QuoteFormRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuoteFormRobot.swift; path = MaximusPrecisionUITests/Robots/QuoteFormRobot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		461033FD9AF4678768DA6998 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8559538D1A8BB86AF204B0BD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A0000000000000000000001E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -55,6 +91,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13DF45379615F6F2725B9679 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3E0AF0AAD85697723B7DC396 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3AC45A1C2F80D1240007E674 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -63,11 +107,34 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		3E0AF0AAD85697723B7DC396 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				962E92589EE5DD533D4321D5 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		957C063244E1236AF76230C0 /* MaximusPrecisionUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4CC74BA906E89FFD0B3A36ED /* QuoteFlowUITests.swift */,
+				014683654708E91F1B2E5D04 /* ItemEditRobot.swift */,
+				18D99BCDD5984A9451F134E5 /* PDFPreviewRobot.swift */,
+				D6DF859E92A2D09B6BE39BF4 /* QuoteFormRobot.swift */,
+				B770C53ABE79803941E540EE /* Robot.swift */,
+				20A4B77E37C178A060D52C61 /* XCUIApplication+Maximus.swift */,
+			);
+			name = MaximusPrecisionUITests;
+			sourceTree = SOURCE_ROOT;
+		};
 		A0000000000000000000001F = {
 			isa = PBXGroup;
 			children = (
 				A00000000000000000000020 /* MaximusPrecision */,
 				A00000000000000000000021 /* Products */,
+				13DF45379615F6F2725B9679 /* Frameworks */,
+				957C063244E1236AF76230C0 /* MaximusPrecisionUITests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,6 +147,7 @@
 				A00000000000000000000024 /* Services */,
 				3AC45A1C2F80D1240007E674 /* Extensions */,
 				A00000000000000000000025 /* Resources */,
+				BCFE520F9437F6BE6E3C840C /* Support */,
 			);
 			path = MaximusPrecision;
 			sourceTree = "<group>";
@@ -88,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				A0000000000000000000000E /* MaximusPrecision.app */,
+				543711E57D06BF416FF20367 /* MaximusPrecisionUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -166,9 +235,35 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		BCFE520F9437F6BE6E3C840C /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				C977AF70B214A61CFDF922C6 /* AccessibilityIdentifiers.swift */,
+			);
+			name = Support;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		076670CC7C261610934AC4B7 /* MaximusPrecisionUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27EB6A8FE2EE910C8C752C7D /* Build configuration list for PBXNativeTarget "MaximusPrecisionUITests" */;
+			buildPhases = (
+				CED6597ABE6FDC700F1A24CF /* Sources */,
+				461033FD9AF4678768DA6998 /* Frameworks */,
+				2F8DBA4652FF3E8BF1576FBD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6C6FE1E64BE4633204338499 /* PBXTargetDependency */,
+			);
+			name = MaximusPrecisionUITests;
+			productName = MaximusPrecisionUITests;
+			productReference = 543711E57D06BF416FF20367 /* MaximusPrecisionUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		A0000000000000000000002A /* MaximusPrecision */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0000000000000000000002B /* Build configuration list for PBXNativeTarget "MaximusPrecision" */;
@@ -215,11 +310,19 @@
 			projectRoot = "";
 			targets = (
 				A0000000000000000000002A /* MaximusPrecision */,
+				076670CC7C261610934AC4B7 /* MaximusPrecisionUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2F8DBA4652FF3E8BF1576FBD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A0000000000000000000002D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -249,12 +352,55 @@
 				A0000000000000000000000B /* PDFPreviewView.swift in Sources */,
 				A0000000000000000000000C /* QuoteFormView.swift in Sources */,
 				3AFBBB5F2F8AF8FF00B3F4AD /* SplashView.swift in Sources */,
+				9B6DCF14271448526804147E /* AccessibilityIdentifiers.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CED6597ABE6FDC700F1A24CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE1925C77A7BE4EC2563C50A /* AccessibilityIdentifiers.swift in Sources */,
+				179DC8A0A7CF54F6C39A617F /* QuoteFlowUITests.swift in Sources */,
+				50F2DF4F9AFC025277AA918D /* ItemEditRobot.swift in Sources */,
+				3392BBEA27C8E009CCE0C1AE /* PDFPreviewRobot.swift in Sources */,
+				56F9F178C5BDFB4FDA82A86C /* QuoteFormRobot.swift in Sources */,
+				13A1CF02CCD8B356007CFF53 /* Robot.swift in Sources */,
+				ED0C32213F25EEADE796AFEB /* XCUIApplication+Maximus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		6C6FE1E64BE4633204338499 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MaximusPrecision;
+			target = A0000000000000000000002A /* MaximusPrecision */;
+			targetProxy = 64389A9520B01354FEEA1D9E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		2335D17D44AA3059722F1F38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YFJ48SR2KW;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maximusprecision.app.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MaximusPrecision;
+			};
+			name = Debug;
+		};
 		A00000000000000000000030 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -356,9 +502,38 @@
 			};
 			name = Release;
 		};
+		A35C2B1274A25683340BBFE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YFJ48SR2KW;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maximusprecision.app.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MaximusPrecision;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		27EB6A8FE2EE910C8C752C7D /* Build configuration list for PBXNativeTarget "MaximusPrecisionUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A35C2B1274A25683340BBFE3 /* Release */,
+				2335D17D44AA3059722F1F38 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A0000000000000000000002B /* Build configuration list for PBXNativeTarget "MaximusPrecision" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
