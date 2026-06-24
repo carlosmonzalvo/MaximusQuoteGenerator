@@ -59,6 +59,11 @@ if File.exist?(scheme_file)
   scheme = Xcodeproj::XCScheme.new(scheme_file)
   unless scheme.test_action.testables.any? { |t| t.buildable_references.any? { |b| b.target_name == UNIT_NAME } }
     scheme.test_action.add_testable(Xcodeproj::XCScheme::TestAction::TestableReference.new(unit_target))
+    # Keep Run/Profile pointed at the app so the simulator still launches.
+    scheme.launch_action.buildable_product_runnable =
+      Xcodeproj::XCScheme::BuildableProductRunnable.new(app_target)
+    scheme.profile_action.buildable_product_runnable =
+      Xcodeproj::XCScheme::BuildableProductRunnable.new(app_target)
     scheme.save_as(PROJECT_PATH, APP_TARGET, true)
     puts "Added #{UNIT_NAME} to scheme test action"
   end
