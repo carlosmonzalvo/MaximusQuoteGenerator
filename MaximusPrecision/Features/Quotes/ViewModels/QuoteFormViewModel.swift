@@ -45,6 +45,21 @@ final class QuoteFormViewModel: ObservableObject {
     func toggleIVA() { includesIVA.toggle() }
     func toggleCardFee() { includesCardFee.toggle() }
 
+    // MARK: Year range
+
+    /// Catalog floor — models earlier than this are out of scope.
+    let catalogStartYear = 2015
+
+    var currentYear: Int {
+        Calendar.current.component(.year, from: Date())
+    }
+
+    /// Lower bound for the year picker: the model's first year when known,
+    /// otherwise the catalog floor.
+    func minYear(forModelYearStart yearStart: Int?) -> Int {
+        max(catalogStartYear, yearStart ?? catalogStartYear)
+    }
+
     func addPart() {
         items.append(QuoteItem(type: .part))
     }

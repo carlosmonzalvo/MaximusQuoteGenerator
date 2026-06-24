@@ -149,6 +149,15 @@ final class QuoteFlowUITests: XCTestCase {
             .assertModel("Versa")
     }
 
+    /// The year picker fills the Año field with the chosen year.
+    func test_yearPicker_setsYear() {
+        let form = QuoteFormRobot(app).assertVisible()
+        let picker = form.openYearPicker()
+        picker.assertVisible()
+        let (returned, year) = picker.pickYear(0)   // newest year
+        returned.assertYear(year)
+    }
+
     /// Deleting the only line item returns the form to its empty state.
     func test_deleteLineItem_returnsToEmptyState() {
         let form = QuoteFormRobot(app)

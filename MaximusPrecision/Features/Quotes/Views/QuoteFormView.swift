@@ -29,6 +29,40 @@ private struct MXField: View {
     }
 }
 
+/// A field that looks like `MXField` but opens a picker instead of a keyboard.
+private struct MXPickerField: View {
+    let label: String
+    let value: String
+    var placeholder: String = "Elegir"
+    var identifier: String? = nil
+    let onTap: () -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 3) {
+            Text(label.uppercased())
+                .font(.system(size: 10, weight: .medium))
+                .foregroundStyle(MXTheme.muted)
+                .kerning(0.8)
+            Button(action: onTap) {
+                HStack(spacing: 6) {
+                    Text(value.isEmpty ? placeholder : value)
+                        .font(.system(size: 15))
+                        .foregroundStyle(value.isEmpty ? MXTheme.dim : MXTheme.text)
+                    Spacer(minLength: 0)
+                    Image(systemName: "chevron.down")
+                        .font(.system(size: 11, weight: .semibold))
+                        .foregroundStyle(MXTheme.muted)
+                }
+                .padding(.horizontal, 12)
+                .padding(.vertical, 11)
+                .mxFieldBackground()
+            }
+            .buttonStyle(.plain)
+            .accessibilityIdentifier(identifier ?? "")
+        }
+    }
+}
+
 private struct TemplateChipBtn: View {
     let template: QuoteTemplate
     var identifier: String? = nil
@@ -284,6 +318,7 @@ struct QuoteFormView: View {
     @State private var modelOptions: [ModelOption] = []
     @State private var selectedModel: ModelOption?
     @State private var showVersionPicker = false
+    @State private var showYearPicker = false
 
     var body: some View {
         NavigationStack {
@@ -326,6 +361,15 @@ struct QuoteFormView: View {
                     VersionPickerSheet(modelName: model.name, trims: model.trims) { trim in
                         vm.vehicleModel = trim.map { "\(model.name) \($0)" } ?? model.name
                     }
+                }
+            }
+            .sheet(isPresented: $showYearPicker) {
+                YearPickerSheet(
+                    minYear: vm.minYear(forModelYearStart: selectedModel?.yearStart),
+                    maxYear: vm.currentYear,
+                    selected: Int(vm.vehicleYear)
+                ) { year in
+                    vm.vehicleYear = String(year)
                 }
             }
         }
@@ -376,7 +420,10 @@ struct QuoteFormView: View {
                 MXField(label: "Teléfono", text: $vm.customerPhone, keyboard: .phonePad, identifier: A11y.QuoteForm.customerPhone)
                 MXField(label: "Marca", text: $vm.vehicleBrand, identifier: A11y.QuoteForm.vehicleBrand)
                 MXField(label: "Modelo", text: $vm.vehicleModel, identifier: A11y.QuoteForm.vehicleModel)
-                MXField(label: "Año", text: $vm.vehicleYear, keyboard: .numberPad, identifier: A11y.QuoteForm.vehicleYear)
+                MXPickerField(label: "Año", value: vm.vehicleYear, identifier: A11y.QuoteForm.yearField) {
+                    hideKeyboard()
+                    showYearPicker = true
+                }
                 MXField(label: "Placas", text: $vm.vehiclePlate, autocap: .characters, identifier: A11y.QuoteForm.vehiclePlate)
             }
 

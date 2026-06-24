@@ -11,6 +11,9 @@ Capturas reales del simulador (iPhone 16) generadas por
 ### Versión opcional (sheet)
 ![Versión opcional](07-Version-sheet.png)
 
+### Año (picker)
+![Year picker](08-Year-picker.png)
+
 ### Cotización con marca/modelo elegidos
 ![Cotización](01-Cotizacion.png)
 
