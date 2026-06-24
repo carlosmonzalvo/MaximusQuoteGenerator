@@ -68,4 +68,22 @@ final class RecordsRobot: Robot {
         tap(element(A11y.Records.vehicleRow(index)))
         return self
     }
+
+    /// iOS 26 only: activate the Liquid Glass search-role tab and type a query.
+    /// Best-effort — silently no-ops if the search affordance isn't present.
+    @discardableResult
+    func searchInTabBar(_ query: String) -> Self {
+        let searchTab = app.tabBars.buttons.matching(
+            NSPredicate(format: "label CONTAINS[c] 'Search' OR label CONTAINS[c] 'Buscar'")
+        ).firstMatch
+        if searchTab.waitForExistence(timeout: 5) {
+            searchTab.tap()
+        }
+        let field = app.searchFields.firstMatch
+        if field.waitForExistence(timeout: 5) {
+            field.tap()
+            field.typeText(query)
+        }
+        return self
+    }
 }

@@ -45,6 +45,17 @@ extension View {
         }
     }
 
+    /// Inline `.searchable` field, used only before iOS 26 — on iOS 26 the
+    /// expedientes search lives in the Liquid Glass tab bar instead.
+    @ViewBuilder
+    func legacyInlineSearch(text: Binding<String>, prompt: String) -> some View {
+        if #available(iOS 26.0, *) {
+            self
+        } else {
+            self.searchable(text: text, prompt: Text(prompt))
+        }
+    }
+
     /// Prominent glass action button surface (tinted, interactive).
     @ViewBuilder
     func glassAction(tint: Color, cornerRadius: CGFloat = 14) -> some View {

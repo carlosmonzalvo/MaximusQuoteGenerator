@@ -10,8 +10,7 @@ import SwiftUI
 import SwiftData
 
 struct RecordsView: View {
-    @Environment(\.modelContext) private var modelContext
-    @StateObject private var vm = RecordsViewModel()
+    @ObservedObject var vm: RecordsViewModel
     @State private var showingAdd = false
 
     var body: some View {
@@ -29,7 +28,7 @@ struct RecordsView: View {
                 list
             }
             .navigationTitle("Expedientes")
-            .searchable(text: $vm.search, prompt: searchPrompt)
+            .legacyInlineSearch(text: $vm.search, prompt: searchPrompt)
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {
@@ -52,7 +51,7 @@ struct RecordsView: View {
             }
             .accessibilityIdentifier(A11y.Records.root)
         }
-        .onAppear { vm.load(context: modelContext) }
+        .onAppear { vm.refresh() }
     }
 
     private var searchPrompt: String {
