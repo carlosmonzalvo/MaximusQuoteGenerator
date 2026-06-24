@@ -1,0 +1,17 @@
+{
+  "name": "maximus-sync",
+  "version": "1.0.0",
+  "description": "Optional sync backend for the Maximus Precision quote app (Redis-backed, last-write-wins).",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "redis": "^4.7.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
