@@ -78,6 +78,13 @@ unless scheme.test_action.testables.any? { |t| t.buildable_references.any? { |b|
   testable = Xcodeproj::XCScheme::TestAction::TestableReference.new(uitest_target)
   scheme.test_action.add_testable(testable)
 end
+# xcodeproj can drop the launch runnable when re-saving an existing scheme,
+# which leaves Run/Profile with "nothing to launch" (sim won't start). Always
+# pin the app as the runnable.
+scheme.launch_action.buildable_product_runnable =
+  Xcodeproj::XCScheme::BuildableProductRunnable.new(app_target)
+scheme.profile_action.buildable_product_runnable =
+  Xcodeproj::XCScheme::BuildableProductRunnable.new(app_target)
 scheme.save_as(PROJECT_PATH, APP_TARGET, true)
 puts "Shared scheme updated: #{APP_TARGET}.xcscheme"
 
