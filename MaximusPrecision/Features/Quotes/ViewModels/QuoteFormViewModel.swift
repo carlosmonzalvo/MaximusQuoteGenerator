@@ -13,6 +13,10 @@ final class QuoteFormViewModel: ObservableObject {
     @Published var items: [QuoteItem] = []
     @Published var notes: String = ""
 
+    @Published var documentType: DocumentType = .quote
+    @Published var includesIVA: Bool = false
+    @Published var includesCardFee: Bool = false
+
     @Published var showError = false
     @Published var errorMessage = ""
 
@@ -26,9 +30,20 @@ final class QuoteFormViewModel: ObservableObject {
         calculator.subtotal(items: items)
     }
 
-    var total: Double {
-        subtotal
+    var ivaAmount: Double {
+        calculator.iva(subtotal: subtotal, enabled: includesIVA)
     }
+
+    var cardFeeAmount: Double {
+        calculator.cardFee(base: subtotal + ivaAmount, enabled: includesCardFee)
+    }
+
+    var total: Double {
+        subtotal + ivaAmount + cardFeeAmount
+    }
+
+    func toggleIVA() { includesIVA.toggle() }
+    func toggleCardFee() { includesCardFee.toggle() }
 
     func addPart() {
         items.append(QuoteItem(type: .part))
@@ -77,6 +92,7 @@ final class QuoteFormViewModel: ObservableObject {
         return Quote(
             folio: folio,
             date: Date(),
+            documentType: documentType,
             customer: Customer(name: customerName, phone: customerPhone),
             vehicle: Vehicle(
                 brand: vehicleBrand,
@@ -85,7 +101,9 @@ final class QuoteFormViewModel: ObservableObject {
                 plate: vehiclePlate
             ),
             items: items,
-            notes: notes
+            notes: notes,
+            includesIVA: includesIVA,
+            includesCardFee: includesCardFee
         )
     }
 }

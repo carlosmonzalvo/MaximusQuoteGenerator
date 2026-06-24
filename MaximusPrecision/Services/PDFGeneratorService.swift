@@ -18,7 +18,7 @@ final class PDFGeneratorService {
     }()
 
     func generatePDF(for quote: Quote) throws -> URL {
-        let fileName = "Cotizacion-\(quote.folio).pdf"
+        let fileName = "\(quote.documentType.fileNamePrefix)-\(quote.folio).pdf"
         let fileURL = FileManager.default.temporaryDirectory.appendingPathComponent(fileName)
 
         let renderer = UIGraphicsPDFRenderer(bounds: CGRect(x: 0, y: 0, width: 612, height: 792))
@@ -52,7 +52,7 @@ final class PDFGeneratorService {
 
             drawText("MAXIMUS PRECISION", font: titleFont, at: CGPoint(x: left, y: y))
             y += 30
-            drawText("Cotización", font: headerFont, at: CGPoint(x: left, y: y))
+            drawText(quote.documentType.title, font: headerFont, at: CGPoint(x: left, y: y))
             y += 22
 
             drawText("Folio: \(quote.folio)", font: bodyFont, at: CGPoint(x: left, y: y))
@@ -110,8 +110,30 @@ final class PDFGeneratorService {
                 y += dynamicRowHeight
             }
 
+            y += 14
+            let totalsLabelX: CGFloat = 360
+            let totalsValueX: CGFloat = 470
+
+            drawText("Subtotal:", font: bodyFont, at: CGPoint(x: totalsLabelX, y: y))
+            drawText(currency(quote.subtotal), font: bodyFont, at: CGPoint(x: totalsValueX, y: y))
             y += 18
-            drawText("Total: \(currency(quote.total))", font: UIFont.boldSystemFont(ofSize: 16), at: CGPoint(x: 410, y: y))
+
+            if quote.includesIVA {
+                drawText("IVA (16%):", font: bodyFont, at: CGPoint(x: totalsLabelX, y: y))
+                drawText(currency(quote.ivaAmount), font: bodyFont, at: CGPoint(x: totalsValueX, y: y))
+                y += 18
+            }
+
+            if quote.includesCardFee {
+                drawText("Comisión tarjeta (4.5%):", font: bodyFont, at: CGPoint(x: totalsLabelX - 70, y: y))
+                drawText(currency(quote.cardFeeAmount), font: bodyFont, at: CGPoint(x: totalsValueX, y: y))
+                y += 18
+            }
+
+            drawLine(from: CGPoint(x: totalsLabelX, y: y + 2), to: CGPoint(x: right, y: y + 2))
+            y += 8
+            drawText("Total:", font: UIFont.boldSystemFont(ofSize: 16), at: CGPoint(x: totalsLabelX, y: y))
+            drawText(currency(quote.total), font: UIFont.boldSystemFont(ofSize: 16), at: CGPoint(x: totalsValueX, y: y))
             y += 32
 
             drawSectionTitle("Notas", y: &y, left: left, font: headerFont)

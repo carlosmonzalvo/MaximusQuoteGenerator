@@ -30,6 +30,14 @@ enum A11y {
         static let generatePDF = "quoteForm.generatePDF"
         static let emptyState = "quoteForm.emptyState"
 
+        static let docTypeQuote = "quoteForm.docType.quote"
+        static let docTypeRemision = "quoteForm.docType.remision"
+        static let ivaToggle = "quoteForm.ivaToggle"
+        static let cardFeeToggle = "quoteForm.cardFeeToggle"
+        static let subtotalAmount = "quoteForm.subtotalAmount"
+        static let ivaAmount = "quoteForm.ivaAmount"
+        static let cardFeeAmount = "quoteForm.cardFeeAmount"
+
         static func templateChip(_ index: Int) -> String { "quoteForm.template.\(index)" }
         static func lineItem(_ index: Int) -> String { "quoteForm.item.\(index)" }
         static func deleteItem(_ index: Int) -> String { "quoteForm.item.\(index).delete" }

@@ -14,6 +14,7 @@
 		3AFBBB5F2F8AF8FF00B3F4AD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBBB5E2F8AF8EB00B3F4AD /* SplashView.swift */; };
 		50F2DF4F9AFC025277AA918D /* ItemEditRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014683654708E91F1B2E5D04 /* ItemEditRobot.swift */; };
 		56F9F178C5BDFB4FDA82A86C /* QuoteFormRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DF859E92A2D09B6BE39BF4 /* QuoteFormRobot.swift */; };
+		812B099E700A0D6F7D8B00B3 /* DocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436D09D6D781B33908670C /* DocumentType.swift */; };
 		8559538D1A8BB86AF204B0BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 962E92589EE5DD533D4321D5 /* Foundation.framework */; };
 		9B6DCF14271448526804147E /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977AF70B214A61CFDF922C6 /* AccessibilityIdentifiers.swift */; };
 		A00000000000000000000001 /* MaximusPrecisionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000011 /* MaximusPrecisionApp.swift */; };
@@ -67,6 +68,7 @@
 		A0000000000000000000001B /* PDFPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewView.swift; sourceTree = "<group>"; };
 		A0000000000000000000001C /* QuoteFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteFormView.swift; sourceTree = "<group>"; };
 		A0000000000000000000001D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA436D09D6D781B33908670C /* DocumentType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
 		B770C53ABE79803941E540EE /* Robot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Robot.swift; path = MaximusPrecisionUITests/Support/Robot.swift; sourceTree = "<group>"; };
 		C977AF70B214A61CFDF922C6 /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AccessibilityIdentifiers.swift; path = MaximusPrecision/Support/AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
 		D6DF859E92A2D09B6BE39BF4 /* QuoteFormRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuoteFormRobot.swift; path = MaximusPrecisionUITests/Robots/QuoteFormRobot.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				A00000000000000000000014 /* QuoteItem.swift */,
 				A00000000000000000000015 /* Quote.swift */,
 				A00000000000000000000016 /* QuoteTemplate.swift */,
+				AA436D09D6D781B33908670C /* DocumentType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				A0000000000000000000000C /* QuoteFormView.swift in Sources */,
 				3AFBBB5F2F8AF8FF00B3F4AD /* SplashView.swift in Sources */,
 				9B6DCF14271448526804147E /* AccessibilityIdentifiers.swift in Sources */,
+				812B099E700A0D6F7D8B00B3 /* DocumentType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
