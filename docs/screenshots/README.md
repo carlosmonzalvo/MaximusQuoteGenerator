@@ -1,5 +1,11 @@
 # Capturas de features
 
+## macOS nativo (no Catalyst)
+
+La misma base de código corre nativa en macOS 15+ con Liquid Glass en macOS 26.
+![macOS nativo](14-macOS-nativo.png)
+
+
 Capturas reales del simulador (iPhone 16) generadas por
 `MaximusPrecisionUITests/ScreenshotTests.swift`.
 

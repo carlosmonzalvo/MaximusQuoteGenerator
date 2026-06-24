@@ -15,9 +15,7 @@ struct PDFPreviewView: View {
             shareBar
         }
         .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(MXTheme.header, for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
+        .navBarDarkChrome(MXTheme.header)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text("Vista previa PDF")
@@ -81,6 +79,7 @@ struct PDFPreviewView: View {
     }
 
     private func shareViaWhatsApp() {
+        #if os(iOS)
         let urlString = "whatsapp://send?text=Cotización%20adjunta"
         if let whatsappURL = URL(string: urlString),
            UIApplication.shared.canOpenURL(whatsappURL) {
@@ -88,9 +87,13 @@ struct PDFPreviewView: View {
         } else {
             showShareSheet = true
         }
+        #else
+        showShareSheet = true
+        #endif
     }
 }
 
+#if os(iOS)
 struct PDFKitView: UIViewRepresentable {
     let url: URL
 
@@ -108,3 +111,22 @@ struct PDFKitView: UIViewRepresentable {
         uiView.document = PDFDocument(url: url)
     }
 }
+#else
+struct PDFKitView: NSViewRepresentable {
+    let url: URL
+
+    func makeNSView(context: Context) -> PDFView {
+        let view = PDFView()
+        view.autoScales = true
+        view.displayMode = .singlePageContinuous
+        view.displayDirection = .vertical
+        view.backgroundColor = NSColor(MXTheme.bg)
+        view.document = PDFDocument(url: url)
+        return view
+    }
+
+    func updateNSView(_ nsView: PDFView, context: Context) {
+        nsView.document = PDFDocument(url: url)
+    }
+}
+#endif
