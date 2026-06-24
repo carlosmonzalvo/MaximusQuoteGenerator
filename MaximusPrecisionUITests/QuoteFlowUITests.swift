@@ -66,6 +66,56 @@ final class QuoteFlowUITests: XCTestCase {
         )
     }
 
+    // MARK: New features — IVA, card fee, document type
+
+    /// Adds one line item with a real price so totals are non-zero.
+    @discardableResult
+    private func seedPricedItem(_ form: QuoteFormRobot) -> QuoteFormRobot {
+        form.tapAddPart()
+            .setTitle("Balatas")
+            .setUnitPrice("1000")
+            .tapDone()
+        return form.assertLineItemCount(1)
+    }
+
+    /// Toggling IVA reveals the IVA row and changes the total.
+    func test_toggleIVA_showsRowAndUpdatesTotal() {
+        let form = QuoteFormRobot(app).assertVisible()
+        seedPricedItem(form)
+
+        let before = form.currentTotalText()
+        form.assertIvaRow(visible: false)
+            .toggleIVA()
+            .assertIvaRow(visible: true)
+
+        XCTAssertNotEqual(before, form.currentTotalText(), "Total should change after adding IVA")
+
+        form.toggleIVA().assertIvaRow(visible: false)
+    }
+
+    /// Toggling the card surcharge reveals its row and changes the total.
+    func test_toggleCardFee_showsRowAndUpdatesTotal() {
+        let form = QuoteFormRobot(app).assertVisible()
+        seedPricedItem(form)
+
+        let before = form.currentTotalText()
+        form.assertCardFeeRow(visible: false)
+            .toggleCardFee()
+            .assertCardFeeRow(visible: true)
+
+        XCTAssertNotEqual(before, form.currentTotalText(), "Total should change after adding the card fee")
+    }
+
+    /// Switching the document type updates the header title.
+    func test_switchDocumentType_updatesTitle() {
+        let form = QuoteFormRobot(app).assertVisible()
+            .assertTitle("Cotización")
+            .switchToRemision()
+            .assertTitle("Nota de remisión")
+
+        form.switchToQuote().assertTitle("Cotización")
+    }
+
     /// Deleting the only line item returns the form to its empty state.
     func test_deleteLineItem_returnsToEmptyState() {
         let form = QuoteFormRobot(app)

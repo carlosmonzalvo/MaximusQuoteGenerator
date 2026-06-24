@@ -287,6 +287,7 @@ struct QuoteFormView: View {
                     ScrollView {
                         VStack(spacing: 0) {
                             itemsSection
+                            totalsSection
                             notesSection
                             Color.clear.frame(height: 110)
                         }
@@ -321,14 +322,18 @@ struct QuoteFormView: View {
     private var headerSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(alignment: .firstTextBaseline) {
-                Text("Nueva Cotización")
+                Text(vm.documentType.title)
                     .font(.system(size: 22, weight: .bold))
                     .foregroundStyle(MXTheme.text)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
                 Spacer()
                 Text("#\(vm.folio)")
                     .font(.system(size: 11, weight: .medium, design: .monospaced))
                     .foregroundStyle(MXTheme.muted)
             }
+
+            docTypeSwitcher
 
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 6) {
                 MXField(label: "Nombre", text: $vm.customerName, identifier: A11y.QuoteForm.customerName)
@@ -359,6 +364,35 @@ struct QuoteFormView: View {
         // Tap anywhere on the header chrome to dismiss the keyboard.
         .contentShape(Rectangle())
         .onTapGesture { hideKeyboard() }
+    }
+
+    private var docTypeSwitcher: some View {
+        HStack(spacing: 0) {
+            ForEach(DocumentType.allCases, id: \.self) { type in
+                Button {
+                    vm.documentType = type
+                } label: {
+                    Text(type.shortLabel)
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(vm.documentType == type ? Color(hex: "111111") : MXTheme.muted)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 8)
+                        .background(vm.documentType == type ? MXTheme.accent : Color.clear)
+                        .clipShape(RoundedRectangle(cornerRadius: 7))
+                }
+                .buttonStyle(.plain)
+                .accessibilityIdentifier(type == .quote
+                    ? A11y.QuoteForm.docTypeQuote
+                    : A11y.QuoteForm.docTypeRemision)
+            }
+        }
+        .padding(3)
+        .background(MXTheme.surfaceAlt)
+        .clipShape(RoundedRectangle(cornerRadius: 9))
+        .overlay(
+            RoundedRectangle(cornerRadius: 9)
+                .stroke(MXTheme.borderLight, lineWidth: 1)
+        )
     }
 
     // MARK: Items
@@ -452,6 +486,84 @@ struct QuoteFormView: View {
                 .padding(12)
                 .mxFieldBackground(borderWidth: 1)
                 .accessibilityIdentifier(A11y.QuoteForm.notes)
+        }
+    }
+
+    // MARK: Totales
+
+    private var totalsSection: some View {
+        VStack(spacing: 0) {
+            MXSectionDivider(label: "Totales")
+
+            HStack(spacing: 8) {
+                toggleChip(
+                    label: "IVA 16%",
+                    active: vm.includesIVA,
+                    color: MXTheme.partBlue,
+                    identifier: A11y.QuoteForm.ivaToggle,
+                    action: { vm.toggleIVA() }
+                )
+                toggleChip(
+                    label: "Tarjeta 4.5%",
+                    active: vm.includesCardFee,
+                    color: MXTheme.laborGreen,
+                    identifier: A11y.QuoteForm.cardFeeToggle,
+                    action: { vm.toggleCardFee() }
+                )
+            }
+
+            VStack(spacing: 8) {
+                summaryRow("Subtotal", vm.subtotal, identifier: A11y.QuoteForm.subtotalAmount)
+                if vm.includesIVA {
+                    summaryRow("IVA (16%)", vm.ivaAmount, identifier: A11y.QuoteForm.ivaAmount)
+                }
+                if vm.includesCardFee {
+                    summaryRow("Comisión tarjeta (4.5%)", vm.cardFeeAmount, identifier: A11y.QuoteForm.cardFeeAmount)
+                }
+            }
+            .padding(.top, 12)
+        }
+    }
+
+    private func toggleChip(
+        label: String,
+        active: Bool,
+        color: Color,
+        identifier: String,
+        action: @escaping () -> Void
+    ) -> some View {
+        Button(action: action) {
+            HStack(spacing: 6) {
+                Image(systemName: active ? "checkmark.circle.fill" : "circle")
+                    .font(.system(size: 14))
+                    .foregroundStyle(active ? color : MXTheme.dim)
+                Text(label)
+                    .font(.system(size: 14, weight: .medium))
+                    .foregroundStyle(MXTheme.text)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 12)
+            .background(active ? color.opacity(0.12) : MXTheme.surfaceAlt)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(active ? color : MXTheme.borderLight, lineWidth: 1.5)
+            )
+        }
+        .buttonStyle(.plain)
+        .accessibilityIdentifier(identifier)
+    }
+
+    private func summaryRow(_ label: String, _ value: Double, identifier: String) -> some View {
+        HStack {
+            Text(label)
+                .font(.system(size: 13))
+                .foregroundStyle(MXTheme.muted)
+            Spacer()
+            Text(value, format: .currency(code: "MXN"))
+                .font(.system(size: 13, weight: .semibold, design: .monospaced))
+                .foregroundStyle(MXTheme.muted)
+                .accessibilityIdentifier(identifier)
         }
     }
 
