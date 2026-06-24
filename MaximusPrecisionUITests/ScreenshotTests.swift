@@ -32,32 +32,66 @@ final class ScreenshotTests: XCTestCase {
         add(attachment)
     }
 
-    func test_captureFeatureScreenshots() {
+    /// Main form with vehicle pills, document-type switch, and the PDF.
+    func test_captureMainFlow() {
         let form = QuoteFormRobot(app)
             .assertVisible()
             .fillCustomer(name: "Juan Pérez", phone: "5512345678")
-            .fillVehicle(brand: "Nissan", model: "Sentra", year: "2018", plate: "ABC1234")
+
+        // Add the line item while the header is short (add buttons on screen).
+        form.tapAddPart()
+            .setTitle("Balatas delanteras")
+            .setQuantity("2")
+            .setUnitPrice("900")
+            .tapDone()
+        form.dismissKeyboardIfNeeded()
+
+        // Vehicle catalog: make/model pills.
+        form.tapMakeChip(0)            // Nissan
+            .assertModelChipsVisible()
+        snapshot("06-Pills-marca-modelo")
+        form.tapModelChip(0)           // Versa
+        snapshot("01-Cotizacion")
+
+        // Document type switch (the switcher sits at the top of the header).
+        form.switchToRemision()
+        snapshot("04-Nota-de-remision")
+        form.switchToQuote()
+
+        form.tapGenerate()
+        PDFPreviewRobot(app).assertVisible()
+        snapshot("05-PDF-generado")
+    }
+
+    /// Totals breakdown with IVA + card fee. Kept free of vehicle pills so the
+    /// header stays short and the toggles are always on screen.
+    func test_captureTotals() {
+        let form = QuoteFormRobot(app)
+            .assertVisible()
+            .fillCustomer(name: "Juan Pérez", phone: "5512345678")
 
         form.tapAddPart()
             .setTitle("Balatas delanteras")
             .setQuantity("2")
             .setUnitPrice("900")
             .tapDone()
-
         form.dismissKeyboardIfNeeded()
-        snapshot("01-Cotizacion")
 
         form.toggleIVA()
         snapshot("02-IVA-16")
 
         form.toggleCardFee()
         snapshot("03-Comision-tarjeta")
+    }
 
-        form.switchToRemision()
-        snapshot("04-Nota-de-remision")
+    /// The optional version sheet, captured on its own.
+    func test_captureVersionSheet() {
+        let form = QuoteFormRobot(app)
+            .assertVisible()
+            .tapMakeChip(0)            // Nissan
+            .tapModelChip(0)           // Versa
 
-        form.tapGenerate()
-        PDFPreviewRobot(app).assertVisible()
-        snapshot("05-PDF-generado")
+        form.openVersionPicker()
+        snapshot("07-Version-sheet")
     }
 }

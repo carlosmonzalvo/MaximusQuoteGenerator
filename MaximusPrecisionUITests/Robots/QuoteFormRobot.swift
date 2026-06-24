@@ -30,9 +30,15 @@ final class QuoteFormRobot: Robot {
     private var cardFeeRow: XCUIElement { element(A11y.QuoteForm.cardFeeAmount) }
     private var totalLabel: XCUIElement { element(A11y.QuoteForm.total) }
 
+    private var vehicleBrandField: XCUIElement { element(A11y.QuoteForm.vehicleBrand) }
+    private var vehicleModelField: XCUIElement { element(A11y.QuoteForm.vehicleModel) }
+    private var versionPill: XCUIElement { element(A11y.QuoteForm.versionPill) }
+
     func templateChip(_ index: Int) -> XCUIElement { element(A11y.QuoteForm.templateChip(index)) }
     func lineItem(_ index: Int) -> XCUIElement { element(A11y.QuoteForm.lineItem(index)) }
     func deleteItem(_ index: Int) -> XCUIElement { element(A11y.QuoteForm.deleteItem(index)) }
+    func makeChip(_ index: Int) -> XCUIElement { element(A11y.QuoteForm.makeChip(index)) }
+    func modelChip(_ index: Int) -> XCUIElement { element(A11y.QuoteForm.modelChip(index)) }
 
     // MARK: Assertions
 
@@ -95,6 +101,7 @@ final class QuoteFormRobot: Robot {
     @discardableResult
     func tapAddPart() -> ItemEditRobot {
         dismissKeyboardIfNeeded()
+        scrollToHittable(addPartButton)
         tap(addPartButton)
         return ItemEditRobot(app).assertVisible()
     }
@@ -103,6 +110,7 @@ final class QuoteFormRobot: Robot {
     @discardableResult
     func tapAddLabor() -> ItemEditRobot {
         dismissKeyboardIfNeeded()
+        scrollToHittable(addLaborButton)
         tap(addLaborButton)
         return ItemEditRobot(app).assertVisible()
     }
@@ -134,24 +142,28 @@ final class QuoteFormRobot: Robot {
     @discardableResult
     func switchToRemision() -> Self {
         dismissKeyboardIfNeeded()
+        scrollToTop()
         return tap(docTypeRemisionButton)
     }
 
     @discardableResult
     func switchToQuote() -> Self {
         dismissKeyboardIfNeeded()
+        scrollToTop()
         return tap(docTypeQuoteButton)
     }
 
     @discardableResult
     func toggleIVA() -> Self {
         dismissKeyboardIfNeeded()
+        scrollToHittable(ivaToggleButton)
         return tap(ivaToggleButton)
     }
 
     @discardableResult
     func toggleCardFee() -> Self {
         dismissKeyboardIfNeeded()
+        scrollToHittable(cardFeeToggleButton)
         return tap(cardFeeToggleButton)
     }
 
@@ -183,5 +195,47 @@ final class QuoteFormRobot: Robot {
             assertNotExists(cardFeeRow, "Expected card-fee row to be hidden")
         }
         return self
+    }
+
+    // MARK: Vehicle catalog (pills + optional version)
+
+    @discardableResult
+    func tapMakeChip(_ index: Int) -> Self {
+        dismissKeyboardIfNeeded()
+        scrollToTop()
+        return tap(makeChip(index))
+    }
+
+    @discardableResult
+    func tapModelChip(_ index: Int) -> Self {
+        dismissKeyboardIfNeeded()
+        scrollToHittable(modelChip(index))
+        return tap(modelChip(index))
+    }
+
+    @discardableResult
+    func openVersionPicker() -> VersionPickerRobot {
+        scrollToHittable(versionPill)
+        tap(versionPill)
+        return VersionPickerRobot(app).assertVisible()
+    }
+
+    @discardableResult
+    func assertBrand(_ expected: String) -> Self {
+        waitFor(vehicleBrandField)
+        XCTAssertEqual(vehicleBrandField.value as? String, expected, "Unexpected Marca value")
+        return self
+    }
+
+    @discardableResult
+    func assertModel(_ expected: String) -> Self {
+        waitFor(vehicleModelField)
+        XCTAssertEqual(vehicleModelField.value as? String, expected, "Unexpected Modelo value")
+        return self
+    }
+
+    @discardableResult
+    func assertModelChipsVisible() -> Self {
+        assertExists(modelChip(0), "Expected model pills after picking a make")
     }
 }

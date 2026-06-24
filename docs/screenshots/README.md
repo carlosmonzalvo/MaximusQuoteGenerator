@@ -1,19 +1,29 @@
-# Capturas — IVA, comisión por tarjeta y tipo de documento
+# Capturas de features
 
 Capturas reales del simulador (iPhone 16) generadas por
 `MaximusPrecisionUITests/ScreenshotTests.swift`.
 
-## 1. Cotización (pantalla principal)
+## Catálogo de vehículos (SwiftData + LRU cache)
+
+### Pills de marca / modelo
+![Pills marca/modelo](06-Pills-marca-modelo.png)
+
+### Versión opcional (sheet)
+![Versión opcional](07-Version-sheet.png)
+
+### Cotización con marca/modelo elegidos
 ![Cotización](01-Cotizacion.png)
 
-## 2. IVA 16% activado
+## IVA, comisión por tarjeta y tipo de documento
+
+### IVA 16%
 ![IVA 16%](02-IVA-16.png)
 
-## 3. Comisión por tarjeta 4.5% activada
+### Comisión por tarjeta 4.5%
 ![Comisión tarjeta](03-Comision-tarjeta.png)
 
-## 4. Switch a "Nota de remisión"
+### Nota de remisión
 ![Nota de remisión](04-Nota-de-remision.png)
 
-## 5. PDF generado (con desglose completo)
+### PDF generado
 ![PDF generado](05-PDF-generado.png)

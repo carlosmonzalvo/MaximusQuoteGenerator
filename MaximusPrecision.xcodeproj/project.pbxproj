@@ -7,12 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05D4C0E93E56A1AFE4EA05AC /* LRUCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967E40AF02C72D46D6A30694 /* LRUCacheTests.swift */; };
+		33A171F5A076BFDA7A4FA64F /* QuoteFormRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C5CDA05CC13ADFB08C6326 /* QuoteFormRobot.swift */; };
+		3483CDC45EF2656764D3984B /* VehicleCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83E183493D89831CCCCF75E /* VehicleCatalog.swift */; };
 		3AC45A1E2F80D1690007E674 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC45A1D2F80D15F0007E674 /* UIApplication+Extensions.swift */; };
 		3AFBBB5F2F8AF8FF00B3F4AD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBBB5E2F8AF8EB00B3F4AD /* SplashView.swift */; };
-		3D757F9307C89E0FFCABECAF /* XCUIApplication+Maximus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7ADF752D1496D661FBB456F /* XCUIApplication+Maximus.swift */; };
-		61A93AD250B4DBA0D23A64B8 /* ScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DA898D0963E6B8E0E73002 /* ScreenshotTests.swift */; };
+		43530D70F7500F462602FFF5 /* LRUCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1B5430C0958BB2EEEA6A7A /* LRUCache.swift */; };
+		45FB02E7D1F8DBA4E8CA1901 /* VersionPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5353190E3729B7B3A28BAF7 /* VersionPickerSheet.swift */; };
+		58C62C5FDE699BBC2E349D69 /* PDFPreviewRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6018B1E105FEBF21D19F3268 /* PDFPreviewRobot.swift */; };
+		62BCDD8E1678DC8CB2C8A050 /* ScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A9ACA1ACAA654C8D5B2C5A /* ScreenshotTests.swift */; };
 		812B099E700A0D6F7D8B00B3 /* DocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436D09D6D781B33908670C /* DocumentType.swift */; };
 		8559538D1A8BB86AF204B0BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 962E92589EE5DD533D4321D5 /* Foundation.framework */; };
+		95755F7F1D3679C3CE866233 /* ItemEditRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A06FA529BCE53E521A7869F /* ItemEditRobot.swift */; };
+		9777FD6566AAC7938B28D318 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 962E92589EE5DD533D4321D5 /* Foundation.framework */; };
 		9B6DCF14271448526804147E /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977AF70B214A61CFDF922C6 /* AccessibilityIdentifiers.swift */; };
 		A00000000000000000000001 /* MaximusPrecisionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000011 /* MaximusPrecisionApp.swift */; };
 		A00000000000000000000002 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000012 /* Customer.swift */; };
@@ -27,15 +34,25 @@
 		A0000000000000000000000B /* PDFPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000001B /* PDFPreviewView.swift */; };
 		A0000000000000000000000C /* QuoteFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000001C /* QuoteFormView.swift */; };
 		A0000000000000000000000D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000001D /* Assets.xcassets */; };
-		A594642BC5F8601158C6C7BD /* QuoteFormRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218721FC952ACFAB80A13D46 /* QuoteFormRobot.swift */; };
-		B5CB1E124948A9CD0166AC4D /* PDFPreviewRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331555B12D960FD88506BAF2 /* PDFPreviewRobot.swift */; };
-		C9D8F57A2E9F70305E4D2CAC /* QuoteFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820C5C84D7524FEB04A942E /* QuoteFlowUITests.swift */; };
+		AF3E2746A2A290AF29CC18BB /* XCUIApplication+Maximus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57448C2F23DE22D54E4B9651 /* XCUIApplication+Maximus.swift */; };
+		BA04E8B90A604468EC0DE654 /* VehicleCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727DF5FDC9AA40E92900C595 /* VehicleCatalogTests.swift */; };
+		C520CF3CACF0F4FFB5C0D80A /* CatalogModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3641F9368E9A09B74BCAA /* CatalogModels.swift */; };
+		DD799E2DC85C59915432A46B /* VersionPickerRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F350F8AA98631E3EA8C8B18 /* VersionPickerRobot.swift */; };
+		DDBD642AFB61C68381883FD1 /* QuoteFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B5F073DA6F2A542E0139AE /* QuoteFlowUITests.swift */; };
+		E7125EDACBA89B3BFC21F140 /* AppModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5233A6B009BED5ADC603D7 /* AppModelContainer.swift */; };
 		EE1925C77A7BE4EC2563C50A /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977AF70B214A61CFDF922C6 /* AccessibilityIdentifiers.swift */; };
-		F17C71F988A60D770BBC3CDA /* ItemEditRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBC24F6B94C5C9DC2E43FB2 /* ItemEditRobot.swift */; };
-		F2FCFFB8CA556461649C8A3A /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D20DF48BA5DA7F84D44420 /* Robot.swift */; };
+		F254AECF226F4538DC5EED63 /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E33052491342433988D9F49 /* Robot.swift */; };
+		FA15B9FFB0E4D9B685ACD407 /* VehicleCatalogSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840E23F9F94FB106FC88B349 /* VehicleCatalogSeed.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		52D025CBE116262E9BC41D78 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0000000000000000000002E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0000000000000000000002A;
+			remoteInfo = MaximusPrecision;
+		};
 		64389A9520B01354FEEA1D9E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A0000000000000000000002E /* Project object */;
@@ -46,16 +63,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		218721FC952ACFAB80A13D46 /* QuoteFormRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuoteFormRobot.swift; path = MaximusPrecisionUITests/Robots/QuoteFormRobot.swift; sourceTree = "<group>"; };
-		331555B12D960FD88506BAF2 /* PDFPreviewRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PDFPreviewRobot.swift; path = MaximusPrecisionUITests/Robots/PDFPreviewRobot.swift; sourceTree = "<group>"; };
+		0E33052491342433988D9F49 /* Robot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Robot.swift; path = MaximusPrecisionUITests/Support/Robot.swift; sourceTree = "<group>"; };
+		1F350F8AA98631E3EA8C8B18 /* VersionPickerRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VersionPickerRobot.swift; path = MaximusPrecisionUITests/Robots/VersionPickerRobot.swift; sourceTree = "<group>"; };
 		3AC45A1D2F80D15F0007E674 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		3AFBBB5E2F8AF8EB00B3F4AD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3AFBBB602F8B06A000B3F4AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3B5233A6B009BED5ADC603D7 /* AppModelContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppModelContainer.swift; path = Catalog/AppModelContainer.swift; sourceTree = "<group>"; };
 		543711E57D06BF416FF20367 /* MaximusPrecisionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaximusPrecisionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		78D20DF48BA5DA7F84D44420 /* Robot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Robot.swift; path = MaximusPrecisionUITests/Support/Robot.swift; sourceTree = "<group>"; };
-		8FBC24F6B94C5C9DC2E43FB2 /* ItemEditRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ItemEditRobot.swift; path = MaximusPrecisionUITests/Robots/ItemEditRobot.swift; sourceTree = "<group>"; };
+		57448C2F23DE22D54E4B9651 /* XCUIApplication+Maximus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "XCUIApplication+Maximus.swift"; path = "MaximusPrecisionUITests/Support/XCUIApplication+Maximus.swift"; sourceTree = "<group>"; };
+		5A06FA529BCE53E521A7869F /* ItemEditRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ItemEditRobot.swift; path = MaximusPrecisionUITests/Robots/ItemEditRobot.swift; sourceTree = "<group>"; };
+		6018B1E105FEBF21D19F3268 /* PDFPreviewRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PDFPreviewRobot.swift; path = MaximusPrecisionUITests/Robots/PDFPreviewRobot.swift; sourceTree = "<group>"; };
+		727DF5FDC9AA40E92900C595 /* VehicleCatalogTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VehicleCatalogTests.swift; path = MaximusPrecisionTests/VehicleCatalogTests.swift; sourceTree = "<group>"; };
+		7C1B5430C0958BB2EEEA6A7A /* LRUCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LRUCache.swift; path = Catalog/LRUCache.swift; sourceTree = "<group>"; };
+		840E23F9F94FB106FC88B349 /* VehicleCatalogSeed.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VehicleCatalogSeed.swift; path = Catalog/VehicleCatalogSeed.swift; sourceTree = "<group>"; };
+		91B5F073DA6F2A542E0139AE /* QuoteFlowUITests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuoteFlowUITests.swift; path = MaximusPrecisionUITests/QuoteFlowUITests.swift; sourceTree = "<group>"; };
 		962E92589EE5DD533D4321D5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		9820C5C84D7524FEB04A942E /* QuoteFlowUITests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuoteFlowUITests.swift; path = MaximusPrecisionUITests/QuoteFlowUITests.swift; sourceTree = "<group>"; };
+		967E40AF02C72D46D6A30694 /* LRUCacheTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LRUCacheTests.swift; path = MaximusPrecisionTests/LRUCacheTests.swift; sourceTree = "<group>"; };
 		A0000000000000000000000E /* MaximusPrecision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaximusPrecision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A00000000000000000000011 /* MaximusPrecisionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaximusPrecisionApp.swift; sourceTree = "<group>"; };
 		A00000000000000000000012 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
@@ -70,10 +93,14 @@
 		A0000000000000000000001B /* PDFPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewView.swift; sourceTree = "<group>"; };
 		A0000000000000000000001C /* QuoteFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteFormView.swift; sourceTree = "<group>"; };
 		A0000000000000000000001D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A7ADF752D1496D661FBB456F /* XCUIApplication+Maximus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "XCUIApplication+Maximus.swift"; path = "MaximusPrecisionUITests/Support/XCUIApplication+Maximus.swift"; sourceTree = "<group>"; };
 		AA436D09D6D781B33908670C /* DocumentType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
+		B5353190E3729B7B3A28BAF7 /* VersionPickerSheet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VersionPickerSheet.swift; sourceTree = "<group>"; };
+		C7E3641F9368E9A09B74BCAA /* CatalogModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CatalogModels.swift; path = Catalog/CatalogModels.swift; sourceTree = "<group>"; };
 		C977AF70B214A61CFDF922C6 /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AccessibilityIdentifiers.swift; path = MaximusPrecision/Support/AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
-		E6DA898D0963E6B8E0E73002 /* ScreenshotTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScreenshotTests.swift; path = MaximusPrecisionUITests/ScreenshotTests.swift; sourceTree = "<group>"; };
+		E2EDD273B9C6F21B11530438 /* MaximusPrecisionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaximusPrecisionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7C5CDA05CC13ADFB08C6326 /* QuoteFormRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuoteFormRobot.swift; path = MaximusPrecisionUITests/Robots/QuoteFormRobot.swift; sourceTree = "<group>"; };
+		E83E183493D89831CCCCF75E /* VehicleCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VehicleCatalog.swift; path = Catalog/VehicleCatalog.swift; sourceTree = "<group>"; };
+		F8A9ACA1ACAA654C8D5B2C5A /* ScreenshotTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScreenshotTests.swift; path = MaximusPrecisionUITests/ScreenshotTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +109,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8559538D1A8BB86AF204B0BD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EF870145EA1288E30A094FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9777FD6566AAC7938B28D318 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,16 +154,29 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		7F6B14DEFA8E0D35641218B1 /* Catalog */ = {
+			isa = PBXGroup;
+			children = (
+				7C1B5430C0958BB2EEEA6A7A /* LRUCache.swift */,
+				C7E3641F9368E9A09B74BCAA /* CatalogModels.swift */,
+				840E23F9F94FB106FC88B349 /* VehicleCatalogSeed.swift */,
+				E83E183493D89831CCCCF75E /* VehicleCatalog.swift */,
+				3B5233A6B009BED5ADC603D7 /* AppModelContainer.swift */,
+			);
+			name = Catalog;
+			sourceTree = "<group>";
+		};
 		957C063244E1236AF76230C0 /* MaximusPrecisionUITests */ = {
 			isa = PBXGroup;
 			children = (
-				9820C5C84D7524FEB04A942E /* QuoteFlowUITests.swift */,
-				8FBC24F6B94C5C9DC2E43FB2 /* ItemEditRobot.swift */,
-				331555B12D960FD88506BAF2 /* PDFPreviewRobot.swift */,
-				218721FC952ACFAB80A13D46 /* QuoteFormRobot.swift */,
-				E6DA898D0963E6B8E0E73002 /* ScreenshotTests.swift */,
-				78D20DF48BA5DA7F84D44420 /* Robot.swift */,
-				A7ADF752D1496D661FBB456F /* XCUIApplication+Maximus.swift */,
+				91B5F073DA6F2A542E0139AE /* QuoteFlowUITests.swift */,
+				5A06FA529BCE53E521A7869F /* ItemEditRobot.swift */,
+				6018B1E105FEBF21D19F3268 /* PDFPreviewRobot.swift */,
+				E7C5CDA05CC13ADFB08C6326 /* QuoteFormRobot.swift */,
+				1F350F8AA98631E3EA8C8B18 /* VersionPickerRobot.swift */,
+				F8A9ACA1ACAA654C8D5B2C5A /* ScreenshotTests.swift */,
+				0E33052491342433988D9F49 /* Robot.swift */,
+				57448C2F23DE22D54E4B9651 /* XCUIApplication+Maximus.swift */,
 			);
 			name = MaximusPrecisionUITests;
 			sourceTree = SOURCE_ROOT;
@@ -140,6 +188,7 @@
 				A00000000000000000000021 /* Products */,
 				13DF45379615F6F2725B9679 /* Frameworks */,
 				957C063244E1236AF76230C0 /* MaximusPrecisionUITests */,
+				C2408FC4DD4F964A19643763 /* MaximusPrecisionTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,6 +202,7 @@
 				3AC45A1C2F80D1240007E674 /* Extensions */,
 				A00000000000000000000025 /* Resources */,
 				BCFE520F9437F6BE6E3C840C /* Support */,
+				7F6B14DEFA8E0D35641218B1 /* Catalog */,
 			);
 			path = MaximusPrecision;
 			sourceTree = "<group>";
@@ -162,6 +212,7 @@
 			children = (
 				A0000000000000000000000E /* MaximusPrecision.app */,
 				543711E57D06BF416FF20367 /* MaximusPrecisionUITests.xctest */,
+				E2EDD273B9C6F21B11530438 /* MaximusPrecisionTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -237,6 +288,7 @@
 				3AFBBB5E2F8AF8EB00B3F4AD /* SplashView.swift */,
 				A0000000000000000000001B /* PDFPreviewView.swift */,
 				A0000000000000000000001C /* QuoteFormView.swift */,
+				B5353190E3729B7B3A28BAF7 /* VersionPickerSheet.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -248,6 +300,15 @@
 			);
 			name = Support;
 			sourceTree = SOURCE_ROOT;
+		};
+		C2408FC4DD4F964A19643763 /* MaximusPrecisionTests */ = {
+			isa = PBXGroup;
+			children = (
+				967E40AF02C72D46D6A30694 /* LRUCacheTests.swift */,
+				727DF5FDC9AA40E92900C595 /* VehicleCatalogTests.swift */,
+			);
+			name = MaximusPrecisionTests;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -269,6 +330,24 @@
 			productName = MaximusPrecisionUITests;
 			productReference = 543711E57D06BF416FF20367 /* MaximusPrecisionUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		97CDD8A9B70FD3DD7FA5B8FB /* MaximusPrecisionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41B48B9A92CF23192BF55025 /* Build configuration list for PBXNativeTarget "MaximusPrecisionTests" */;
+			buildPhases = (
+				A5FE6183C35B63D1FF9C702D /* Sources */,
+				4EF870145EA1288E30A094FE /* Frameworks */,
+				6E302A9B2DEE2392A140A34B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				647345BDE6120B8B8A08D212 /* PBXTargetDependency */,
+			);
+			name = MaximusPrecisionTests;
+			productName = MaximusPrecisionTests;
+			productReference = E2EDD273B9C6F21B11530438 /* MaximusPrecisionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		A0000000000000000000002A /* MaximusPrecision */ = {
 			isa = PBXNativeTarget;
@@ -317,12 +396,20 @@
 			targets = (
 				A0000000000000000000002A /* MaximusPrecision */,
 				076670CC7C261610934AC4B7 /* MaximusPrecisionUITests */,
+				97CDD8A9B70FD3DD7FA5B8FB /* MaximusPrecisionTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2F8DBA4652FF3E8BF1576FBD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E302A9B2DEE2392A140A34B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -360,6 +447,21 @@
 				3AFBBB5F2F8AF8FF00B3F4AD /* SplashView.swift in Sources */,
 				9B6DCF14271448526804147E /* AccessibilityIdentifiers.swift in Sources */,
 				812B099E700A0D6F7D8B00B3 /* DocumentType.swift in Sources */,
+				43530D70F7500F462602FFF5 /* LRUCache.swift in Sources */,
+				C520CF3CACF0F4FFB5C0D80A /* CatalogModels.swift in Sources */,
+				FA15B9FFB0E4D9B685ACD407 /* VehicleCatalogSeed.swift in Sources */,
+				3483CDC45EF2656764D3984B /* VehicleCatalog.swift in Sources */,
+				45FB02E7D1F8DBA4E8CA1901 /* VersionPickerSheet.swift in Sources */,
+				E7125EDACBA89B3BFC21F140 /* AppModelContainer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5FE6183C35B63D1FF9C702D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05D4C0E93E56A1AFE4EA05AC /* LRUCacheTests.swift in Sources */,
+				BA04E8B90A604468EC0DE654 /* VehicleCatalogTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,19 +470,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE1925C77A7BE4EC2563C50A /* AccessibilityIdentifiers.swift in Sources */,
-				C9D8F57A2E9F70305E4D2CAC /* QuoteFlowUITests.swift in Sources */,
-				F17C71F988A60D770BBC3CDA /* ItemEditRobot.swift in Sources */,
-				B5CB1E124948A9CD0166AC4D /* PDFPreviewRobot.swift in Sources */,
-				A594642BC5F8601158C6C7BD /* QuoteFormRobot.swift in Sources */,
-				61A93AD250B4DBA0D23A64B8 /* ScreenshotTests.swift in Sources */,
-				F2FCFFB8CA556461649C8A3A /* Robot.swift in Sources */,
-				3D757F9307C89E0FFCABECAF /* XCUIApplication+Maximus.swift in Sources */,
+				DDBD642AFB61C68381883FD1 /* QuoteFlowUITests.swift in Sources */,
+				95755F7F1D3679C3CE866233 /* ItemEditRobot.swift in Sources */,
+				58C62C5FDE699BBC2E349D69 /* PDFPreviewRobot.swift in Sources */,
+				33A171F5A076BFDA7A4FA64F /* QuoteFormRobot.swift in Sources */,
+				DD799E2DC85C59915432A46B /* VersionPickerRobot.swift in Sources */,
+				62BCDD8E1678DC8CB2C8A050 /* ScreenshotTests.swift in Sources */,
+				F254AECF226F4538DC5EED63 /* Robot.swift in Sources */,
+				AF3E2746A2A290AF29CC18BB /* XCUIApplication+Maximus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		647345BDE6120B8B8A08D212 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MaximusPrecision;
+			target = A0000000000000000000002A /* MaximusPrecision */;
+			targetProxy = 52D025CBE116262E9BC41D78 /* PBXContainerItemProxy */;
+		};
 		6C6FE1E64BE4633204338499 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MaximusPrecision;
@@ -409,6 +518,27 @@
 			};
 			name = Debug;
 		};
+		9F34BB00950F9FF534C2BE59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YFJ48SR2KW;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maximusprecision.app.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MaximusPrecision.app/MaximusPrecision";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		A00000000000000000000030 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -418,6 +548,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YFJ48SR2KW;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_TESTABILITY = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MaximusPrecision/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Maximus Precision";
@@ -530,6 +661,26 @@
 			};
 			name = Release;
 		};
+		E5A5CD1141CD88C4C75CC0C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YFJ48SR2KW;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maximusprecision.app.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MaximusPrecision.app/MaximusPrecision";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -538,6 +689,15 @@
 			buildConfigurations = (
 				A35C2B1274A25683340BBFE3 /* Release */,
 				2335D17D44AA3059722F1F38 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		41B48B9A92CF23192BF55025 /* Build configuration list for PBXNativeTarget "MaximusPrecisionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F34BB00950F9FF534C2BE59 /* Release */,
+				E5A5CD1141CD88C4C75CC0C0 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

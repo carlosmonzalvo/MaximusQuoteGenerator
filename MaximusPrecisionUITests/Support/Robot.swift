@@ -116,6 +116,24 @@ class Robot {
         )
     }
 
+    /// Scrolls down until the element is hittable (or we run out of tries).
+    @discardableResult
+    func scrollToHittable(_ element: XCUIElement, maxSwipes: Int = 8) -> Self {
+        var swipes = 0
+        while !element.isHittable && swipes < maxSwipes {
+            app.swipeUp()
+            swipes += 1
+        }
+        return self
+    }
+
+    /// Scrolls back to the top of the form.
+    @discardableResult
+    func scrollToTop(_ times: Int = 5) -> Self {
+        for _ in 0..<times { app.swipeDown() }
+        return self
+    }
+
     /// Dismiss the software keyboard if it is showing (tap a neutral area).
     @discardableResult
     func dismissKeyboard() -> Self {
