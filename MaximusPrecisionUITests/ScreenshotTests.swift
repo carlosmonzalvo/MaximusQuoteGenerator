@@ -112,6 +112,15 @@ final class ScreenshotTests: XCTestCase {
         snapshot("11-Expediente-auto")
     }
 
+    /// iOS 26 Liquid Glass search living in the tab bar (search-role tab).
+    func test_captureGlassTabSearch() {
+        let records = RecordsRobot(app).open()
+        records.selectVehicles()
+            .addVehicle(plate: "ABC-1234", brand: "Nissan", model: "Versa")
+        records.searchInTabBar("Versa")
+        snapshot("12-Busqueda-tab-glass")
+    }
+
     /// The optional version sheet, captured on its own.
     func test_captureVersionSheet() {
         let form = QuoteFormRobot(app)

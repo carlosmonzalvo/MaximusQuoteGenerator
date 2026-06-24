@@ -45,3 +45,6 @@ guardan como servicios en el expediente del auto.
 
 ### Expediente del auto (pagadores + historial)
 ![Expediente del auto](11-Expediente-auto.png)
+
+### Búsqueda en el tab bar (Liquid Glass, iOS 26)
+![Búsqueda glass en tab bar](12-Busqueda-tab-glass.png)
