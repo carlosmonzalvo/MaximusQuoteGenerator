@@ -90,6 +90,7 @@ enum A11y {
         static let scopePicker = "records.scopePicker"
         static let search = "records.search"
         static let add = "records.add"
+        static let sync = "records.sync"
         static let emptyState = "records.emptyState"
         static func vehicleRow(_ index: Int) -> String { "records.vehicle.\(index)" }
         static func clientRow(_ index: Int) -> String { "records.client.\(index)" }

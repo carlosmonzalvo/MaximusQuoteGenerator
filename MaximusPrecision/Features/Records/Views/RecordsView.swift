@@ -11,7 +11,10 @@ import SwiftData
 
 struct RecordsView: View {
     @ObservedObject var vm: RecordsViewModel
+    @Environment(\.modelContext) private var modelContext
+    @StateObject private var syncCenter = SyncCenter()
     @State private var showingAdd = false
+    @State private var showingSync = false
 
     var body: some View {
         NavigationStack {
@@ -38,6 +41,14 @@ struct RecordsView: View {
                     }
                     .accessibilityIdentifier(A11y.Records.add)
                 }
+                ToolbarItem(placement: .cancellationAction) {
+                    Button {
+                        showingSync = true
+                    } label: {
+                        Image(systemName: syncCenter.enabled ? "arrow.triangle.2.circlepath.circle.fill" : "arrow.triangle.2.circlepath")
+                    }
+                    .accessibilityIdentifier(A11y.Records.sync)
+                }
             }
             .sheet(isPresented: $showingAdd) {
                 RecordEditSheet(scope: vm.scope) { result in
@@ -46,6 +57,14 @@ struct RecordsView: View {
                         vm.addClient(name: name, phone: phone, email: email)
                     case let .vehicle(plate, brand, model, year):
                         vm.addVehicle(plate: plate, brand: brand, model: model, year: year)
+                    }
+                }
+            }
+            .sheet(isPresented: $showingSync) {
+                SyncSettingsView(center: syncCenter) {
+                    Task {
+                        await syncCenter.syncNow(context: modelContext)
+                        vm.refresh()
                     }
                 }
             }
