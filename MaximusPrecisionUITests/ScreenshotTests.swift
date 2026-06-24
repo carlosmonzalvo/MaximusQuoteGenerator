@@ -94,6 +94,16 @@ final class ScreenshotTests: XCTestCase {
         snapshot("08-Year-picker")
     }
 
+    /// The "más de 10 años" manual year entry.
+    func test_captureYearManualEntry() {
+        let form = QuoteFormRobot(app)
+            .assertVisible()
+            .tapMakeChip(0)
+            .tapModelChip(0)
+        form.openYearPicker().assertVisible().enableManualEntry()
+        snapshot("16-Year-manual")
+    }
+
     /// Expedientes: register a client + a vehicle and open the patient's record.
     func test_captureExpedientes() {
         let records = RecordsRobot(app).open()

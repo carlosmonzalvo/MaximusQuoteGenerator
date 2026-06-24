@@ -362,10 +362,11 @@ struct QuoteFormView: View {
                 YearPickerSheet(
                     minYear: vm.minYear(forModelYearStart: vm.selectedModel?.yearStart),
                     maxYear: vm.currentYear,
-                    selected: Int(vm.vehicleYear)
-                ) { year in
-                    vm.vehicleYear = String(year)
-                }
+                    selected: Int(vm.vehicleYear),
+                    manualMode: $vm.manualYearEntry,
+                    onPick: { year in vm.vehicleYear = String(year) },
+                    onManual: { text in vm.setManualYear(text) }
+                )
             }
         }
         .preferredColorScheme(.dark)

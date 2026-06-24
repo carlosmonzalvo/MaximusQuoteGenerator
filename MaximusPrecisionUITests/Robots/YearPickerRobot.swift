@@ -16,6 +16,13 @@ final class YearPickerRobot: Robot {
         assertExists(yearCell(0), "Year picker did not appear")
     }
 
+    /// Flips the "más de 10 años" flag to reveal manual year entry.
+    @discardableResult
+    func enableManualEntry() -> Self {
+        tap(element(A11y.YearPicker.manualToggle))
+        return assertExists(element(A11y.YearPicker.manualField), "Manual year field did not appear")
+    }
+
     /// Picks the year at `index` (0 = newest) and returns its label.
     @discardableResult
     func pickYear(_ index: Int) -> (robot: QuoteFormRobot, year: String) {

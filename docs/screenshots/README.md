@@ -28,6 +28,9 @@ Capturas reales del simulador (iPhone 16) generadas por
 ### Año (picker)
 ![Year picker](08-Year-picker.png)
 
+### Año fuera de rango — "Más de 10 años" (entrada manual)
+![Year manual](16-Year-manual.png)
+
 ### Cotización con marca/modelo elegidos
 ![Cotización](01-Cotizacion.png)
 
