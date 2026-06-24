@@ -7,21 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C89576CF86FADFA90FD149B /* PDFPreviewRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF230C3719EC21651C63B44 /* PDFPreviewRobot.swift */; };
+		037EDAE912D90E9FA81DBE99 /* RecordEditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DAD3A46DA5FB4FBE88CCA2 /* RecordEditSheet.swift */; };
+		12048F9E54DAC79840CB8343 /* ClientRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F10896D2E513F734A67352 /* ClientRecord.swift */; };
+		13422ABF496C74C2EB59C2E5 /* ServiceRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670DD0FDDB73AFB8403A2C3B /* ServiceRecord.swift */; };
+		13DB26BDC187BC0F5B3D0AE3 /* RecordsRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3CF36EA16A9D6E76F5294F /* RecordsRobot.swift */; };
+		1746580E4A4EA1A67D83A278 /* PDFPreviewRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C3D4917AC92ECF79D0604 /* PDFPreviewRobot.swift */; };
 		1FAF662A9612075E12AF3955 /* LRUCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B79269365DCA3685123FEA /* LRUCacheTests.swift */; };
+		27846F382BE7DE06F628FC89 /* RecordsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC535D3375D809AEB6C8ADE /* RecordsViewModel.swift */; };
 		3483CDC45EF2656764D3984B /* VehicleCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83E183493D89831CCCCF75E /* VehicleCatalog.swift */; };
 		3AC45A1E2F80D1690007E674 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC45A1D2F80D15F0007E674 /* UIApplication+Extensions.swift */; };
 		3AFBBB5F2F8AF8FF00B3F4AD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBBB5E2F8AF8EB00B3F4AD /* SplashView.swift */; };
 		43530D70F7500F462602FFF5 /* LRUCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1B5430C0958BB2EEEA6A7A /* LRUCache.swift */; };
-		4473BECC758419795FA77481 /* QuoteFormRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2097C8C14D81CF09730E5CA4 /* QuoteFormRobot.swift */; };
 		45FB02E7D1F8DBA4E8CA1901 /* VersionPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5353190E3729B7B3A28BAF7 /* VersionPickerSheet.swift */; };
-		4DF29387A6060DEAFA91260E /* ScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25515C7B7EBE48D07A7E43AF /* ScreenshotTests.swift */; };
-		640DE1371BA834507AEF6AB5 /* QuoteFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CD87CFD2740FBB43EE5856 /* QuoteFlowUITests.swift */; };
-		6878E95F0CB8D0F5CFCC9380 /* YearPickerRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665BD7F91CE923821C0552A2 /* YearPickerRobot.swift */; };
-		70E36327873427E07710605E /* ItemEditRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9F7568E88D93931137795B /* ItemEditRobot.swift */; };
-		80C84370A9E7942E20922247 /* VersionPickerRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E770A088AE68E46B9340745D /* VersionPickerRobot.swift */; };
+		4A007E4177753BFEFFEA2CD7 /* ClientVehicleRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F440E76EDA4EFF176CA8CF5 /* ClientVehicleRepositoryTests.swift */; };
+		4D8B9B091A6A95461B6D2993 /* QuoteFormRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C1C825075CEE2E4C15714 /* QuoteFormRobot.swift */; };
+		653056C8A90CF4EF9327B1B9 /* VersionPickerRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FF94A1E3E057E04335F251 /* VersionPickerRobot.swift */; };
+		691E071EF910469D05EB14D2 /* QuoteFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DE9351C7291402427B7715 /* QuoteFlowUITests.swift */; };
+		69D9A7170090449F06F579A8 /* VehicleRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C4921D85BFE36A02313C4A /* VehicleRecord.swift */; };
+		7E90EE97A660FC8E7C771351 /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBB1C3158B58FC3D2B3A7DD /* Robot.swift */; };
 		812B099E700A0D6F7D8B00B3 /* DocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA436D09D6D781B33908670C /* DocumentType.swift */; };
 		8559538D1A8BB86AF204B0BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 962E92589EE5DD533D4321D5 /* Foundation.framework */; };
+		8B672F101B00257E1F679214 /* VehicleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132CE4BA987484B8F8545235 /* VehicleDetailView.swift */; };
+		9226080534611FE65A861574 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992583EE725CECD362A748D6 /* RootTabView.swift */; };
 		951E7763849BCDC3FCB7DD0D /* VehicleCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC603F5E4F91A9DAD86822DE /* VehicleCatalogTests.swift */; };
 		9777FD6566AAC7938B28D318 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 962E92589EE5DD533D4321D5 /* Foundation.framework */; };
 		99FD8D11867349CBC1ADE6CF /* QuoteFormViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D2C47D996D3073B4AC5DA8 /* QuoteFormViewModelTests.swift */; };
@@ -39,12 +46,16 @@
 		A0000000000000000000000B /* PDFPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000001B /* PDFPreviewView.swift */; };
 		A0000000000000000000000C /* QuoteFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000001C /* QuoteFormView.swift */; };
 		A0000000000000000000000D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000001D /* Assets.xcassets */; };
+		AD2647465EFEE4C6C015A6E3 /* ScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F604987217C9A51545C2AF36 /* ScreenshotTests.swift */; };
 		C1CA256A0ED2C3B6907EEC0B /* YearPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2A77E299D86A13E66971E /* YearPickerSheet.swift */; };
 		C520CF3CACF0F4FFB5C0D80A /* CatalogModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3641F9368E9A09B74BCAA /* CatalogModels.swift */; };
-		CA01CD7A1499CFE7ED3FDC65 /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9D8F17C83D76C63D00B49A /* Robot.swift */; };
-		D2B002D048441DF99081F524 /* XCUIApplication+Maximus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B357AC3292DA4865CF4E69F /* XCUIApplication+Maximus.swift */; };
+		C76C66FDCD110A23D0DCA9FE /* XCUIApplication+Maximus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721C5F7179BBD3BC73A0D37F /* XCUIApplication+Maximus.swift */; };
+		C9147F91F7E65F453020563A /* ItemEditRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6DA557AA2231075C722A0E /* ItemEditRobot.swift */; };
+		DB2BF6851CCA3BAE0FC8A2F6 /* YearPickerRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B4112B88C2AE39CADF204 /* YearPickerRobot.swift */; };
 		E7125EDACBA89B3BFC21F140 /* AppModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5233A6B009BED5ADC603D7 /* AppModelContainer.swift */; };
 		EE1925C77A7BE4EC2563C50A /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977AF70B214A61CFDF922C6 /* AccessibilityIdentifiers.swift */; };
+		F4DE3125010C6406E994413A /* ClientVehicleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A811C5B5877E875282074A87 /* ClientVehicleRepository.swift */; };
+		F5EF7370072F23F5C7CE4ADE /* RecordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7509768800B8F060887B325 /* RecordsView.swift */; };
 		FA15B9FFB0E4D9B685ACD407 /* VehicleCatalogSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840E23F9F94FB106FC88B349 /* VehicleCatalogSeed.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,21 +77,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2097C8C14D81CF09730E5CA4 /* QuoteFormRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuoteFormRobot.swift; path = MaximusPrecisionUITests/Robots/QuoteFormRobot.swift; sourceTree = "<group>"; };
-		25515C7B7EBE48D07A7E43AF /* ScreenshotTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScreenshotTests.swift; path = MaximusPrecisionUITests/ScreenshotTests.swift; sourceTree = "<group>"; };
-		2B357AC3292DA4865CF4E69F /* XCUIApplication+Maximus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "XCUIApplication+Maximus.swift"; path = "MaximusPrecisionUITests/Support/XCUIApplication+Maximus.swift"; sourceTree = "<group>"; };
+		06DAD3A46DA5FB4FBE88CCA2 /* RecordEditSheet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RecordEditSheet.swift; path = Records/Views/RecordEditSheet.swift; sourceTree = "<group>"; };
+		0A3CF36EA16A9D6E76F5294F /* RecordsRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RecordsRobot.swift; path = MaximusPrecisionUITests/Robots/RecordsRobot.swift; sourceTree = "<group>"; };
+		0C9B4112B88C2AE39CADF204 /* YearPickerRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YearPickerRobot.swift; path = MaximusPrecisionUITests/Robots/YearPickerRobot.swift; sourceTree = "<group>"; };
+		132CE4BA987484B8F8545235 /* VehicleDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VehicleDetailView.swift; path = Records/Views/VehicleDetailView.swift; sourceTree = "<group>"; };
 		3AC45A1D2F80D15F0007E674 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		3AFBBB5E2F8AF8EB00B3F4AD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		3AFBBB602F8B06A000B3F4AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3B5233A6B009BED5ADC603D7 /* AppModelContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppModelContainer.swift; path = Catalog/AppModelContainer.swift; sourceTree = "<group>"; };
 		42B79269365DCA3685123FEA /* LRUCacheTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LRUCacheTests.swift; path = MaximusPrecisionTests/LRUCacheTests.swift; sourceTree = "<group>"; };
 		543711E57D06BF416FF20367 /* MaximusPrecisionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaximusPrecisionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F9D8F17C83D76C63D00B49A /* Robot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Robot.swift; path = MaximusPrecisionUITests/Support/Robot.swift; sourceTree = "<group>"; };
-		63CD87CFD2740FBB43EE5856 /* QuoteFlowUITests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuoteFlowUITests.swift; path = MaximusPrecisionUITests/QuoteFlowUITests.swift; sourceTree = "<group>"; };
-		665BD7F91CE923821C0552A2 /* YearPickerRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YearPickerRobot.swift; path = MaximusPrecisionUITests/Robots/YearPickerRobot.swift; sourceTree = "<group>"; };
+		5DBB1C3158B58FC3D2B3A7DD /* Robot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Robot.swift; path = MaximusPrecisionUITests/Support/Robot.swift; sourceTree = "<group>"; };
+		621C1C825075CEE2E4C15714 /* QuoteFormRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuoteFormRobot.swift; path = MaximusPrecisionUITests/Robots/QuoteFormRobot.swift; sourceTree = "<group>"; };
+		62C4921D85BFE36A02313C4A /* VehicleRecord.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VehicleRecord.swift; path = Records/VehicleRecord.swift; sourceTree = "<group>"; };
+		670DD0FDDB73AFB8403A2C3B /* ServiceRecord.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServiceRecord.swift; path = Records/ServiceRecord.swift; sourceTree = "<group>"; };
+		6D1C3D4917AC92ECF79D0604 /* PDFPreviewRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PDFPreviewRobot.swift; path = MaximusPrecisionUITests/Robots/PDFPreviewRobot.swift; sourceTree = "<group>"; };
+		721C5F7179BBD3BC73A0D37F /* XCUIApplication+Maximus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "XCUIApplication+Maximus.swift"; path = "MaximusPrecisionUITests/Support/XCUIApplication+Maximus.swift"; sourceTree = "<group>"; };
 		7C1B5430C0958BB2EEEA6A7A /* LRUCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LRUCache.swift; path = Catalog/LRUCache.swift; sourceTree = "<group>"; };
+		7F440E76EDA4EFF176CA8CF5 /* ClientVehicleRepositoryTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClientVehicleRepositoryTests.swift; path = MaximusPrecisionTests/ClientVehicleRepositoryTests.swift; sourceTree = "<group>"; };
 		840E23F9F94FB106FC88B349 /* VehicleCatalogSeed.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VehicleCatalogSeed.swift; path = Catalog/VehicleCatalogSeed.swift; sourceTree = "<group>"; };
+		85F10896D2E513F734A67352 /* ClientRecord.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClientRecord.swift; path = Records/ClientRecord.swift; sourceTree = "<group>"; };
+		8BC535D3375D809AEB6C8ADE /* RecordsViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RecordsViewModel.swift; path = Records/ViewModels/RecordsViewModel.swift; sourceTree = "<group>"; };
 		962E92589EE5DD533D4321D5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		992583EE725CECD362A748D6 /* RootTabView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
 		A0000000000000000000000E /* MaximusPrecision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaximusPrecision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A00000000000000000000011 /* MaximusPrecisionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaximusPrecisionApp.swift; sourceTree = "<group>"; };
 		A00000000000000000000012 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
@@ -95,18 +114,21 @@
 		A0000000000000000000001B /* PDFPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewView.swift; sourceTree = "<group>"; };
 		A0000000000000000000001C /* QuoteFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteFormView.swift; sourceTree = "<group>"; };
 		A0000000000000000000001D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A811C5B5877E875282074A87 /* ClientVehicleRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClientVehicleRepository.swift; path = Records/ClientVehicleRepository.swift; sourceTree = "<group>"; };
 		A8E2A77E299D86A13E66971E /* YearPickerSheet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = YearPickerSheet.swift; sourceTree = "<group>"; };
 		AA436D09D6D781B33908670C /* DocumentType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
+		AF6DA557AA2231075C722A0E /* ItemEditRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ItemEditRobot.swift; path = MaximusPrecisionUITests/Robots/ItemEditRobot.swift; sourceTree = "<group>"; };
+		B1FF94A1E3E057E04335F251 /* VersionPickerRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VersionPickerRobot.swift; path = MaximusPrecisionUITests/Robots/VersionPickerRobot.swift; sourceTree = "<group>"; };
 		B5353190E3729B7B3A28BAF7 /* VersionPickerSheet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VersionPickerSheet.swift; sourceTree = "<group>"; };
 		BC603F5E4F91A9DAD86822DE /* VehicleCatalogTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VehicleCatalogTests.swift; path = MaximusPrecisionTests/VehicleCatalogTests.swift; sourceTree = "<group>"; };
-		BCF230C3719EC21651C63B44 /* PDFPreviewRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PDFPreviewRobot.swift; path = MaximusPrecisionUITests/Robots/PDFPreviewRobot.swift; sourceTree = "<group>"; };
 		C7E3641F9368E9A09B74BCAA /* CatalogModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CatalogModels.swift; path = Catalog/CatalogModels.swift; sourceTree = "<group>"; };
 		C977AF70B214A61CFDF922C6 /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AccessibilityIdentifiers.swift; path = MaximusPrecision/Support/AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
 		D3D2C47D996D3073B4AC5DA8 /* QuoteFormViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuoteFormViewModelTests.swift; path = MaximusPrecisionTests/QuoteFormViewModelTests.swift; sourceTree = "<group>"; };
+		D4DE9351C7291402427B7715 /* QuoteFlowUITests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuoteFlowUITests.swift; path = MaximusPrecisionUITests/QuoteFlowUITests.swift; sourceTree = "<group>"; };
+		D7509768800B8F060887B325 /* RecordsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RecordsView.swift; path = Records/Views/RecordsView.swift; sourceTree = "<group>"; };
 		E2EDD273B9C6F21B11530438 /* MaximusPrecisionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaximusPrecisionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E770A088AE68E46B9340745D /* VersionPickerRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VersionPickerRobot.swift; path = MaximusPrecisionUITests/Robots/VersionPickerRobot.swift; sourceTree = "<group>"; };
 		E83E183493D89831CCCCF75E /* VehicleCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VehicleCatalog.swift; path = Catalog/VehicleCatalog.swift; sourceTree = "<group>"; };
-		FE9F7568E88D93931137795B /* ItemEditRobot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ItemEditRobot.swift; path = MaximusPrecisionUITests/Robots/ItemEditRobot.swift; sourceTree = "<group>"; };
+		F604987217C9A51545C2AF36 /* ScreenshotTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScreenshotTests.swift; path = MaximusPrecisionUITests/ScreenshotTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +166,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3A89114482C7CAD697BE890F /* Records */ = {
+			isa = PBXGroup;
+			children = (
+				85F10896D2E513F734A67352 /* ClientRecord.swift */,
+				62C4921D85BFE36A02313C4A /* VehicleRecord.swift */,
+				670DD0FDDB73AFB8403A2C3B /* ServiceRecord.swift */,
+				A811C5B5877E875282074A87 /* ClientVehicleRepository.swift */,
+			);
+			name = Records;
+			sourceTree = "<group>";
+		};
 		3AC45A1C2F80D1240007E674 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,12 +185,30 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		3C39F17B7FE967A46C3A8379 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D7509768800B8F060887B325 /* RecordsView.swift */,
+				06DAD3A46DA5FB4FBE88CCA2 /* RecordEditSheet.swift */,
+				132CE4BA987484B8F8545235 /* VehicleDetailView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		3E0AF0AAD85697723B7DC396 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
 				962E92589EE5DD533D4321D5 /* Foundation.framework */,
 			);
 			name = iOS;
+			sourceTree = "<group>";
+		};
+		67EA9A67D024044DC7DAEE1A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				8BC535D3375D809AEB6C8ADE /* RecordsViewModel.swift */,
+			);
+			name = ViewModels;
 			sourceTree = "<group>";
 		};
 		7F6B14DEFA8E0D35641218B1 /* Catalog */ = {
@@ -175,15 +226,16 @@
 		957C063244E1236AF76230C0 /* MaximusPrecisionUITests */ = {
 			isa = PBXGroup;
 			children = (
-				63CD87CFD2740FBB43EE5856 /* QuoteFlowUITests.swift */,
-				FE9F7568E88D93931137795B /* ItemEditRobot.swift */,
-				BCF230C3719EC21651C63B44 /* PDFPreviewRobot.swift */,
-				2097C8C14D81CF09730E5CA4 /* QuoteFormRobot.swift */,
-				E770A088AE68E46B9340745D /* VersionPickerRobot.swift */,
-				665BD7F91CE923821C0552A2 /* YearPickerRobot.swift */,
-				25515C7B7EBE48D07A7E43AF /* ScreenshotTests.swift */,
-				5F9D8F17C83D76C63D00B49A /* Robot.swift */,
-				2B357AC3292DA4865CF4E69F /* XCUIApplication+Maximus.swift */,
+				D4DE9351C7291402427B7715 /* QuoteFlowUITests.swift */,
+				AF6DA557AA2231075C722A0E /* ItemEditRobot.swift */,
+				6D1C3D4917AC92ECF79D0604 /* PDFPreviewRobot.swift */,
+				621C1C825075CEE2E4C15714 /* QuoteFormRobot.swift */,
+				0A3CF36EA16A9D6E76F5294F /* RecordsRobot.swift */,
+				B1FF94A1E3E057E04335F251 /* VersionPickerRobot.swift */,
+				0C9B4112B88C2AE39CADF204 /* YearPickerRobot.swift */,
+				F604987217C9A51545C2AF36 /* ScreenshotTests.swift */,
+				5DBB1C3158B58FC3D2B3A7DD /* Robot.swift */,
+				721C5F7179BBD3BC73A0D37F /* XCUIApplication+Maximus.swift */,
 			);
 			name = MaximusPrecisionUITests;
 			sourceTree = SOURCE_ROOT;
@@ -210,6 +262,7 @@
 				A00000000000000000000025 /* Resources */,
 				BCFE520F9437F6BE6E3C840C /* Support */,
 				7F6B14DEFA8E0D35641218B1 /* Catalog */,
+				3A89114482C7CAD697BE890F /* Records */,
 			);
 			path = MaximusPrecision;
 			sourceTree = "<group>";
@@ -228,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				A00000000000000000000011 /* MaximusPrecisionApp.swift */,
+				992583EE725CECD362A748D6 /* RootTabView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -236,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				A00000000000000000000026 /* Quotes */,
+				B37B54631653310667A2FC5D /* Records */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -301,6 +356,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		B37B54631653310667A2FC5D /* Records */ = {
+			isa = PBXGroup;
+			children = (
+				67EA9A67D024044DC7DAEE1A /* ViewModels */,
+				3C39F17B7FE967A46C3A8379 /* Views */,
+			);
+			name = Records;
+			sourceTree = "<group>";
+		};
 		BCFE520F9437F6BE6E3C840C /* Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +379,7 @@
 				42B79269365DCA3685123FEA /* LRUCacheTests.swift */,
 				D3D2C47D996D3073B4AC5DA8 /* QuoteFormViewModelTests.swift */,
 				BC603F5E4F91A9DAD86822DE /* VehicleCatalogTests.swift */,
+				7F440E76EDA4EFF176CA8CF5 /* ClientVehicleRepositoryTests.swift */,
 			);
 			name = MaximusPrecisionTests;
 			sourceTree = "<group>";
@@ -463,6 +528,15 @@
 				45FB02E7D1F8DBA4E8CA1901 /* VersionPickerSheet.swift in Sources */,
 				E7125EDACBA89B3BFC21F140 /* AppModelContainer.swift in Sources */,
 				C1CA256A0ED2C3B6907EEC0B /* YearPickerSheet.swift in Sources */,
+				9226080534611FE65A861574 /* RootTabView.swift in Sources */,
+				12048F9E54DAC79840CB8343 /* ClientRecord.swift in Sources */,
+				69D9A7170090449F06F579A8 /* VehicleRecord.swift in Sources */,
+				13422ABF496C74C2EB59C2E5 /* ServiceRecord.swift in Sources */,
+				F4DE3125010C6406E994413A /* ClientVehicleRepository.swift in Sources */,
+				27846F382BE7DE06F628FC89 /* RecordsViewModel.swift in Sources */,
+				F5EF7370072F23F5C7CE4ADE /* RecordsView.swift in Sources */,
+				037EDAE912D90E9FA81DBE99 /* RecordEditSheet.swift in Sources */,
+				8B672F101B00257E1F679214 /* VehicleDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +547,7 @@
 				1FAF662A9612075E12AF3955 /* LRUCacheTests.swift in Sources */,
 				99FD8D11867349CBC1ADE6CF /* QuoteFormViewModelTests.swift in Sources */,
 				951E7763849BCDC3FCB7DD0D /* VehicleCatalogTests.swift in Sources */,
+				4A007E4177753BFEFFEA2CD7 /* ClientVehicleRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,15 +556,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE1925C77A7BE4EC2563C50A /* AccessibilityIdentifiers.swift in Sources */,
-				640DE1371BA834507AEF6AB5 /* QuoteFlowUITests.swift in Sources */,
-				70E36327873427E07710605E /* ItemEditRobot.swift in Sources */,
-				0C89576CF86FADFA90FD149B /* PDFPreviewRobot.swift in Sources */,
-				4473BECC758419795FA77481 /* QuoteFormRobot.swift in Sources */,
-				80C84370A9E7942E20922247 /* VersionPickerRobot.swift in Sources */,
-				6878E95F0CB8D0F5CFCC9380 /* YearPickerRobot.swift in Sources */,
-				4DF29387A6060DEAFA91260E /* ScreenshotTests.swift in Sources */,
-				CA01CD7A1499CFE7ED3FDC65 /* Robot.swift in Sources */,
-				D2B002D048441DF99081F524 /* XCUIApplication+Maximus.swift in Sources */,
+				691E071EF910469D05EB14D2 /* QuoteFlowUITests.swift in Sources */,
+				C9147F91F7E65F453020563A /* ItemEditRobot.swift in Sources */,
+				1746580E4A4EA1A67D83A278 /* PDFPreviewRobot.swift in Sources */,
+				4D8B9B091A6A95461B6D2993 /* QuoteFormRobot.swift in Sources */,
+				13DB26BDC187BC0F5B3D0AE3 /* RecordsRobot.swift in Sources */,
+				653056C8A90CF4EF9327B1B9 /* VersionPickerRobot.swift in Sources */,
+				DB2BF6851CCA3BAE0FC8A2F6 /* YearPickerRobot.swift in Sources */,
+				AD2647465EFEE4C6C015A6E3 /* ScreenshotTests.swift in Sources */,
+				7E90EE97A660FC8E7C771351 /* Robot.swift in Sources */,
+				C76C66FDCD110A23D0DCA9FE /* XCUIApplication+Maximus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

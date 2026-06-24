@@ -1,0 +1,71 @@
+//
+//  ServiceRecord.swift
+//  MaximusPrecision
+//
+//  A saved quote / nota de remisión (🧾) — the "visit" in the hospital analogy.
+//  It records which vehicle (patient) was attended and which client (payer) paid
+//  that time, along with a snapshot of the line items and totals so the document
+//  is reproducible even if the catalog or prices change later.
+//
+
+import Foundation
+import SwiftData
+
+@Model
+final class ServiceRecord {
+    var folio: String
+    var date: Date
+    /// Stored as the raw value of `DocumentType` for forward compatibility.
+    var documentTypeRaw: String
+    var notes: String
+    var includesIVA: Bool
+    var includesCardFee: Bool
+
+    /// Frozen line items at the time the document was generated.
+    var items: [QuoteItem]
+
+    /// Frozen totals (so historical documents never drift with price changes).
+    var subtotal: Double
+    var ivaAmount: Double
+    var cardFeeAmount: Double
+    var total: Double
+
+    /// The patient this visit belongs to. Inverse: `VehicleRecord.services`.
+    var vehicle: VehicleRecord?
+    /// Who paid this time. Inverse: `ClientRecord.services`.
+    var payer: ClientRecord?
+
+    init(
+        folio: String,
+        date: Date = .now,
+        documentType: DocumentType = .quote,
+        notes: String = "",
+        includesIVA: Bool = false,
+        includesCardFee: Bool = false,
+        items: [QuoteItem] = [],
+        subtotal: Double = 0,
+        ivaAmount: Double = 0,
+        cardFeeAmount: Double = 0,
+        total: Double = 0,
+        vehicle: VehicleRecord? = nil,
+        payer: ClientRecord? = nil
+    ) {
+        self.folio = folio
+        self.date = date
+        self.documentTypeRaw = documentType.rawValue
+        self.notes = notes
+        self.includesIVA = includesIVA
+        self.includesCardFee = includesCardFee
+        self.items = items
+        self.subtotal = subtotal
+        self.ivaAmount = ivaAmount
+        self.cardFeeAmount = cardFeeAmount
+        self.total = total
+        self.vehicle = vehicle
+        self.payer = payer
+    }
+
+    var documentType: DocumentType {
+        DocumentType(rawValue: documentTypeRaw) ?? .quote
+    }
+}
