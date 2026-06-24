@@ -12,9 +12,14 @@ import Foundation
 import SwiftData
 
 @Model
-final class ServiceRecord {
+final class ServiceRecord: Syncable {
     var folio: String
     var date: Date
+
+    // Sync metadata (see Syncable).
+    var syncID: String = UUID().uuidString
+    var updatedAt: Date = Date.now
+    var deletedAt: Date? = nil
     /// Stored as the raw value of `DocumentType` for forward compatibility.
     var documentTypeRaw: String
     var notes: String

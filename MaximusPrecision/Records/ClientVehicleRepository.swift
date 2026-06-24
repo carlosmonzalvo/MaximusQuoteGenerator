@@ -45,7 +45,10 @@ final class ClientVehicleRepository {
         if let existing = clients().first(where: {
             $0.name.caseInsensitiveCompare(trimmed) == .orderedSame && $0.phone == phone
         }) {
-            if existing.email.isEmpty, !email.isEmpty { existing.email = email }
+            if existing.email.isEmpty, !email.isEmpty {
+                existing.email = email
+                existing.updatedAt = .now
+            }
             return existing
         }
 
@@ -73,6 +76,7 @@ final class ClientVehicleRepository {
             if !brand.isEmpty { existing.brand = brand }
             if !model.isEmpty { existing.model = model }
             if !year.isEmpty { existing.year = year }
+            existing.updatedAt = .now
             return existing
         }
 
@@ -88,6 +92,7 @@ final class ClientVehicleRepository {
     func link(client: ClientRecord, to vehicle: VehicleRecord) {
         guard !vehicle.clients.contains(where: { $0.persistentModelID == client.persistentModelID }) else { return }
         vehicle.clients.append(client)
+        vehicle.updatedAt = .now
     }
 
     // MARK: Insert / Delete

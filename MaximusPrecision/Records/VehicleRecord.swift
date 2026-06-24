@@ -12,7 +12,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class VehicleRecord {
+final class VehicleRecord: Syncable {
     /// License plate — the vehicle's working identity. Not marked `.unique`
     /// (same rationale as the catalog models), uniqueness is enforced in the repo.
     var plate: String
@@ -23,6 +23,11 @@ final class VehicleRecord {
     var vin: String
     var notes: String
     var createdAt: Date
+
+    // Sync metadata (see Syncable).
+    var syncID: String = UUID().uuidString
+    var updatedAt: Date = Date.now
+    var deletedAt: Date? = nil
 
     /// Clients associated with this vehicle (many-to-many, non-exclusive).
     var clients: [ClientRecord]

@@ -11,12 +11,18 @@ import Foundation
 import SwiftData
 
 @Model
-final class ClientRecord {
+final class ClientRecord: Syncable {
     var name: String
     var phone: String
     var email: String
     var notes: String
     var createdAt: Date
+
+    // Sync metadata (see Syncable). Defaults keep the additive SwiftData
+    // migration lightweight and the app fully functional offline.
+    var syncID: String = UUID().uuidString
+    var updatedAt: Date = Date.now
+    var deletedAt: Date? = nil
 
     /// Vehicles this client is associated with (many-to-many, non-exclusive).
     /// Inverse is declared on `VehicleRecord.clients`.
