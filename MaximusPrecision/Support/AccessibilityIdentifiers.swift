@@ -46,6 +46,8 @@ enum A11y {
         static func deleteItem(_ index: Int) -> String { "quoteForm.item.\(index).delete" }
         static func makeChip(_ index: Int) -> String { "quoteForm.make.\(index)" }
         static func modelChip(_ index: Int) -> String { "quoteForm.model.\(index)" }
+        static let makeShowMore = "quoteForm.make.showMore"
+        static let modelShowMore = "quoteForm.model.showMore"
     }
 
     enum VersionPicker {

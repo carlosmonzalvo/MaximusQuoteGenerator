@@ -26,6 +26,30 @@ final class QuoteFormViewModel: ObservableObject {
     @Published var modelOptions: [ModelOption] = []
     @Published var selectedModel: ModelOption?
 
+    // Chip "Ver más" expansion. The catalog has grown a lot, so the make/model
+    // rows show a preview first and reveal the rest on demand.
+    @Published var showAllMakes = false
+    @Published var showAllModels = false
+
+    /// How many chips to show before the "Ver más" button.
+    let makesPreviewCount = 6
+    let modelsPreviewCount = 8
+
+    var visibleMakeNames: [String] {
+        showAllMakes ? makeNames : Array(makeNames.prefix(makesPreviewCount))
+    }
+
+    var hasMoreMakes: Bool { !showAllMakes && makeNames.count > makesPreviewCount }
+
+    var visibleModelOptions: [ModelOption] {
+        showAllModels ? modelOptions : Array(modelOptions.prefix(modelsPreviewCount))
+    }
+
+    var hasMoreModels: Bool { !showAllModels && modelOptions.count > modelsPreviewCount }
+
+    func showMoreMakes() { showAllMakes = true }
+    func showMoreModels() { showAllModels = true }
+
     /// Generated once and reused for both the on-screen header and the PDF so
     /// the folio shown to the user always matches the document.
     let folio = String(UUID().uuidString.prefix(8)).uppercased()
@@ -68,6 +92,7 @@ final class QuoteFormViewModel: ObservableObject {
         vehicleBrand = name
         vehicleModel = ""
         selectedModel = nil
+        showAllModels = false
         modelOptions = catalog?.models(forMake: name) ?? []
     }
 

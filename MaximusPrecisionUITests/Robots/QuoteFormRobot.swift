@@ -258,4 +258,11 @@ final class QuoteFormRobot: Robot {
     func assertModelChipsVisible() -> Self {
         assertExists(modelChip(0), "Expected model pills after picking a make")
     }
+
+    @discardableResult
+    func tapMakeShowMore() -> Self {
+        dismissKeyboardIfNeeded()
+        scrollToTop()
+        return tap(element(A11y.QuoteForm.makeShowMore))
+    }
 }

@@ -173,6 +173,14 @@ enum VehicleCatalogSeed {
             ModelSeed(name: "Crown", yearStart: 2023, trims: ["XLE", "Limited", "Platinum"]),
             ModelSeed(name: "Tacoma 2024", yearStart: 2024, trims: ["SR", "TRD Sport", "TRD Off-Road", "Limited", "Trailhunter"]),
             ModelSeed(name: "Land Cruiser Prado", yearStart: 2024, trims: ["TX", "VX", "First Edition"]),
+            ModelSeed(name: "Corolla iM", yearStart: 2017, trims: ["Base"]),
+            ModelSeed(name: "Corolla Hatchback", yearStart: 2019, trims: ["SE", "XSE"]),
+            ModelSeed(name: "86", yearStart: 2017, trims: ["Base", "GT"]),
+            ModelSeed(name: "Venza", yearStart: 2021, trims: ["LE", "XLE", "Limited"]),
+            ModelSeed(name: "Grand Highlander", yearStart: 2024, trims: ["XLE", "Limited", "Platinum"]),
+            ModelSeed(name: "Tacoma TRD Pro", yearStart: 2024, trims: ["TRD Pro"]),
+            ModelSeed(name: "Mirai", yearStart: 2021, trims: ["XLE", "Limited"]),
+            ModelSeed(name: "Supra", yearStart: 2020, trims: ["2.0", "3.0", "3.0 Premium"]),
         ]),
 
         MakeSeed(name: "Mazda", rank: 6, tier: 2, models: [
@@ -192,6 +200,11 @@ enum VehicleCatalogSeed {
             ModelSeed(name: "CX-60", yearStart: 2024, trims: ["Preferred", "Premium", "Signature"]),
             ModelSeed(name: "MX-30", yearStart: 2022, trims: ["EV", "e-Skyactiv"]),
             ModelSeed(name: "BT-50", yearStart: 2015, trims: ["i", "Grand Touring"]),
+            ModelSeed(name: "CX-3 Sport", yearStart: 2019, trims: ["Sport", "Grand Touring"]),
+            ModelSeed(name: "Mazda 3 Hatchback", yearStart: 2019, trims: ["i", "Grand Touring", "Signature"]),
+            ModelSeed(name: "CX-30 Turbo", yearStart: 2021, trims: ["Turbo", "Turbo Signature"]),
+            ModelSeed(name: "CX-5 Turbo", yearStart: 2019, trims: ["Turbo", "Turbo Signature"]),
+            ModelSeed(name: "MX-5 RF", yearStart: 2017, trims: ["Club", "Grand Touring"]),
         ]),
 
         // Tier 3 — the next 2 makes.
@@ -237,6 +250,45 @@ enum VehicleCatalogSeed {
             ModelSeed(name: "Lobo", yearStart: 2015, trims: ["XLT", "Lariat", "Platinum", "Raptor", "Limited"]),
             ModelSeed(name: "F-150 Lightning", yearStart: 2023, trims: ["Pro", "XLT", "Lariat", "Platinum"]),
             ModelSeed(name: "Transit", yearStart: 2015, trims: ["Chasis", "Van", "Pasajeros"]),
+        ]),
+
+        // Tier 5 — full Japan update.
+        MakeSeed(name: "Mitsubishi", rank: 10, tier: 5, models: [
+            ModelSeed(name: "Mirage", yearStart: 2015, trims: ["GLX", "GLS", "Limited"]),
+            ModelSeed(name: "Mirage G4", yearStart: 2017, trims: ["GLX", "GLS"]),
+            ModelSeed(name: "Lancer", yearStart: 2015, trims: ["ES", "SE", "GT"]),
+            ModelSeed(name: "ASX", yearStart: 2015, trims: ["ES", "SE", "Limited"]),
+            ModelSeed(name: "Outlander", yearStart: 2015, trims: ["ES", "SE", "SEL", "GT"]),
+            ModelSeed(name: "Outlander PHEV", yearStart: 2018, trims: ["SE", "SEL", "GT"]),
+            ModelSeed(name: "Eclipse Cross", yearStart: 2018, trims: ["ES", "SE", "SEL"]),
+            ModelSeed(name: "Montero Sport", yearStart: 2016, trims: ["GLS", "Limited"]),
+            ModelSeed(name: "L200", yearStart: 2015, trims: ["GL", "GLS", "GT"]),
+            ModelSeed(name: "Xpander", yearStart: 2022, trims: ["GLS", "Limited"]),
+        ]),
+
+        MakeSeed(name: "Suzuki", rank: 11, tier: 5, models: [
+            ModelSeed(name: "Swift", yearStart: 2015, trims: ["GL", "GLS", "Sport", "Boosterjet"]),
+            ModelSeed(name: "Ignis", yearStart: 2018, trims: ["GL", "GLX"]),
+            ModelSeed(name: "Baleno", yearStart: 2016, trims: ["GL", "GLX"]),
+            ModelSeed(name: "Ciaz", yearStart: 2016, trims: ["GL", "GLS"]),
+            ModelSeed(name: "Vitara", yearStart: 2016, trims: ["GLS", "GLX", "Boosterjet"]),
+            ModelSeed(name: "Grand Vitara", yearStart: 2023, trims: ["GL", "GLX"]),
+            ModelSeed(name: "S-Cross", yearStart: 2015, trims: ["GLS", "Boosterjet"]),
+            ModelSeed(name: "Jimny", yearStart: 2019, trims: ["GL", "GLX"]),
+            ModelSeed(name: "Ertiga", yearStart: 2019, trims: ["GLS", "GL"]),
+            ModelSeed(name: "Fronx", yearStart: 2024, trims: ["GLX", "Boosterjet"]),
+        ]),
+
+        MakeSeed(name: "Subaru", rank: 12, tier: 5, models: [
+            ModelSeed(name: "Impreza", yearStart: 2015, trims: ["Base", "Sport", "Limited"]),
+            ModelSeed(name: "WRX", yearStart: 2015, trims: ["Base", "Premium", "STI", "GT"]),
+            ModelSeed(name: "Legacy", yearStart: 2015, trims: ["Base", "Premium", "Limited"]),
+            ModelSeed(name: "Crosstrek", yearStart: 2018, trims: ["Base", "Sport", "Limited"]),
+            ModelSeed(name: "XV", yearStart: 2015, trims: ["Base", "Limited"]),
+            ModelSeed(name: "Forester", yearStart: 2015, trims: ["Base", "Premium", "Sport", "Limited"]),
+            ModelSeed(name: "Outback", yearStart: 2015, trims: ["Base", "Premium", "Limited", "Wilderness"]),
+            ModelSeed(name: "Ascent", yearStart: 2019, trims: ["Base", "Premium", "Limited", "Touring"]),
+            ModelSeed(name: "BRZ", yearStart: 2015, trims: ["Premium", "Limited", "tS"]),
         ]),
     ]
 }

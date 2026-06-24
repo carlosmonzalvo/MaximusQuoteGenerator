@@ -121,6 +121,13 @@ final class ScreenshotTests: XCTestCase {
         snapshot("12-Busqueda-tab-glass")
     }
 
+    /// The "Ver más" chip expanding the full make list.
+    func test_captureVerMasMakes() {
+        let form = QuoteFormRobot(app).assertVisible()
+        form.tapMakeShowMore()
+        snapshot("13-Ver-mas-marcas")
+    }
+
     /// The optional version sheet, captured on its own.
     func test_captureVersionSheet() {
         let form = QuoteFormRobot(app)

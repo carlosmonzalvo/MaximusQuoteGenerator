@@ -23,7 +23,30 @@ final class QuoteFormViewModelTests: XCTestCase {
     func test_loadCatalogPopulatesMakes() throws {
         let vm = try makeVM()
         XCTAssertEqual(vm.makeNames.first, "Nissan")
-        XCTAssertEqual(vm.makeNames.count, 9)
+        XCTAssertEqual(vm.makeNames.count, 12)
+    }
+
+    func test_makesPreviewAndShowMore() throws {
+        let vm = try makeVM()
+        // Preview shows only the first N makes with a "ver más" affordance.
+        XCTAssertEqual(vm.visibleMakeNames.count, vm.makesPreviewCount)
+        XCTAssertTrue(vm.hasMoreMakes)
+        vm.showMoreMakes()
+        XCTAssertEqual(vm.visibleMakeNames.count, vm.makeNames.count)
+        XCTAssertFalse(vm.hasMoreMakes)
+    }
+
+    func test_modelsPreviewResetsWhenSwitchingMake() throws {
+        let vm = try makeVM()
+        vm.selectMake("Toyota")           // many models → preview + ver más
+        XCTAssertEqual(vm.visibleModelOptions.count, vm.modelsPreviewCount)
+        XCTAssertTrue(vm.hasMoreModels)
+        vm.showMoreModels()
+        XCTAssertFalse(vm.hasMoreModels)
+        // Switching make collapses the model list back to the preview.
+        vm.selectMake("Nissan")
+        XCTAssertFalse(vm.showAllModels)
+        XCTAssertTrue(vm.hasMoreModels)
     }
 
     func test_selectMakeLoadsModelsAndResetsModel() throws {

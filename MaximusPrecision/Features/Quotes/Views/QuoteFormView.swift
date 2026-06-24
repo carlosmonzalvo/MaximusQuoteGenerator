@@ -466,24 +466,30 @@ struct QuoteFormView: View {
         VStack(alignment: .leading, spacing: 8) {
             if !vm.makeNames.isEmpty {
                 catalogChipRow(label: "MARCAS") {
-                    ForEach(Array(vm.makeNames.enumerated()), id: \.element) { index, name in
+                    ForEach(Array(vm.visibleMakeNames.enumerated()), id: \.element) { index, name in
                         catalogPill(
                             title: name,
                             selected: vm.vehicleBrand == name,
                             identifier: A11y.QuoteForm.makeChip(index)
                         ) { vm.selectMake(name) }
                     }
+                    if vm.hasMoreMakes {
+                        morePill(identifier: A11y.QuoteForm.makeShowMore) { vm.showMoreMakes() }
+                    }
                 }
             }
 
             if !vm.modelOptions.isEmpty {
                 catalogChipRow(label: "MODELOS") {
-                    ForEach(Array(vm.modelOptions.enumerated()), id: \.element.id) { index, option in
+                    ForEach(Array(vm.visibleModelOptions.enumerated()), id: \.element.id) { index, option in
                         catalogPill(
                             title: option.name,
                             selected: vm.selectedModel?.name == option.name,
                             identifier: A11y.QuoteForm.modelChip(index)
                         ) { vm.selectModel(option) }
+                    }
+                    if vm.hasMoreModels {
+                        morePill(identifier: A11y.QuoteForm.modelShowMore) { vm.showMoreModels() }
                     }
                 }
             }
@@ -545,6 +551,24 @@ struct QuoteFormView: View {
                 .padding(.horizontal, 12)
                 .padding(.vertical, 8)
                 .glassPill(selected: selected, tint: MXTheme.accent)
+        }
+        .buttonStyle(.plain)
+        .accessibilityIdentifier(identifier)
+    }
+
+    /// "Ver más" chip shown at the end of a catalog row to reveal the rest.
+    private func morePill(identifier: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            HStack(spacing: 4) {
+                Text("Ver más")
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 10, weight: .semibold))
+            }
+            .font(.system(size: 13, weight: .medium))
+            .foregroundStyle(MXTheme.accent)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .glassCard(cornerRadius: 10, fallbackFill: MXTheme.accent.opacity(0.12))
         }
         .buttonStyle(.plain)
         .accessibilityIdentifier(identifier)
