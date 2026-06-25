@@ -35,6 +35,11 @@ final class SyncCenter: ObservableObject {
     @Published private(set) var status: Status = .idle
     @Published private(set) var history: [SyncLogEntry] = []
 
+    // Bluetooth / peer-to-peer sync (no backend).
+    @Published var peerEnabled = false
+    @Published private(set) var connectedPeers: [String] = []
+    private var peer: PeerSyncTransport?
+
     /// Pull cursor: the highest server sequence this device has merged.
     private var cursor: Int
 
@@ -66,6 +71,8 @@ final class SyncCenter: ObservableObject {
         // Deterministic state for screenshots (no network).
         if LaunchArgument.shouldSeedSyncDemo {
             self.enabled = true
+            self.peerEnabled = true
+            self.connectedPeers = ["MacBook de Rodo"]
             self.history = [
                 SyncLogEntry(date: Date(), success: true, pushed: 2, pulled: 1, message: "↑2 · ↓1"),
                 SyncLogEntry(date: Date().addingTimeInterval(-3600), success: true, pushed: 0, pulled: 3, message: "↑0 · ↓3"),
@@ -82,8 +89,10 @@ final class SyncCenter: ObservableObject {
     }
 
     func syncNow(context: ModelContext) async {
-        guard let transport else {
-            status = .failed("Activa la sincronización y pon una URL válida.")
+        // Prefer a connected Bluetooth peer; fall back to the backend.
+        let activeTransport: SyncTransport? = (peer?.isAvailable == true) ? peer : transport
+        guard let transport = activeTransport else {
+            status = .failed("Activa la sincronización (servidor o Bluetooth) primero.")
             return
         }
         status = .syncing
@@ -105,6 +114,39 @@ final class SyncCenter: ObservableObject {
     func clearHistory() {
         history = []
         defaults.removeObject(forKey: Keys.history)
+    }
+
+    // MARK: Bluetooth / peer sync
+
+    private var peerDeviceName: String {
+        #if os(macOS)
+        return Host.current().localizedName ?? "Mac"
+        #else
+        return "iPhone"
+        #endif
+    }
+
+    func startPeerSync(context: ModelContext) {
+        guard peer == nil else { return }
+        let transport = PeerSyncTransport(displayName: peerDeviceName) { incoming in
+            // Responder side: merge the peer's payload and reply with ours.
+            let engine = SyncEngine(context: context)
+            engine.merge(incoming)
+            return engine.snapshot()
+        }
+        transport.onPeersChanged = { [weak self] peers in
+            self?.connectedPeers = peers
+        }
+        transport.start()
+        peer = transport
+        peerEnabled = true
+    }
+
+    func stopPeerSync() {
+        peer?.stop()
+        peer = nil
+        connectedPeers = []
+        peerEnabled = false
     }
 
     /// Prepends an entry, caps the log, and persists it.

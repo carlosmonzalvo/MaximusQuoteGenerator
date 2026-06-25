@@ -8,6 +8,15 @@
 	<string>$(MAXIMUS_API_KEY)</string>
 	<key>MaximusAPISecret</key>
 	<string>$(MAXIMUS_API_SECRET)</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Sincroniza autos y clientes con dispositivos cercanos (Mac/iPhone) sin servidor.</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Sincroniza con dispositivos cercanos por Bluetooth.</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_maximus-sync._tcp</string>
+		<string>_maximus-sync._udp</string>
+	</array>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UILaunchScreen</key>
