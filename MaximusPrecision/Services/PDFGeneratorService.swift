@@ -189,9 +189,10 @@ final class PDFGeneratorService {
             y += 18
         }
 
-        if quote.includesCardFee {
-            drawText("Comisión tarjeta (4.5%):", font: bodyFont, at: CGPoint(x: totalsLabelX - 70, y: y))
-            drawText(currency(quote.cardFeeAmount), font: bodyFont, at: CGPoint(x: totalsValueX, y: y))
+        if quote.includesCashDiscount {
+            let pct = numberString(quote.cashDiscountRate * 100)
+            drawText("Descuento pago en efectivo (\(pct)%):", font: bodyFont, at: CGPoint(x: totalsLabelX - 110, y: y))
+            drawText("-\(currency(quote.cashDiscountAmount))", font: bodyFont, at: CGPoint(x: totalsValueX, y: y))
             y += 18
         }
 

@@ -61,7 +61,7 @@ final class ClientVehicleRepositoryTests: XCTestCase {
             items: [QuoteItem(type: .part, title: "Balatas", quantity: 1, unitPrice: 1000)],
             notes: "",
             includesIVA: true,
-            includesCardFee: false
+            includesCashDiscount: false
         )
         let service = try XCTUnwrap(repo.recordService(from: quote))
         repo.save()
@@ -86,7 +86,7 @@ final class ClientVehicleRepositoryTests: XCTestCase {
                 customer: Customer(name: payer, phone: ""),
                 vehicle: Vehicle(brand: "VW", model: "Jetta", year: "2018", plate: "TRN-1"),
                 items: [QuoteItem(type: .labor, title: "Servicio", quantity: 1, unitPrice: 500)],
-                notes: "", includesIVA: false, includesCardFee: false
+                notes: "", includesIVA: false, includesCashDiscount: false
             )
         }
         repo.recordService(from: quote(folio: "F1", payer: "Dueño A"))

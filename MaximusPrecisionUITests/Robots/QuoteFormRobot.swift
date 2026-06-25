@@ -23,11 +23,11 @@ final class QuoteFormRobot: Robot {
     private var generateButton: XCUIElement { element(A11y.QuoteForm.generatePDF) }
     private var emptyState: XCUIElement { element(A11y.QuoteForm.emptyState) }
     private var ivaToggleButton: XCUIElement { element(A11y.QuoteForm.ivaToggle) }
-    private var cardFeeToggleButton: XCUIElement { element(A11y.QuoteForm.cardFeeToggle) }
+    private var cashDiscountToggleButton: XCUIElement { element(A11y.QuoteForm.cashDiscountToggle) }
     private var docTypeQuoteButton: XCUIElement { element(A11y.QuoteForm.docTypeQuote) }
     private var docTypeRemisionButton: XCUIElement { element(A11y.QuoteForm.docTypeRemision) }
     private var ivaRow: XCUIElement { element(A11y.QuoteForm.ivaAmount) }
-    private var cardFeeRow: XCUIElement { element(A11y.QuoteForm.cardFeeAmount) }
+    private var cashDiscountRow: XCUIElement { element(A11y.QuoteForm.cashDiscountAmount) }
     private var totalLabel: XCUIElement { element(A11y.QuoteForm.total) }
 
     private var vehicleBrandField: XCUIElement { element(A11y.QuoteForm.vehicleBrand) }
@@ -163,10 +163,10 @@ final class QuoteFormRobot: Robot {
     }
 
     @discardableResult
-    func toggleCardFee() -> Self {
+    func toggleCashDiscount() -> Self {
         dismissKeyboardIfNeeded()
-        scrollToHittable(cardFeeToggleButton)
-        return tap(cardFeeToggleButton)
+        scrollToHittable(cashDiscountToggleButton)
+        return tap(cashDiscountToggleButton)
     }
 
     @discardableResult
@@ -208,11 +208,11 @@ final class QuoteFormRobot: Robot {
     }
 
     @discardableResult
-    func assertCardFeeRow(visible: Bool) -> Self {
+    func assertCashDiscountRow(visible: Bool) -> Self {
         if visible {
-            assertExists(cardFeeRow, "Expected card-fee row to be visible")
+            assertExists(cashDiscountRow, "Expected card-fee row to be visible")
         } else {
-            assertNotExists(cardFeeRow, "Expected card-fee row to be hidden")
+            assertNotExists(cashDiscountRow, "Expected card-fee row to be hidden")
         }
         return self
     }

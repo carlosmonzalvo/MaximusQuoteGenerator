@@ -104,8 +104,9 @@ final class SyncEngineTests: XCTestCase {
                                       color: "", vin: "", notes: "", clientSyncIDs: ["C1"])]
         remote.services = [ServiceDTO(syncID: "S1", updatedAt: Date(), deletedAt: nil,
                                       folio: "F1", date: Date(), documentTypeRaw: "Cotización",
-                                      notes: "", includesIVA: false, includesCardFee: false,
-                                      subtotal: 100, ivaAmount: 0, cardFeeAmount: 0, total: 100,
+                                      notes: "", includesIVA: false, includesCashDiscount: false,
+                                      cashDiscountRate: 0.16,
+                                      subtotal: 100, ivaAmount: 0, cashDiscountAmount: 0, total: 100,
                                       vehicleSyncID: "V1", payerSyncID: "C1")]
         engine.merge(remote)
 

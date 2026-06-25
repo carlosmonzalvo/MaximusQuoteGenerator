@@ -165,10 +165,11 @@ final class SyncEngine {
         service.documentTypeRaw = dto.documentTypeRaw
         service.notes = dto.notes
         service.includesIVA = dto.includesIVA
-        service.includesCardFee = dto.includesCardFee
+        service.includesCashDiscount = dto.includesCashDiscount
+        service.cashDiscountRate = dto.cashDiscountRate
         service.subtotal = dto.subtotal
         service.ivaAmount = dto.ivaAmount
-        service.cardFeeAmount = dto.cardFeeAmount
+        service.cashDiscountAmount = dto.cashDiscountAmount
         service.total = dto.total
         service.updatedAt = dto.updatedAt
         service.deletedAt = dto.deletedAt
@@ -202,8 +203,9 @@ final class SyncEngine {
     private func dto(for s: ServiceRecord) -> ServiceDTO {
         ServiceDTO(syncID: s.syncID, updatedAt: s.updatedAt, deletedAt: s.deletedAt,
                    folio: s.folio, date: s.date, documentTypeRaw: s.documentTypeRaw,
-                   notes: s.notes, includesIVA: s.includesIVA, includesCardFee: s.includesCardFee,
-                   subtotal: s.subtotal, ivaAmount: s.ivaAmount, cardFeeAmount: s.cardFeeAmount,
+                   notes: s.notes, includesIVA: s.includesIVA, includesCashDiscount: s.includesCashDiscount,
+                   cashDiscountRate: s.cashDiscountRate,
+                   subtotal: s.subtotal, ivaAmount: s.ivaAmount, cashDiscountAmount: s.cashDiscountAmount,
                    total: s.total, vehicleSyncID: s.vehicle?.syncID, payerSyncID: s.payer?.syncID)
     }
 

@@ -682,12 +682,17 @@ struct QuoteFormView: View {
                     action: { vm.toggleIVA() }
                 )
                 toggleChip(
-                    label: "Tarjeta 4.5%",
-                    active: vm.includesCardFee,
+                    label: "Desc. efectivo",
+                    active: vm.includesCashDiscount,
                     color: MXTheme.laborGreen,
-                    identifier: A11y.QuoteForm.cardFeeToggle,
-                    action: { vm.toggleCardFee() }
+                    identifier: A11y.QuoteForm.cashDiscountToggle,
+                    action: { vm.toggleCashDiscount() }
                 )
+            }
+
+            if vm.includesCashDiscount {
+                cashDiscountRateField
+                    .padding(.top, 10)
             }
 
             VStack(spacing: 8) {
@@ -695,12 +700,40 @@ struct QuoteFormView: View {
                 if vm.includesIVA {
                     summaryRow("IVA (16%)", vm.ivaAmount, identifier: A11y.QuoteForm.ivaAmount)
                 }
-                if vm.includesCardFee {
-                    summaryRow("Comisión tarjeta (4.5%)", vm.cardFeeAmount, identifier: A11y.QuoteForm.cardFeeAmount)
+                if vm.includesCashDiscount {
+                    summaryRow("Descuento efectivo (\(vm.discountPercentLabel)%)", -vm.cashDiscountAmount, identifier: A11y.QuoteForm.cashDiscountAmount)
                 }
             }
             .padding(.top, 12)
         }
+    }
+
+    private var cashDiscountRateField: some View {
+        HStack {
+            Text("Descuento por efectivo")
+                .font(.system(size: 13))
+                .foregroundStyle(MXTheme.muted)
+            Spacer()
+            Stepper(
+                value: $vm.cashDiscountPercent, in: 0...100, step: 1
+            ) {
+                Text("\(vm.discountPercentLabel)%")
+                    .font(.system(size: 15, weight: .semibold))
+                    .foregroundStyle(MXTheme.text)
+                    .monospacedDigit()
+            }
+            .labelsHidden()
+            .fixedSize()
+            Text("\(vm.discountPercentLabel)%")
+                .font(.system(size: 15, weight: .semibold))
+                .foregroundStyle(MXTheme.text)
+                .monospacedDigit()
+                .accessibilityIdentifier(A11y.QuoteForm.cashDiscountRate)
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 10)
+        .background(MXTheme.surfaceAlt)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
     }
 
     private func toggleChip(

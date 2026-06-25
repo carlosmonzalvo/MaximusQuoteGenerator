@@ -33,10 +33,11 @@ enum A11y {
         static let docTypeQuote = "quoteForm.docType.quote"
         static let docTypeRemision = "quoteForm.docType.remision"
         static let ivaToggle = "quoteForm.ivaToggle"
-        static let cardFeeToggle = "quoteForm.cardFeeToggle"
+        static let cashDiscountToggle = "quoteForm.cashDiscountToggle"
         static let subtotalAmount = "quoteForm.subtotalAmount"
         static let ivaAmount = "quoteForm.ivaAmount"
-        static let cardFeeAmount = "quoteForm.cardFeeAmount"
+        static let cashDiscountAmount = "quoteForm.cashDiscountAmount"
+        static let cashDiscountRate = "quoteForm.cashDiscountRate"
 
         static let versionPill = "quoteForm.versionPill"
         static let yearField = "quoteForm.yearField"

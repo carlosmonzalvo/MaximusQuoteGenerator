@@ -80,8 +80,8 @@ final class ScreenshotTests: XCTestCase {
         form.toggleIVA()
         snapshot("02-IVA-16")
 
-        form.toggleCardFee()
-        snapshot("03-Comision-tarjeta")
+        form.toggleCashDiscount()
+        snapshot("03-Descuento-efectivo")
     }
 
     /// The year picker sheet.

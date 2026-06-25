@@ -16,7 +16,17 @@ final class QuoteFormViewModel: ObservableObject {
 
     @Published var documentType: DocumentType = .quote
     @Published var includesIVA: Bool = false
-    @Published var includesCardFee: Bool = false
+    @Published var includesCashDiscount: Bool = false
+    /// Cash discount as a percentage (0–100); defaults to 16% (the IVA).
+    @Published var cashDiscountPercent: Double = QuoteCalculatorService.defaultCashDiscountRate * 100
+
+    var cashDiscountRate: Double { max(0, min(cashDiscountPercent, 100)) / 100 }
+
+    /// Percent label without trailing ".0" (e.g. "16", "12.5").
+    var discountPercentLabel: String {
+        let p = (cashDiscountPercent * 10).rounded() / 10
+        return p == p.rounded() ? String(Int(p)) : String(p)
+    }
 
     @Published var showError = false
     @Published var errorMessage = ""
@@ -65,16 +75,16 @@ final class QuoteFormViewModel: ObservableObject {
         calculator.iva(subtotal: subtotal, enabled: includesIVA)
     }
 
-    var cardFeeAmount: Double {
-        calculator.cardFee(base: subtotal + ivaAmount, enabled: includesCardFee)
+    var cashDiscountAmount: Double {
+        calculator.cashDiscount(subtotal: subtotal, rate: cashDiscountRate, enabled: includesCashDiscount)
     }
 
     var total: Double {
-        subtotal + ivaAmount + cardFeeAmount
+        subtotal + ivaAmount - cashDiscountAmount
     }
 
     func toggleIVA() { includesIVA.toggle() }
-    func toggleCardFee() { includesCardFee.toggle() }
+    func toggleCashDiscount() { includesCashDiscount.toggle() }
 
     // MARK: Vehicle catalog
 
@@ -204,7 +214,8 @@ final class QuoteFormViewModel: ObservableObject {
             items: items,
             notes: notes,
             includesIVA: includesIVA,
-            includesCardFee: includesCardFee
+            includesCashDiscount: includesCashDiscount,
+            cashDiscountRate: cashDiscountRate
         )
     }
 }
