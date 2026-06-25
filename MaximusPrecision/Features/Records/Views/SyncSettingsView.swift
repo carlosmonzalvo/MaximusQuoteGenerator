@@ -11,6 +11,7 @@ import SwiftUI
 struct SyncSettingsView: View {
     @ObservedObject var center: SyncCenter
     let onSyncNow: () -> Void
+    var onTogglePeer: (Bool) -> Void = { _ in }
 
     @Environment(\.dismiss) private var dismiss
 
@@ -38,7 +39,32 @@ struct SyncSettingsView: View {
                         Label("Protegido con API key + secret", systemImage: "lock.fill")
                             .font(.caption)
                     }
+                }
 
+                Section {
+                    Toggle("Sincronizar por Bluetooth", isOn: Binding(
+                        get: { center.peerEnabled },
+                        set: { onTogglePeer($0) }
+                    ))
+                    .accessibilityIdentifier(A11y.Sync.peerToggle)
+                    if center.peerEnabled {
+                        if center.connectedPeers.isEmpty {
+                            Label("Buscando dispositivos cercanos…", systemImage: "antenna.radiowaves.left.and.right")
+                                .foregroundStyle(.secondary)
+                        } else {
+                            ForEach(center.connectedPeers, id: \.self) { peer in
+                                Label(peer, systemImage: "checkmark.circle.fill")
+                                    .foregroundStyle(.green)
+                            }
+                        }
+                    }
+                } header: {
+                    Text("Bluetooth (sin servidor)")
+                } footer: {
+                    Text("Sincroniza directo con un Mac o iPhone cercano, sin internet ni backend.")
+                }
+
+                if center.enabled || center.peerEnabled {
                     Section {
                         Button {
                             onSyncNow()

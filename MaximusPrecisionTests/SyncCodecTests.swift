@@ -23,6 +23,17 @@ final class SyncCodecTests: XCTestCase {
         XCTAssertTrue(json.contains("1700000000000"), "updatedAt should be ms since 1970: \(json)")
     }
 
+    func test_peerEnvelopeRoundTrips() throws {
+        var payload = SyncPayload(deviceID: "peer")
+        payload.clients = [ClientDTO(syncID: "C1", updatedAt: Date(timeIntervalSince1970: 5),
+                                     deletedAt: nil, name: "Ana", phone: "", email: "", notes: "")]
+        let envelope = PeerEnvelope(isReply: true, payload: payload)
+        let data = try PeerEnvelope.encoder.encode(envelope)
+        let back = try PeerEnvelope.decoder.decode(PeerEnvelope.self, from: data)
+        XCTAssertTrue(back.isReply)
+        XCTAssertEqual(back.payload.clients.first?.name, "Ana")
+    }
+
     func test_payloadRoundTrips() throws {
         var payload = SyncPayload(deviceID: "dev")
         payload.vehicles = [VehicleDTO(syncID: "V1", updatedAt: Date(timeIntervalSince1970: 1_000),

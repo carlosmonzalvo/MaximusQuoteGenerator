@@ -111,6 +111,7 @@ enum A11y {
 
     enum Sync {
         static let enableToggle = "sync.enableToggle"
+        static let peerToggle = "sync.peerToggle"
         static let syncNow = "sync.syncNow"
     }
 

@@ -61,12 +61,15 @@ struct RecordsView: View {
                 }
             }
             .sheet(isPresented: $showingSync) {
-                SyncSettingsView(center: syncCenter) {
+                SyncSettingsView(center: syncCenter, onSyncNow: {
                     Task {
                         await syncCenter.syncNow(context: modelContext)
                         vm.refresh()
                     }
-                }
+                }, onTogglePeer: { on in
+                    if on { syncCenter.startPeerSync(context: modelContext) }
+                    else { syncCenter.stopPeerSync() }
+                })
             }
             .accessibilityIdentifier(A11y.Records.root)
         }
