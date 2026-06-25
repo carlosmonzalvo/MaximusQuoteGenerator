@@ -84,10 +84,11 @@ struct ServiceDTO: Codable, Hashable {
     var documentTypeRaw: String
     var notes: String
     var includesIVA: Bool
-    var includesCardFee: Bool
+    var includesCashDiscount: Bool
+    var cashDiscountRate: Double
     var subtotal: Double
     var ivaAmount: Double
-    var cardFeeAmount: Double
+    var cashDiscountAmount: Double
     var total: Double
     var vehicleSyncID: String?
     var payerSyncID: String?

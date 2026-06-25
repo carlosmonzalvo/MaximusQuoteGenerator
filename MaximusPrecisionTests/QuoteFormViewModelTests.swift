@@ -96,7 +96,7 @@ final class QuoteFormViewModelTests: XCTestCase {
         XCTAssertEqual(vm.minYear(forModelYearStart: 2010), 2015) // never below catalog floor
     }
 
-    func test_totalsWithIvaAndCardFee() {
+    func test_totalsWithIvaAndCashDiscount() {
         let vm = QuoteFormViewModel()
         vm.items = [QuoteItem(type: .part, title: "x", quantity: 1, unitPrice: 1000)]
         XCTAssertEqual(vm.total, 1000, accuracy: 0.001)
@@ -105,8 +105,16 @@ final class QuoteFormViewModelTests: XCTestCase {
         XCTAssertEqual(vm.ivaAmount, 160, accuracy: 0.001)
         XCTAssertEqual(vm.total, 1160, accuracy: 0.001)
 
-        vm.includesCardFee = true
-        XCTAssertEqual(vm.cardFeeAmount, 1160 * 0.045, accuracy: 0.001)
-        XCTAssertEqual(vm.total, 1160 + 1160 * 0.045, accuracy: 0.001)
+        // Default cash discount is 16% of subtotal, which equals the IVA, so a
+        // cash payer pays the subtotal.
+        vm.includesCashDiscount = true
+        XCTAssertEqual(vm.cashDiscountPercent, 16, accuracy: 0.001)
+        XCTAssertEqual(vm.cashDiscountAmount, 160, accuracy: 0.001)
+        XCTAssertEqual(vm.total, 1000, accuracy: 0.001)
+
+        // Configurable: 10% → discount 100, total 1060.
+        vm.cashDiscountPercent = 10
+        XCTAssertEqual(vm.cashDiscountAmount, 100, accuracy: 0.001)
+        XCTAssertEqual(vm.total, 1060, accuracy: 0.001)
     }
 }

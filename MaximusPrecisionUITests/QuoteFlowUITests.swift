@@ -94,14 +94,14 @@ final class QuoteFlowUITests: XCTestCase {
     }
 
     /// Toggling the card surcharge reveals its row and changes the total.
-    func test_toggleCardFee_showsRowAndUpdatesTotal() {
+    func test_toggleCashDiscount_showsRowAndUpdatesTotal() {
         let form = QuoteFormRobot(app).assertVisible()
         seedPricedItem(form)
 
         let before = form.currentTotalText()
-        form.assertCardFeeRow(visible: false)
-            .toggleCardFee()
-            .assertCardFeeRow(visible: true)
+        form.assertCashDiscountRow(visible: false)
+            .toggleCashDiscount()
+            .assertCashDiscountRow(visible: true)
 
         XCTAssertNotEqual(before, form.currentTotalText(), "Total should change after adding the card fee")
     }

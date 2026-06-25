@@ -25,7 +25,8 @@ final class ServiceRecord: Syncable {
     var documentTypeRaw: String
     var notes: String
     var includesIVA: Bool
-    var includesCardFee: Bool
+    var includesCashDiscount: Bool
+    var cashDiscountRate: Double = QuoteCalculatorService.defaultCashDiscountRate
 
     /// Frozen line items at the time the document was generated.
     var items: [QuoteItem]
@@ -33,7 +34,7 @@ final class ServiceRecord: Syncable {
     /// Frozen totals (so historical documents never drift with price changes).
     var subtotal: Double
     var ivaAmount: Double
-    var cardFeeAmount: Double
+    var cashDiscountAmount: Double
     var total: Double
 
     /// The patient this visit belongs to. Inverse: `VehicleRecord.services`.
@@ -47,11 +48,12 @@ final class ServiceRecord: Syncable {
         documentType: DocumentType = .quote,
         notes: String = "",
         includesIVA: Bool = false,
-        includesCardFee: Bool = false,
+        includesCashDiscount: Bool = false,
+        cashDiscountRate: Double = QuoteCalculatorService.defaultCashDiscountRate,
         items: [QuoteItem] = [],
         subtotal: Double = 0,
         ivaAmount: Double = 0,
-        cardFeeAmount: Double = 0,
+        cashDiscountAmount: Double = 0,
         total: Double = 0,
         vehicle: VehicleRecord? = nil,
         payer: ClientRecord? = nil
@@ -61,11 +63,12 @@ final class ServiceRecord: Syncable {
         self.documentTypeRaw = documentType.rawValue
         self.notes = notes
         self.includesIVA = includesIVA
-        self.includesCardFee = includesCardFee
+        self.includesCashDiscount = includesCashDiscount
+        self.cashDiscountRate = cashDiscountRate
         self.items = items
         self.subtotal = subtotal
         self.ivaAmount = ivaAmount
-        self.cardFeeAmount = cardFeeAmount
+        self.cashDiscountAmount = cashDiscountAmount
         self.total = total
         self.vehicle = vehicle
         self.payer = payer

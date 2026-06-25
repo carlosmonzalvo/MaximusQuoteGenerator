@@ -39,8 +39,8 @@ Capturas reales del simulador (iPhone 16) generadas por
 ### IVA 16%
 ![IVA 16%](02-IVA-16.png)
 
-### Comisión por tarjeta 4.5%
-![Comisión tarjeta](03-Comision-tarjeta.png)
+### Descuento por pago en efectivo (configurable, default = IVA)
+![Descuento efectivo](03-Descuento-efectivo.png)
 
 ### Nota de remisión
 ![Nota de remisión](04-Nota-de-remision.png)
